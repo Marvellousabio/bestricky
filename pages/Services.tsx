@@ -64,7 +64,7 @@ const Services: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        <div className="space-y-32">
+        <div className="space-y-16 md:space-y-32">
           {SERVICES.map((service, idx) => (
             <motion.div 
               key={service.id}
@@ -72,13 +72,13 @@ const Services: React.FC = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={serviceVariants}
-              className={`flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-16 items-center`}
+              className={`flex flex-col md:flex-row ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''} gap-10 md:gap-16 items-center`}
             >
               <motion.div 
                 variants={imageVariants}
                 className="flex-1 w-full"
               >
-                <div className="bg-slate-100 rounded-[2.5rem] aspect-square overflow-hidden relative group">
+                <div className="bg-slate-100 rounded-3xl md:rounded-[2.5rem] aspect-[4/3] md:aspect-square overflow-hidden relative group">
                   <motion.img 
                     src={service.image || `https://picsum.photos/seed/${service.id}/800/800`} 
                     alt={service.title} 
