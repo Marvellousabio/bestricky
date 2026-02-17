@@ -55,7 +55,7 @@ const BlogPostDetail: React.FC<Props> = ({ slug }) => {
               <a href={`#/services?id=${relatedService.id}`} className="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors">
                 View Service Details
               </a>
-              <a href="#/booking" className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-colors">
+              <a href="/booking" className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-colors">
                 Schedule a Call
               </a>
             </div>
@@ -69,7 +69,7 @@ const BlogPostDetail: React.FC<Props> = ({ slug }) => {
             <button className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">𝕏</button>
             <button className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">in</button>
           </div>
-          <a href="#/blog" className="text-blue-600 font-bold">← Back to Blog</a>
+          <a href="/blog" className="text-blue-600 font-bold">← Back to Blog</a>
         </div>
       </article>
     </div>

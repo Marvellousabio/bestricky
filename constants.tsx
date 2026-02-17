@@ -12,6 +12,7 @@ export const SERVICES: Service[] = [
     outcome: 'A technical masterpiece that serves as a 24/7 high-performing salesperson for your business.',
     icon: 'Code',
     tools: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind'],
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800',
     faqs: [
       { question: "How long does a custom build take?", answer: "Typically 6-10 weeks depending on complexity." },
       { question: "Will my site be mobile-friendly?", answer: "Every site we build is mobile-first and fully responsive." }
@@ -27,6 +28,7 @@ export const SERVICES: Service[] = [
     outcome: 'A seamless, engaging user experience that keeps customers coming back.',
     icon: 'Figma',
     tools: ['Figma', 'Adobe XD', 'Prototyping', 'Design Systems'],
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800',
     faqs: [
       { question: "Do you provide the Figma source files?", answer: "Yes, you have full ownership of all design assets." }
     ]
@@ -40,7 +42,8 @@ export const SERVICES: Service[] = [
     value: 'Streamlined operations and data-driven decision-making capabilities.',
     outcome: 'A fully integrated digital ecosystem that automates your growth.',
     icon: 'Layers',
-    tools: ['PostgreSQL', 'MongoDB', 'AWS', 'Docker', 'GraphQL']
+    tools: ['PostgreSQL', 'MongoDB', 'AWS', 'Docker', 'GraphQL'],
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'branding',
@@ -51,34 +54,131 @@ export const SERVICES: Service[] = [
     value: 'Market differentiation and immediate recognition in a crowded digital landscape.',
     outcome: 'A powerful brand identity that commands premium pricing and loyalty.',
     icon: 'PenTool',
-    tools: ['Adobe Illustrator', 'Visual Strategy', 'Brand Guidelines']
+    tools: ['Adobe Illustrator', 'Visual Strategy', 'Brand Guidelines'],
+    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800',
   }
 ];
 
 export const PROJECTS: Project[] = [
   {
-    id: 'marketmapper',
-    title: 'MarketMapper',
-    subtitle: 'Intelligent Market Analysis & Logistics Platform',
-    description: 'A comprehensive platform for entrepreneurs to identify profitable opportunities and optimize complex logistics.',
-    problem: 'Business owners were struggling with fragmented data and inefficient route planning for logistics.',
-    solution: 'Built a centralized dashboard with real-time data visualization and AI-powered route optimization.',
-    impact: 'Increased operational efficiency by 40% and reduced logistics costs for clients by an average of 15%.',
-    tech: ['React', 'Node.js', 'PostgreSQL', 'D3.js'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
-    category: 'SaaS / Logistics'
+    id: 'victor-osimhen',
+    title: 'Victor Osimhen Arena',
+    subtitle: 'Personal Brand Website',
+    description: 'A high-impact personal brand website for the professional footballer.',
+    problem: 'Limited digital presence and fan engagement opportunities.',
+    solution: 'Scroll-driven cinematic motion design showcasing career highlights and achievements.',
+    impact: 'Enhanced global fan engagement and brand value.',
+    tech: ['React', 'Framer Motion', 'Three.js'],
+    image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=800',
+    category: 'Personal Brand'
   },
   {
-    id: 'nigeria-independent',
-    title: 'Nigeria Independent',
-    subtitle: 'AI-Driven Cultural Heritage Platform',
-    description: 'Interactive AI experiences and virtual journeys through Nigeria\'s rich history and cultural heritage.',
-    problem: 'Younger generations were losing touch with cultural history due to lack of interactive digital archives.',
-    solution: 'Developed an AI-powered conversational platform that allows users to "chat" with historical figures and explore 3D virtual sites.',
-    impact: 'Engaged over 50,000 active monthly users and received recognition for cultural preservation.',
-    tech: ['Next.js', 'Gemini API', 'Three.js', 'Tailwind'],
-    image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=800',
-    category: 'Education / AI'
+    id: 'cubana-sovereign',
+    title: 'The Cubana Sovereign',
+    subtitle: 'Personal Brand Website',
+    description: 'Luxury personal brand website for the renowned entrepreneur.',
+    problem: 'Needed a premium digital presence to match business stature.',
+    solution: 'WebGL 3D & AI Concierge experience with immersive visuals.',
+    impact: 'Elevated brand perception and customer experience.',
+    tech: ['React', 'WebGL', 'Three.js', 'AI Integration'],
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800',
+    category: 'Personal Brand'
+  },
+  {
+    id: 'lukmoore-shoes',
+    title: 'Lukmoore Shoes',
+    subtitle: 'E-Commerce Platform',
+    description: 'Premium footwear e-commerce platform with elegant shopping experience.',
+    problem: 'Limited online sales channel and brand visibility.',
+    solution: 'Minimalist luxury storytelling e-commerce design with seamless checkout.',
+    impact: 'Significant increase in online sales and brand recognition.',
+    tech: ['Next.js', 'Stripe', 'Tailwind CSS'],
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800',
+    category: 'E-Commerce'
+  },
+  {
+    id: 'auraex',
+    title: 'AuraEx Marketplace',
+    subtitle: 'B2B Platform',
+    description: 'B2B marketplace for influencer discovery and booking.',
+    problem: 'Inefficient influencer matching and booking process.',
+    solution: 'AI-powered influencer discovery and automated booking system.',
+    impact: 'Streamlined operations and increased successful bookings.',
+    tech: ['React', 'Node.js', 'AI/ML', 'PostgreSQL'],
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800',
+    category: 'B2B Platform'
+  },
+  {
+    id: 'monterosa',
+    title: 'Monterosa Construction',
+    subtitle: 'Construction Company Website',
+    description: 'Professional portfolio website for construction company.',
+    problem: 'Outdated online presence failing to attract serious clients.',
+    solution: 'Industrial authority design with comprehensive project portfolios.',
+    impact: 'Increased lead generation and project inquiries.',
+    tech: ['React', 'GSAP', 'CMS'],
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800',
+    category: 'Construction'
+  },
+  {
+    id: 'lash-hospital',
+    title: 'LASH Hospital',
+    subtitle: 'Healthcare Platform',
+    description: 'Professional medical booking and information platform.',
+    problem: 'Inefficient patient booking and information access.',
+    solution: 'Professional medical booking system with patient portal.',
+    impact: 'Improved patient experience and appointment scheduling.',
+    tech: ['Next.js', 'Healthcare API', 'HIPAA Compliant'],
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800',
+    category: 'Healthcare'
+  },
+  {
+    id: 'pine-ivory',
+    title: 'Pine & Ivory Ltd',
+    subtitle: 'Luxury Retail Platform',
+    description: 'AI-powered interior design platform for luxury retail.',
+    problem: 'Limited digital reach and customer engagement.',
+    solution: 'AI-powered interior design visualization and product discovery.',
+    impact: 'Revolutionary customer experience and increased sales.',
+    tech: ['React', 'AI/ML', 'Computer Vision', 'E-commerce'],
+    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=800',
+    category: 'Luxury Retail'
+  },
+  {
+    id: 'dj-cuppy',
+    title: 'DJ Cuppy Global',
+    subtitle: 'Entertainment Portfolio',
+    description: 'Immersive media showcase for the international DJ.',
+    problem: 'Needed dynamic platform to showcase global performances.',
+    solution: 'Immersive media showcase with event integration and streaming.',
+    impact: 'Enhanced global presence and fan engagement.',
+    tech: ['React', 'Video Integration', 'Social Media API'],
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800',
+    category: 'Entertainment'
+  },
+  {
+    id: 'simi-beauty',
+    title: 'Simi Beauty',
+    subtitle: 'Skincare E-Commerce',
+    description: 'AI-powered skin routine integration for beauty brand.',
+    problem: 'Difficulty helping customers find right products.',
+    solution: 'AI skin routine analysis and personalized product recommendations.',
+    impact: 'Higher conversion rates and customer satisfaction.',
+    tech: ['React', 'AI/ML', 'E-commerce', 'Personalization'],
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=800',
+    category: 'Skincare'
+  },
+  {
+    id: 'chikun-ultima',
+    title: 'Chikun & Ultima',
+    subtitle: 'Manufacturing Corporate Website',
+    description: 'Corporate website showcasing industrial scale and investor relations.',
+    problem: 'Limited investor visibility and corporate communication.',
+    solution: 'Professional corporate site with investor relations portal.',
+    impact: 'Improved investor relations and corporate transparency.',
+    tech: ['Next.js', 'Investor Portal', 'CMS'],
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+    category: 'Manufacturing'
   }
 ];
 
@@ -104,7 +204,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '6 min read',
     author: 'Bestricky Team',
     category: 'Business Strategy',
-    image: 'https://images.unsplash.com/photo-1454165833767-027ffea9e61d?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1553484771-371a605b060b?auto=format&fit=crop&q=80&w=800',
     relatedServiceId: 'web-dev'
   },
   {
@@ -127,7 +227,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '8 min read',
     author: 'Engineering Team',
     category: 'Technical SEO',
-    image: 'https://images.unsplash.com/photo-1551288049-bbbda536ad37?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
     relatedServiceId: 'web-dev'
   }
 ];
@@ -148,5 +248,53 @@ export const TESTIMONIALS: Testimonial[] = [
     company: 'Heritage Fund',
     content: 'The attention to detail in the UI/UX design was incredible. They truly understood our brand and our audience.',
     image: 'https://i.pravatar.cc/150?u=david'
+  },
+  {
+    id: 't3',
+    name: 'Emily Chen',
+    role: 'Founder',
+    company: 'AuraEx',
+    content: 'Our marketplace platform exceeded expectations. Bestricky delivered on time and the results speak for themselves.',
+    image: 'https://i.pravatar.cc/150?u=emily'
+  },
+  {
+    id: 't4',
+    name: 'Michael Torres',
+    role: 'Managing Director',
+    company: 'Monterosa Construction',
+    content: 'The industrial design and functionality of our new website has brought in clients we never thought possible.',
+    image: 'https://i.pravatar.cc/150?u=michael'
+  },
+  {
+    id: 't5',
+    name: 'Jessica Williams',
+    role: 'CEO',
+    company: 'Lukmoore Shoes',
+    content: 'Our online sales increased by 300% after the new e-commerce platform launch. Bestricky exceeded all expectations.',
+    image: 'https://i.pravatar.cc/150?u=jessica'
+  },
+  {
+    id: 't6',
+    name: 'Robert Chen',
+    role: 'IT Director',
+    company: 'LASH Hospital',
+    content: 'The patient booking system has streamlined our operations significantly. Exceptional work and ongoing support.',
+    image: 'https://i.pravatar.cc/150?u=robert'
+  },
+  {
+    id: 't7',
+    name: 'Amanda Foster',
+    role: 'Brand Manager',
+    company: 'Pine & Ivory',
+    content: 'The AI-powered interior design feature has revolutionized how customers shop with us. Truly innovative solutions.',
+    image: 'https://i.pravatar.cc/150?u=amanda'
+  },
+  {
+    id: 't8',
+    name: 'James Wilson',
+    role: 'Operations Lead',
+    company: 'Chikun & Ultima',
+    content: 'Our corporate website now showcases our industrial capabilities perfectly. Professional, sleek, and effective.',
+    image: 'https://i.pravatar.cc/150?u=james'
   }
 ];
