@@ -39,31 +39,23 @@ const WebsitePreview: React.FC<{ url: string; image: string; title: string }> = 
         decoding="async"
       />
 
-      {/* iframe Scroll Preview */}
+      {/* iframe Scrollable Full Page Preview */}
       {!iframeError && (
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
-          <div
-            className="w-full"
+        <div className="absolute inset-0 overflow-hidden rounded-[2.5rem]">
+          <iframe
+            src={url}
+            title={title}
+            className="w-full border-0"
             style={{
-              height: "300%", // iframe is 3x taller than container = enables scroll effect
-              animation: isHovered
-                ? "none"
-                : "scrollPreview 12s linear infinite alternate",
+              height: "300vh", // Make iframe tall enough to capture full page
+              transform: isHovered ? "translateY(0)" : undefined,
+              transition: isHovered ? "none" : "transform 15s linear infinite",
+              animation: isHovered ? "none" : "scrollDown 15s linear infinite",
+              pointerEvents: "none",
             }}
-          >
-            <iframe
-              src={url}
-              title={title}
-              className="w-full border-0"
-              style={{
-                height: "33.33%", // iframe itself is 1/3 of the wrapper (= 100% of container)
-                transformOrigin: "top left",
-                pointerEvents: "none",
-              }}
-              onLoad={() => setIframeLoaded(true)}
-              onError={() => setIframeError(true)}
-            />
-          </div>
+            onLoad={() => setIframeLoaded(true)}
+            onError={() => setIframeError(true)}
+          />
         </div>
       )}
 
@@ -83,6 +75,8 @@ const WebsitePreview: React.FC<{ url: string; image: string; title: string }> = 
           Visit Live Site ↗
         </a>
       </div>
+
+
     </div>
   );
 };

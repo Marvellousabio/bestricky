@@ -150,8 +150,46 @@ html {
   }
 }
 
+/* Custom blog prose styling for better spacing */
+.blog-content h1 {
+  @apply text-4xl md:text-5xl font-black text-slate-900 mb-8 mt-12;
+}
+
+.blog-content h2 {
+  @apply text-3xl font-black text-slate-900 mb-6 mt-12;
+}
+
+.blog-content h3 {
+  @apply text-2xl font-bold text-slate-900 mb-4 mt-8;
+}
+
+.blog-content p {
+  @apply mb-6 leading-relaxed;
+}
+
+.blog-content ul, .blog-content ol {
+  @apply mb-6 pl-6;
+}
+
+.blog-content li {
+  @apply mb-2;
+}
+
+.blog-content strong {
+  @apply font-bold text-slate-900;
+}
+
+.blog-content a {
+  @apply text-blue-600 hover:text-blue-800 underline;
+}
+
 /* Scroll preview animation for portfolio */
 @keyframes scrollPreview {
   0% { transform: translateY(0%); }
   100% { transform: translateY(-66.66%); }
+}
+
+@keyframes scrollDown {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-200vh); }
 }

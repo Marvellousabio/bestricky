@@ -26,12 +26,11 @@ const Navbar: React.FC = () => {
 		>
 			<div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
 				<Link to="/" className="flex items-center gap-2">
-					<div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-black text-white text-xl">
-						B
-					</div>
-					<span className="font-bold text-xl tracking-tight text-slate-900">
-						Bestricky<span className="text-blue-600">.</span>
-					</span>
+					<img
+						src="/assets/Bestricky logo.png"
+						alt="Bestricky Logo"
+						className="h-10 w-auto"
+					/>
 				</Link>
 
 				{/* Desktop Nav */}

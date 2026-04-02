@@ -37,13 +37,8 @@ const BlogPostDetail: React.FC<Props> = ({ slug }) => {
           <img src={post.image} alt={post.title} className="w-full h-full object-cover" width="800" height="343" loading="eager" decoding="async" />
         </div>
 
-        <div className="prose prose-lg prose-slate max-w-none mb-20 text-slate-700 leading-relaxed space-y-8">
-           {post.content.split('\n').map((line, i) => {
-             if (line.startsWith('##')) return <h2 key={i} className="text-3xl font-black text-slate-900 mt-12 mb-6">{line.replace('##', '')}</h2>;
-             if (line.startsWith('###')) return <h3 key={i} className="text-2xl font-bold text-slate-900 mt-8 mb-4">{line.replace('###', '')}</h3>;
-             if (line.trim()) return <p key={i}>{line}</p>;
-             return null;
-           })}
+        <div className="prose prose-lg prose-slate max-w-none mb-20 text-slate-700 leading-relaxed">
+          <div className="blog-content" dangerouslySetInnerHTML={{ __html: post.content }} />
         </div>
 
         {/* Inline Service CTA */}
@@ -52,10 +47,10 @@ const BlogPostDetail: React.FC<Props> = ({ slug }) => {
             <h3 className="text-3xl font-black text-slate-900 mb-6">Looking for {relatedService.title}?</h3>
             <p className="text-xl text-slate-600 mb-10">{relatedService.description}</p>
             <div className="flex flex-wrap gap-4">
-              <a href={`#/services?id=${relatedService.id}`} className="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors">
+              <a href="/services" className="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors">
                 View Service Details
               </a>
-              <a href="/booking" className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-colors">
+              <a href="/contact" className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-colors">
                 Schedule a Call
               </a>
             </div>

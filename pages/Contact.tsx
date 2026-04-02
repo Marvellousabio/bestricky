@@ -19,10 +19,34 @@ const contactInfoVariants = {
 const Contact: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    // In a real app, logic to send data to an API would go here.
+    try {
+      const formData = new FormData(e.target as HTMLFormElement);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        service: formData.get('service'),
+        details: formData.get('details')
+      };
+
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        alert('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to send message. Please try again.');
+    }
   };
 
   const contactInfo = [
@@ -157,14 +181,14 @@ const Contact: React.FC = () => {
                         whileFocus={{ scale: 1.02 }}
                       >
                         <label className="text-sm font-bold text-slate-700 uppercase tracking-widest">Your Name</label>
-                        <input required type="text" placeholder="John Doe" className="w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                        <input required type="text" name="name" placeholder="John Doe" className="w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
                       </motion.div>
                       <motion.div 
                         className="space-y-2"
                         whileFocus={{ scale: 1.02 }}
                       >
                         <label className="text-sm font-bold text-slate-700 uppercase tracking-widest">Email Address</label>
-                        <input required type="email" placeholder="john@example.com" className="w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                        <input required type="email" name="email" placeholder="john@example.com" className="w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
                       </motion.div>
                     </motion.div>
                     <motion.div 
@@ -175,7 +199,7 @@ const Contact: React.FC = () => {
                       whileFocus={{ scale: 1.01 }}
                     >
                       <label className="text-sm font-bold text-slate-700 uppercase tracking-widest">Service Needed</label>
-                      <select className="w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none cursor-pointer">
+                      <select name="service" className="w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none cursor-pointer">
                         <option>Custom Web Development</option>
                         <option>UI/UX Design</option>
                         <option>Full-Stack Solutions</option>
@@ -190,7 +214,7 @@ const Contact: React.FC = () => {
                       whileFocus={{ scale: 1.01 }}
                     >
                       <label className="text-sm font-bold text-slate-700 uppercase tracking-widest">Project Details</label>
-                      <textarea required rows={5} placeholder="Tell us about your project goals and timeline..." className="w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none"></textarea>
+                      <textarea required rows={5} name="details" placeholder="Tell us about your project goals and timeline..." className="w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none"></textarea>
                     </motion.div>
                   </div>
                   <motion.button 

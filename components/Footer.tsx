@@ -9,8 +9,11 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-black text-white text-xl">B</div>
-              <span className="font-bold text-xl tracking-tight text-white">Bestricky<span className="text-blue-600">.</span></span>
+              <img
+                src="/assets/Bestricky logo.png"
+                alt="Bestricky Logo"
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="max-w-md text-slate-400 text-sm mb-6 hidden md:block">
               Premium digital solutions for modern businesses. We craft stunning websites, powerful applications, and brands that stand out.

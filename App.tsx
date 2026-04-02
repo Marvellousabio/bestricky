@@ -20,8 +20,12 @@ export const Link: React.FC<{
 	to: string;
 	className?: string;
 	children: React.ReactNode;
-}> = ({ to, className, children }) => {
+	onClick?: (e: React.MouseEvent) => void;
+}> = ({ to, className, children, onClick }) => {
 	const handleClick = (e: React.MouseEvent) => {
+		if (onClick) {
+			onClick(e);
+		}
 		e.preventDefault();
 		window.history.pushState({}, "", to);
 		window.dispatchEvent(new PopStateEvent("popstate"));
@@ -36,40 +40,57 @@ export const Link: React.FC<{
 };
 
 const App: React.FC = () => {
-	const [currentPath, setCurrentPath] = useState(
-		window.location.pathname || "/",
-	);
+ 	const [currentPath, setCurrentPath] = useState(
+ 		window.location.pathname || "/",
+ 	);
+ 	const originalTitle = "Web Developer in Lagos | Software Agency Nigeria - Bestricky";
 
-	useEffect(() => {
-		const handlePopState = () => {
-			setCurrentPath(window.location.pathname);
-			window.scrollTo(0, 0);
-		};
+ 	useEffect(() => {
+ 		const handlePopState = () => {
+ 			setCurrentPath(window.location.pathname);
+ 			window.scrollTo(0, 0);
+ 		};
 
-		// Handle all anchor tag clicks for SPA navigation
-		const handleClick = (e: MouseEvent) => {
-			const target = e.target as HTMLElement;
-			const anchor = target.closest("a");
-			if (
-				anchor &&
-				anchor.href &&
-				anchor.href.startsWith(window.location.origin)
-			) {
-				e.preventDefault();
-				const path = anchor.href.replace(window.location.origin, "");
-				window.history.pushState({}, "", path);
-				setCurrentPath(path);
-				window.scrollTo(0, 0);
-			}
-		};
+ 		// Handle all anchor tag clicks for SPA navigation
+ 		const handleClick = (e: MouseEvent) => {
+ 			const target = e.target as HTMLElement;
+ 			const anchor = target.closest("a");
+ 			if (
+ 				anchor &&
+ 				anchor.href &&
+ 				anchor.href.startsWith(window.location.origin)
+ 			) {
+ 				e.preventDefault();
+ 				const path = anchor.href.replace(window.location.origin, "");
+ 				window.history.pushState({}, "", path);
+ 				setCurrentPath(path);
+ 				window.scrollTo(0, 0);
+ 			}
+ 		};
 
-		window.addEventListener("popstate", handlePopState);
-		document.addEventListener("click", handleClick);
-		return () => {
-			window.removeEventListener("popstate", handlePopState);
-			document.removeEventListener("click", handleClick);
-		};
-	}, []);
+ 		window.addEventListener("popstate", handlePopState);
+ 		document.addEventListener("click", handleClick);
+ 		return () => {
+ 			window.removeEventListener("popstate", handlePopState);
+ 			document.removeEventListener("click", handleClick);
+ 		};
+ 	}, []);
+
+ 	// Dynamic title change when user leaves the page
+ 	useEffect(() => {
+ 		const handleVisibilityChange = () => {
+ 			if (document.hidden) {
+ 				document.title = "We missed you! Please come back and complete your inquiry - Bestricky";
+ 			} else {
+ 				document.title = originalTitle;
+ 			}
+ 		};
+
+ 		document.addEventListener("visibilitychange", handleVisibilityChange);
+ 		return () => {
+ 			document.removeEventListener("visibilitychange", handleVisibilityChange);
+ 		};
+ 	}, [originalTitle]);
 
 	// Simple Router logic
 	const renderContent = () => {
