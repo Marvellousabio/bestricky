@@ -142,12 +142,18 @@ html {
 
 /* Mobile carousel specific styles */
 @media (max-width: 1023px) {
-	.carousel-container {
-		perspective: 1200px;
-	}
+  .carousel-container {
+    perspective: 1200px;
+  }
 
-	.carousel-item-3d {
-		transform-style: preserve-3d;
-		transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-	}
+  .carousel-item-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+/* Scroll preview animation for portfolio */
+@keyframes scrollPreview {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(-66.66%); }
 }

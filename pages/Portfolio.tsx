@@ -17,7 +17,7 @@ const WebsitePreview: React.FC<{ url: string; image: string; title: string }> = 
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Live URL Badge */}
-      
+      <a
         href={url}
         target="_blank"
         rel="noopener noreferrer"
@@ -69,7 +69,7 @@ const WebsitePreview: React.FC<{ url: string; image: string; title: string }> = 
           isHovered ? "opacity-100" : "opacity-0"
         }`}
       >
-        
+        <a
           href={url}
           target="_blank"
           rel="noopener noreferrer"
@@ -79,13 +79,6 @@ const WebsitePreview: React.FC<{ url: string; image: string; title: string }> = 
           Visit Live Site ↗
         </a>
       </div>
-
-      <style>{`
-        @keyframes scrollPreview {
-          0%   { transform: translateY(0%); }
-          100% { transform: translateY(-66.66%); }
-        }
-      `}</style>
     </div>
   );
 };
