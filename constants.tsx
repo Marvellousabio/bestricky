@@ -70,6 +70,7 @@ export const PROJECTS: Project[] = [
     impact: 'Enhanced global fan engagement and brand value.',
     tech: ['React', 'Framer Motion', 'Three.js'],
     image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=800',
+    liveUrl: 'https://victor-osimhen-arena.vercel.app',
     category: 'Personal Brand'
   },
   {
@@ -82,6 +83,7 @@ export const PROJECTS: Project[] = [
     impact: 'Elevated brand perception and customer experience.',
     tech: ['React', 'WebGL', 'Three.js', 'AI Integration'],
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800',
+    liveUrl: 'https://cubana-sovereign.vercel.app',
     category: 'Personal Brand'
   },
   {
@@ -94,6 +96,7 @@ export const PROJECTS: Project[] = [
     impact: 'Significant increase in online sales and brand recognition.',
     tech: ['Next.js', 'Stripe', 'Tailwind CSS'],
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800',
+    liveUrl: 'https://lukmoore-shoes.vercel.app',
     category: 'E-Commerce'
   },
   {
@@ -106,6 +109,7 @@ export const PROJECTS: Project[] = [
     impact: 'Streamlined operations and increased successful bookings.',
     tech: ['React', 'Node.js', 'AI/ML', 'PostgreSQL'],
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800',
+    liveUrl: 'https://auraex-marketplace.vercel.app',
     category: 'B2B Platform'
   },
   {
@@ -118,6 +122,7 @@ export const PROJECTS: Project[] = [
     impact: 'Increased lead generation and project inquiries.',
     tech: ['React', 'GSAP', 'CMS'],
     image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800',
+    liveUrl: 'https://monterosa-construction.vercel.app',
     category: 'Construction'
   },
   {
@@ -130,6 +135,7 @@ export const PROJECTS: Project[] = [
     impact: 'Improved patient experience and appointment scheduling.',
     tech: ['Next.js', 'Healthcare API', 'HIPAA Compliant'],
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800',
+    liveUrl: 'https://lash-hospital.vercel.app',
     category: 'Healthcare'
   },
   {
@@ -142,6 +148,7 @@ export const PROJECTS: Project[] = [
     impact: 'Revolutionary customer experience and increased sales.',
     tech: ['React', 'AI/ML', 'Computer Vision', 'E-commerce'],
     image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=800',
+    liveUrl: 'https://pine-and-ivory.vercel.app',
     category: 'Luxury Retail'
   },
   {
@@ -154,6 +161,7 @@ export const PROJECTS: Project[] = [
     impact: 'Enhanced global presence and fan engagement.',
     tech: ['React', 'Video Integration', 'Social Media API'],
     image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800',
+    liveUrl: 'https://dj-cuppy-global.vercel.app',
     category: 'Entertainment'
   },
   {
@@ -166,6 +174,7 @@ export const PROJECTS: Project[] = [
     impact: 'Higher conversion rates and customer satisfaction.',
     tech: ['React', 'AI/ML', 'E-commerce', 'Personalization'],
     image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=800',
+    liveUrl: 'https://simi-beauty.vercel.app',
     category: 'Skincare'
   },
   {
@@ -178,6 +187,7 @@ export const PROJECTS: Project[] = [
     impact: 'Improved investor relations and corporate transparency.',
     tech: ['Next.js', 'Investor Portal', 'CMS'],
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+    liveUrl: 'https://chikun-ultima.vercel.app',
     category: 'Manufacturing'
   }
 ];
