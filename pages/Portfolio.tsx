@@ -33,6 +33,10 @@ const WebsitePreview: React.FC<{ url: string; image: string; title: string }> = 
         src={image}
         alt={title}
         className="absolute inset-0 w-full h-full object-cover"
+        width="400"
+        height="300"
+        loading="lazy"
+        decoding="async"
       />
 
       {/* iframe Scroll Preview */}

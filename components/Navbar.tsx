@@ -54,10 +54,11 @@ const Navbar: React.FC = () => {
 				</div>
 
 				{/* Mobile Toggle */}
-				<button
-					className="md:hidden p-2"
-					onClick={() => setIsMenuOpen(!isMenuOpen)}
-				>
+ 				<button
+ 					className="md:hidden p-2"
+ 					onClick={() => setIsMenuOpen(!isMenuOpen)}
+ 					aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+ 				>
 					<svg
 						className="w-6 h-6"
 						fill="none"

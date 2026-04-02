@@ -135,11 +135,14 @@ const MobileCarousel: React.FC = () => {
 							}}
 						>
 							{/* Image */}
-							<img
-								src={niche.image}
-								alt={niche.label}
-								className="w-full h-full object-cover"
-							/>
+                          <img
+                            src={niche.image}
+                            alt={niche.label}
+                            className="w-full h-full object-cover"
+                            width="280"
+                            height="350"
+                            decoding="async"
+                          />
 
 							{/* Gradient overlay */}
 							<div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
@@ -374,11 +377,16 @@ const Hero: React.FC = () => {
 										transition={{ duration: 0.5 }}
 										className="w-full h-full"
 									>
-										<img
-											src={niches[activeNiche].image}
-											alt={niches[activeNiche].label}
-											className="w-full h-full object-cover"
-										/>
+                                        <img
+                                          src={niches[activeNiche].image}
+                                          alt={niches[activeNiche].label}
+                                          className="w-full h-full object-cover"
+                                          width="300"
+                                          height="300"
+                                          fetchpriority="high"
+                                          loading="eager"
+                                          decoding="async"
+                                        />
 									</motion.div>
 								</AnimatePresence>
 

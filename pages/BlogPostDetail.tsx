@@ -34,7 +34,7 @@ const BlogPostDetail: React.FC<Props> = ({ slug }) => {
         </div>
 
         <div className="aspect-[21/9] rounded-[2.5rem] overflow-hidden mb-16 shadow-2xl">
-          <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+          <img src={post.image} alt={post.title} className="w-full h-full object-cover" width="800" height="343" loading="eager" decoding="async" />
         </div>
 
         <div className="prose prose-lg prose-slate max-w-none mb-20 text-slate-700 leading-relaxed space-y-8">

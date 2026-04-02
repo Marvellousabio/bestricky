@@ -96,11 +96,15 @@ const Home: React.FC = () => {
 									{/* Author */}
 									<div className="flex items-center gap-4 pt-6 border-t border-slate-200">
 										<div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-blue-100">
-											<img
-												src={testimonial.image}
-												alt={testimonial.name}
-												className="w-full h-full object-cover"
-											/>
+                                        <img
+                                          src={testimonial.image}
+                                          alt={testimonial.name}
+                                          className="w-full h-full object-cover"
+                                          width="56"
+                                          height="56"
+                                          loading="lazy"
+                                          decoding="async"
+                                        />
 										</div>
 										<div>
 											<h4 className="font-bold text-slate-900">
@@ -148,11 +152,15 @@ const Home: React.FC = () => {
 						{PROJECTS.slice(0, 2).map((project) => (
 							<div key={project.id} className="group relative">
 								<div className="overflow-hidden rounded-3xl mb-6 bg-slate-100 aspect-video relative">
-									<img
-										src={project.image}
-										alt={project.title}
-										className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-									/>
+                                    <img
+                                      src={project.image}
+                                      alt={project.title}
+                                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                      width="400"
+                                      height="225"
+                                      loading="lazy"
+                                      decoding="async"
+                                    />
                                     <div className="absolute inset-0 bg-blue-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                         <a href="/portfolio" className="bg-white text-slate-900 px-8 py-3 rounded-full font-bold hover:bg-slate-50 transition-colors">
                                             View Project Details
@@ -236,11 +244,15 @@ const Home: React.FC = () => {
 								<div className="group">
 									{/* Video/Illustration Container */}
 									<div className="relative rounded-3xl overflow-hidden aspect-video mb-8 bg-slate-800">
-										<img 
-											src={step.video} 
-											alt={step.title}
-											className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-										/>
+                                      <img
+                                        src={step.video}
+                                        alt={step.title}
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                        width="400"
+                                        height="225"
+                                        loading="lazy"
+                                        decoding="async"
+                                      />
 										<div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
 										{/* Play Button Overlay */}
 										<div className="absolute inset-0 flex items-center justify-center">
@@ -279,11 +291,15 @@ const Home: React.FC = () => {
 					<div className="relative rounded-[3rem] p-12 md:p-24 text-center text-white overflow-hidden">
 						{/* Professional business background */}
 						<div className="absolute inset-0">
-							<img 
-								src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" 
-								alt="Business background" 
-								className="w-full h-full object-cover"
-							/>
+                        <img
+                          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000"
+                          alt="Business background"
+                          className="w-full h-full object-cover"
+                          width="1200"
+                          height="600"
+                          loading="lazy"
+                          decoding="async"
+                        />
 							<div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-slate-900/95"></div>
 						</div>
 						{/* Decorative elements */}

@@ -4,7 +4,7 @@ import { Link } from '../App';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-slate-300 pt-16 pb-8">
+    <footer className="bg-slate-900 text-slate-200 font-medium pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-1 md:col-span-2">
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
 
           <div>
             <h4 className="text-white font-bold mb-4">Contact</h4>
-            <ul className="space-y-3 text-sm text-slate-400 mb-6">
+            <ul className="space-y-3 text-sm text-slate-300 mb-6">
               <li>Lagos, Nigeria</li>
               <li>marvellousabiola08@gmail.com</li>
               <li>+234 802 287 1344</li>

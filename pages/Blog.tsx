@@ -69,12 +69,16 @@ const Blog: React.FC = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.5 }}
               >
-                <motion.img 
-                  src={post.image} 
-                  alt={post.title} 
+                <motion.img
+                  src={post.image}
+                  alt={post.title}
                   className="w-full h-full object-cover"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.7 }}
+                  width="400"
+                  height="225"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <motion.div 
                   className="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-xs font-bold text-blue-600 uppercase tracking-widest shadow-sm"

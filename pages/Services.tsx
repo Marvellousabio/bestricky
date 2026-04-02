@@ -79,12 +79,16 @@ const Services: React.FC = () => {
                 className="flex-1 w-full"
               >
                 <div className="bg-slate-100 rounded-3xl md:rounded-[2.5rem] aspect-[4/3] md:aspect-square overflow-hidden relative group">
-                  <motion.img 
-                    src={service.image || `https://picsum.photos/seed/${service.id}/800/800`} 
-                    alt={service.title} 
+                  <motion.img
+                    src={service.image || `https://picsum.photos/seed/${service.id}/800/800`}
+                    alt={service.title}
                     className="w-full h-full object-cover"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.7 }}
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <motion.div 
                     className="absolute bottom-8 left-8 right-8 flex flex-wrap gap-2"
