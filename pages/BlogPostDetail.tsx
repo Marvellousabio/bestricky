@@ -66,8 +66,14 @@ const BlogPostDetail: React.FC<Props> = ({ slug }) => {
         <div className="flex justify-between items-center py-12 border-t border-slate-100">
           <div className="flex items-center gap-4">
             <span className="font-bold text-slate-900">Share:</span>
-            <button className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">𝕏</button>
-            <button className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">in</button>
+            <button
+              className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"
+              onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`, '_blank')}
+            >𝕏</button>
+            <button
+              className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"
+              onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank')}
+            >in</button>
           </div>
           <a href="/blog" className="text-blue-600 font-bold">← Back to Blog</a>
         </div>

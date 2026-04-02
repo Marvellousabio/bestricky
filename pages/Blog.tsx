@@ -1,8 +1,8 @@
 
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { BLOG_POSTS } from '../constants';
 
 const containerVariants = {
@@ -25,6 +25,7 @@ const itemVariants = {
 };
 
 const Blog: React.FC = () => {
+  const [subscribed, setSubscribed] = useState(false);
   return (
     <div className="pt-32 pb-24 min-h-screen">
       <div className="max-w-7xl mx-auto px-6">
@@ -140,27 +141,57 @@ const Blog: React.FC = () => {
           >
             Subscribe to our newsletter and get strategic updates on web technology, SEO, and digital growth.
           </motion.p>
-          <motion.form 
-            className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            onSubmit={e => e.preventDefault()}
-          >
-            <motion.input 
-              type="email" 
-              placeholder="Enter your business email" 
-              className="flex-1 px-8 py-5 rounded-2xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-              whileFocus={{ scale: 1.02 }}
-            />
-            <motion.button 
-              className="bg-blue-600 text-white px-8 py-5 rounded-2xl font-bold hover:bg-blue-700 transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Join Now
-            </motion.button>
-          </motion.form>
+          <AnimatePresence mode="wait">
+            {subscribed ? (
+              <motion.div
+                key="success"
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.div
+                  className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                >
+                  ✓
+                </motion.div>
+                <h4 className="text-xl font-black text-white mb-2">Thanks for subscribing!</h4>
+                <p className="text-slate-400">You'll receive our latest insights soon.</p>
+              </motion.div>
+            ) : (
+              <motion.form
+                key="form"
+                className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                onSubmit={e => {
+                  e.preventDefault();
+                  setSubscribed(true);
+                }}
+              >
+                <motion.input
+                  type="email"
+                  placeholder="Enter your business email"
+                  className="flex-1 px-8 py-5 rounded-2xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  whileFocus={{ scale: 1.02 }}
+                  required
+                />
+                <motion.button
+                  type="submit"
+                  className="bg-blue-600 text-white px-8 py-5 rounded-2xl font-bold hover:bg-blue-700 transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Join Now
+                </motion.button>
+              </motion.form>
+            )}
+          </AnimatePresence>
         </motion.div>
       </div>
     </div>

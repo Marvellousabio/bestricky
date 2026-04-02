@@ -153,11 +153,11 @@ const Home: React.FC = () => {
 										alt={project.title}
 										className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
 									/>
-									<div className="absolute inset-0 bg-blue-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-										<button className="bg-white text-slate-900 px-8 py-3 rounded-full font-bold">
-											View Project Details
-										</button>
-									</div>
+                                    <div className="absolute inset-0 bg-blue-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <a href="/portfolio" className="bg-white text-slate-900 px-8 py-3 rounded-full font-bold hover:bg-slate-50 transition-colors">
+                                            View Project Details
+                                        </a>
+                                    </div>
 								</div>
 								<div className="flex flex-col gap-2">
 									<span className="text-blue-600 text-xs font-bold uppercase tracking-widest">
