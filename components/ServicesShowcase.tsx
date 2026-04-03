@@ -132,7 +132,7 @@ const DesktopShowcase: React.FC = () => {
 									>
 										<div>
 											<div className="text-3xl font-black">
-												50+
+												20+
 											</div>
 											<div className="text-sm font-medium opacity-70">
 												Projects
@@ -140,7 +140,7 @@ const DesktopShowcase: React.FC = () => {
 										</div>
 										<div>
 											<div className="text-3xl font-black">
-												98%
+												100%
 											</div>
 											<div className="text-sm font-medium opacity-70">
 												Satisfaction
@@ -172,7 +172,8 @@ const DesktopShowcase: React.FC = () => {
 									{projects.length > 0 ? (
 										<div className="grid grid-cols-2 gap-4">
 											{projects.map((project) => (
-												<div
+												<a
+													href={`/portfolio#${project.id}`}
 													key={project.id}
 													className={`rounded-3xl overflow-hidden aspect-video relative ${
 														isEven
@@ -202,7 +203,7 @@ const DesktopShowcase: React.FC = () => {
 															{project.title}
 														</p>
 													</div>
-												</div>
+												</a>
 											))}
 										</div>
 									) : (
@@ -358,7 +359,8 @@ const MobileShowcase: React.FC = () => {
 								{projects.length > 0 ? (
 									<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 										{projects.map((project) => (
-											<div
+											<a
+												href={`/portfolio#${project.id}`}
 												key={project.id}
 												className={`rounded-2xl overflow-hidden aspect-video relative ${
 													isEven
@@ -388,7 +390,7 @@ const MobileShowcase: React.FC = () => {
 														{project.title}
 													</p>
 												</div>
-											</div>
+											</a>
 										))}
 									</div>
 								) : (

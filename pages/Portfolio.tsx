@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS } from "../constants";
 
@@ -9,10 +9,11 @@ const WebsitePreview: React.FC<{ url: string; image: string; title: string }> = 
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [iframeError, setIframeError] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [showMobile, setShowMobile] = useState(false);
 
   return (
     <div
-      className="relative rounded-[2.5rem] overflow-hidden bg-slate-100 aspect-[4/3] shadow-lg group cursor-pointer"
+      className="relative rounded-[2.5rem] overflow-hidden bg-slate-100 shadow-lg group cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -22,46 +23,77 @@ const WebsitePreview: React.FC<{ url: string; image: string; title: string }> = 
         target="_blank"
         rel="noopener noreferrer"
         onClick={(e) => e.stopPropagation()}
-        className="absolute top-4 right-4 z-20 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-200"
+        className="absolute top-4 right-4 z-30 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-200"
       >
         <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
         Live Site ↗
       </a>
 
-      {/* Fallback static image (always rendered underneath) */}
-      <img
-        src={image}
-        alt={title}
-        className="absolute inset-0 w-full h-full object-cover"
-        width="400"
-        height="300"
-        loading="lazy"
-        decoding="async"
-      />
+      {/* Mobile/Desktop View Toggle */}
+      <button
+        onClick={(e) => { e.stopPropagation(); setShowMobile(!showMobile); }}
+        className={`absolute top-4 left-4 z-30 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-200 ${showMobile ? 'bg-blue-600 text-white border-blue-600' : ''}`}
+      >
+        {showMobile ? 'Desktop' : 'Mobile'}
+      </button>
 
-      {/* iframe Scrollable Full Page Preview */}
-      {!iframeError && (
-        <div className="absolute inset-0 overflow-hidden rounded-[2.5rem]">
-          <iframe
-            src={url}
-            title={title}
-            className="w-full border-0"
-            style={{
-              height: "300vh", // Make iframe tall enough to capture full page
-              transform: isHovered ? "translateY(0)" : undefined,
-              transition: isHovered ? "none" : "transform 15s linear infinite",
-              animation: isHovered ? "none" : "scrollDown 15s linear infinite",
-              pointerEvents: "none",
-            }}
-            onLoad={() => setIframeLoaded(true)}
-            onError={() => setIframeError(true)}
-          />
-        </div>
-      )}
+      {/* Preview Container - Phone Frame or Full Width */}
+      <div className={`relative ${showMobile ? 'flex justify-center py-8' : ''}`}>
+        {showMobile ? (
+          // Mobile Phone Frame
+          <div className="relative w-[280px] h-[550px] rounded-[2rem] overflow-hidden border-4 border-slate-800 shadow-2xl bg-white">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-5 bg-slate-800 rounded-b-lg z-10"></div>
+            {!iframeError ? (
+              <iframe
+                src={url}
+                title={title}
+                className="w-full h-full border-0"
+                style={{ transform: 'scale(0.5)', transformOrigin: 'top left', width: '200%', height: '200%' }}
+                onLoad={() => setIframeLoaded(true)}
+                onError={() => setIframeError(true)}
+              />
+            ) : (
+              <img src={image} alt={title} className="w-full h-full object-cover" />
+            )}
+          </div>
+        ) : (
+          // Desktop Full View
+          <div className="aspect-[4/3] relative overflow-hidden rounded-[2.5rem]">
+            {/* Static Image - Always visible */}
+            <img
+              src={image}
+              alt={title}
+              className="absolute inset-0 w-full h-full object-cover"
+              width="400"
+              height="300"
+              loading="lazy"
+              decoding="async"
+            />
+
+            {/* iframe Preview - Only on hover */}
+            {isHovered && !iframeError && (
+              <div className="absolute inset-0 overflow-hidden">
+                <iframe
+                  src={url}
+                  title={title}
+                  className="w-full h-full border-0"
+                  style={{
+                    height: "300vh",
+                    transform: "translateY(0)",
+                    pointerEvents: "none",
+                  }}
+                  onLoad={() => setIframeLoaded(true)}
+                  onError={() => setIframeError(true)}
+                />
+              </div>
+            )}
+          </div>
+        )}
+      </div>
 
       {/* Hover overlay: "Visit Site" */}
       <div
-        className={`absolute inset-0 z-10 flex items-center justify-center bg-slate-900/40 backdrop-blur-[2px] transition-opacity duration-300 ${
+        className={`absolute inset-0 z-20 flex items-center justify-center bg-slate-900/40 backdrop-blur-[2px] transition-opacity duration-300 ${
           isHovered ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -107,6 +139,19 @@ const Portfolio: React.FC = () => {
     activeCategory === "All"
       ? PROJECTS
       : PROJECTS.filter((p) => p.category === activeCategory);
+
+  // Scroll to project on page load if hash exists
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
 
   return (
     <div className="pt-32 pb-24 min-h-screen">
@@ -161,8 +206,9 @@ const Portfolio: React.FC = () => {
         <motion.div layout className="grid grid-cols-1 gap-24">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, idx) => (
+              <div key={project.id} id={project.id}>
               <motion.div
-                key={project.id} custom={idx}
+                custom={idx}
                 variants={projectVariants} initial="hidden" animate="visible" exit="exit"
                 layout
                 className="flex flex-col md:flex-row gap-12 items-start border-b border-slate-100 pb-24 last:border-0"
@@ -241,6 +287,7 @@ const Portfolio: React.FC = () => {
                   </motion.div>
                 </div>
               </motion.div>
+              </div>
             ))}
           </AnimatePresence>
         </motion.div>

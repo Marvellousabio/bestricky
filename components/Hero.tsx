@@ -233,29 +233,26 @@ const Hero: React.FC = () => {
 							Now Accepting New Projects
 						</div>
 						<h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tight">
-							We Build{" "}
+							Websites That{" "}
 							<span className="gradient-text">
-								High-Performance
-							</span>{" "}
-							Digital Assets.
+								Convert
+							</span>.
 						</h1>
 						<p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-xl">
-							Innovative and results-driven digital solutions
-							designed to transform your ideas into scalable
-							products that solve real business problems.
+							Your 24/7 salesperson. Built to generate leads and close deals while you sleep.
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4">
 							<a
 								href="/booking"
 								className="bg-blue-600 text-white px-8 py-4 rounded-2xl text-base font-bold shadow-xl shadow-blue-500/20 hover:bg-blue-700 hover:shadow-2xl transition-all transform hover:-translate-y-1 text-center"
 							>
-								Get Your Free Website Audit
+								Start Your Project
 							</a>
 							<a
 								href="/portfolio"
 								className="bg-white text-slate-700 px-8 py-4 rounded-2xl text-base font-bold border border-slate-200 hover:bg-slate-50 transition-all transform hover:-translate-y-1 text-center"
 							>
-								View Our Work
+								See Our Work
 							</a>
 						</div>
 					</div>
@@ -273,29 +270,26 @@ const Hero: React.FC = () => {
 							Now Accepting New Projects
 						</div>
 						<h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tight">
-							We Build{" "}
+							Websites That{" "}
 							<span className="gradient-text">
-								High-Performance
-							</span>{" "}
-							Digital Assets.
+								Convert
+							</span>.
 						</h1>
 						<p className="text-xl text-slate-600 leading-relaxed mb-10 max-w-xl">
-							Innovative and results-driven digital solutions
-							designed to transform your ideas into scalable
-							products that solve real business problems.
+							Your 24/7 salesperson. Built to generate leads and close deals while you sleep.
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4">
 							<a
 								href="/booking"
 								className="bg-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-bold shadow-xl shadow-blue-500/20 hover:bg-blue-700 hover:shadow-2xl transition-all transform hover:-translate-y-1"
 							>
-								Get Your Free Website Audit
+								Start Your Project
 							</a>
 							<a
 								href="/portfolio"
 								className="bg-white text-slate-700 px-10 py-5 rounded-2xl text-lg font-bold border border-slate-200 hover:bg-slate-50 transition-all transform hover:-translate-y-1"
 							>
-								View Our Work
+								See Our Work
 							</a>
 						</div>
 					</div>

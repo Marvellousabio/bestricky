@@ -43,7 +43,7 @@ const App: React.FC = () => {
  	const [currentPath, setCurrentPath] = useState(
  		window.location.pathname || "/",
  	);
- 	const originalTitle = "Web Developer in Lagos | Software Agency Nigeria - Bestricky";
+ 	const originalTitle = "Websites That Convert | Bestricky - Digital Agency Nigeria";
 
  	useEffect(() => {
  		const handlePopState = () => {
@@ -80,7 +80,7 @@ const App: React.FC = () => {
  	useEffect(() => {
  		const handleVisibilityChange = () => {
  			if (document.hidden) {
- 				document.title = "We missed you! Please come back and complete your inquiry - Bestricky";
+ 				document.title = "Come back! We want to build your website - Bestricky";
  			} else {
  				document.title = originalTitle;
  			}

@@ -1,5 +1,5 @@
 import React from "react";
-import { SERVICES, PROJECTS, TESTIMONIALS } from "../constants";
+import { SERVICES, PROJECTS, TESTIMONIALS, BRAND } from "../constants";
 import { ScrollFade, CountUp } from "../components/Animations";
 import Hero from "../components/Hero";
 import ServicesShowcase from "../components/ServicesShowcase";
@@ -10,44 +10,16 @@ const Home: React.FC = () => {
 			{/* Hero Section - Niche Wheel Style */}
 			<Hero />
 
-			{/* Trust Stats */}
-			<section className="bg-white border-y border-slate-100 py-12">
+			{/* Trust Stats - Apple Style */}
+			<section className="bg-slate-900 border-y border-slate-800 py-12">
 				<div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-					{[
-						{
-							label: "Projects Completed",
-							value: 50,
-							suffix: "+",
-							prefix: "",
-						},
-						{
-							label: "Client Satisfaction",
-							value: 100,
-							suffix: "%",
-							prefix: "",
-						},
-						{
-							label: "Years Expertise",
-							value: 3,
-							suffix: "+",
-							prefix: "",
-						},
-						{
-							label: "Tech Mastered",
-							value: 15,
-							suffix: "+",
-							prefix: "",
-						},
-					].map((stat, index) => (
+					{BRAND.metrics.map((stat, index) => (
 						<ScrollFade key={stat.label} delay={index * 100}>
 							<div className="text-center">
-								<div className="text-3xl md:text-4xl font-black text-slate-900 mb-1">
-									<CountUp
-										end={stat.value}
-										suffix={stat.suffix}
-									/>
+								<div className="text-3xl md:text-4xl font-black text-white mb-1">
+									{stat.value}
 								</div>
-								<div className="text-sm font-medium text-slate-500 uppercase tracking-wide">
+								<div className="text-sm font-medium text-slate-400 uppercase tracking-wide">
 									{stat.label}
 								</div>
 							</div>
@@ -150,7 +122,7 @@ const Home: React.FC = () => {
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 						{PROJECTS.slice(0, 2).map((project) => (
-							<div key={project.id} className="group relative">
+							<a key={project.id} href={`/portfolio#${project.id}`} className="group block">
 								<div className="overflow-hidden rounded-3xl mb-6 bg-slate-100 aspect-video relative">
                                     <img
                                       src={project.image}
@@ -162,9 +134,9 @@ const Home: React.FC = () => {
                                       decoding="async"
                                     />
                                     <div className="absolute inset-0 bg-blue-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <a href="/portfolio" className="bg-white text-slate-900 px-8 py-3 rounded-full font-bold hover:bg-slate-50 transition-colors">
+                                        <span className="bg-white text-slate-900 px-8 py-3 rounded-full font-bold hover:bg-slate-50 transition-colors">
                                             View Project Details
-                                        </a>
+                                        </span>
                                     </div>
 								</div>
 								<div className="flex flex-col gap-2">
@@ -178,7 +150,7 @@ const Home: React.FC = () => {
 										{project.subtitle}
 									</p>
 								</div>
-							</div>
+							</a>
 						))}
 					</div>
 				</div>

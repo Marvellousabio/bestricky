@@ -193,3 +193,51 @@ html {
   0% { transform: translateY(0); }
   100% { transform: translateY(-200vh); }
 }
+
+/* Apple-style focus states */
+input:focus, textarea:focus, button:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: rgba(59, 130, 246, 0.5);
+}
+
+/* Apple-style premium buttons */
+.btn-primary {
+  @apply bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold;
+  @apply shadow-lg shadow-blue-500/20;
+  @apply transition-all duration-300 ease-out;
+  @apply hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-500/30;
+  @apply active:scale-[0.98];
+}
+
+.btn-secondary {
+  @apply bg-white text-slate-700 px-8 py-4 rounded-2xl font-bold;
+  @apply border-2 border-slate-200;
+  @apply transition-all duration-300 ease-out;
+  @apply hover:bg-slate-50 hover:border-slate-300;
+  @apply active:scale-[0.98];
+}
+
+/* Apple-style luxury text */
+.text-luxury {
+  @apply font-extrabold tracking-tight text-slate-900;
+}
+
+/* Apple-style gradient backgrounds */
+.bg-luxury-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.bg-dark-gradient {
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+}
+
+/* Apple-style cards */
+.card-premium {
+  @apply bg-white rounded-3xl p-8;
+  @apply shadow-xl shadow-slate-200/50;
+  @apply border border-slate-100;
+  @apply transition-all duration-500;
+  @apply hover:shadow-2xl hover:shadow-slate-200/80;
+  @apply hover:-translate-y-1;
+}

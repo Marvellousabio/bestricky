@@ -28,6 +28,7 @@ export interface Project {
 	tech: string[];
 	image: string;
 	category: string;
+	liveUrl?: string;
 }
 
 export interface BlogPost {

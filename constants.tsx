@@ -1,61 +1,84 @@
 
 import { Service, Project, BlogPost, Testimonial } from './types';
 
+export const BRAND = {
+  tagline: "Websites That Work",
+  subline: "Your 24/7 salesperson. Built to convert.",
+  metrics: [
+    { value: "50+", label: "Businesses Served" },
+    { value: "340%", label: "Average Conversion Increase" },
+    { value: "1.2s", label: "Average Load Time" },
+    { value: "100%", label: "Client Retention" }
+  ]
+};
+
 export const SERVICES: Service[] = [
   {
     id: 'web-dev',
-    title: 'Custom Web Development',
-    description: 'High-performance websites using Next.js, React, and Node.js.',
-    longDescription: 'We build enterprise-grade web applications that are fast, secure, and infinitely scalable. Our development process prioritizes performance and technical SEO from day one.',
-    problem: 'Slow-loading, insecure websites that fail to rank on search engines.',
-    value: 'Faster load times, higher conversion rates, and a robust foundation for future growth.',
-    outcome: 'A technical masterpiece that serves as a 24/7 high-performing salesperson for your business.',
+    title: 'Websites That Convert',
+    description: 'Fast, secure, built to grow your business.',
+    longDescription: 'Your website should be your best salesperson—working 24/7 to generate leads and close deals. We build enterprise-grade websites optimized for speed, security, and conversion.',
+    problem: 'Slow websites that lose customers.',
+    value: 'Lightning-fast load times, enterprise-grade security, built to scale with your business.',
+    outcome: 'A website that actually makes you money.',
     icon: 'Code',
     tools: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind'],
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800',
     faqs: [
-      { question: "How long does a custom build take?", answer: "Typically 6-10 weeks depending on complexity." },
-      { question: "Will my site be mobile-friendly?", answer: "Every site we build is mobile-first and fully responsive." }
+      { question: "How long does it take?", answer: "6-10 weeks." },
+      { question: "Is it mobile-friendly?", answer: "Every site is mobile-first." }
     ]
   },
   {
     id: 'ui-ux',
-    title: 'UI/UX Design',
-    description: 'User-centered design, wireframing, prototyping, and design systems.',
-    longDescription: 'Our design philosophy is rooted in user behavior and psychology. We don\'t just make things pretty; we make them functional and intuitive.',
-    problem: 'High bounce rates and user frustration due to poor navigation and confusing interfaces.',
-    value: 'Enhanced user satisfaction and lower customer acquisition costs through intuitive flows.',
-    outcome: 'A seamless, engaging user experience that keeps customers coming back.',
+    title: 'Design That Resonates',
+    description: 'Intuitive experiences your customers love.',
+    longDescription: 'Great design isn\'t just beautiful—it works. We create intuitive experiences that guide users naturally toward your goals.',
+    problem: 'Confusing interfaces that drive customers away.',
+    value: 'Seamless experiences that turn visitors into customers.',
+    outcome: 'Users actually want to stay and explore.',
     icon: 'Figma',
     tools: ['Figma', 'Adobe XD', 'Prototyping', 'Design Systems'],
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800',
     faqs: [
-      { question: "Do you provide the Figma source files?", answer: "Yes, you have full ownership of all design assets." }
+      { question: "Do I get the design files?", answer: "Yes, full ownership." }
     ]
   },
   {
     id: 'full-stack',
-    title: 'Full-Stack Solutions',
-    description: 'Complex web applications, API development, and cloud infrastructure.',
-    longDescription: 'From complex dashboards to automated workflows, we build the engine that powers your business operations.',
-    problem: 'Disconnected systems and manual processes that hinder business scaling.',
-    value: 'Streamlined operations and data-driven decision-making capabilities.',
-    outcome: 'A fully integrated digital ecosystem that automates your growth.',
+    title: 'Digital Infrastructure',
+    description: 'Systems that power your business.',
+    longDescription: 'From dashboards to automation, we build the engine that drives your business forward.',
+    problem: 'Disconnected systems slowing you down.',
+    value: 'Streamlined operations, data-driven decisions.',
+    outcome: 'A business that runs itself.',
     icon: 'Layers',
     tools: ['PostgreSQL', 'MongoDB', 'AWS', 'Docker', 'GraphQL'],
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: 'branding',
-    title: 'Brand Identity',
-    description: 'Logo design, visual storytelling, and comprehensive brand consistency.',
-    longDescription: 'We translate your business values into a visual language that resonates with your target audience and builds lasting trust.',
-    problem: 'Inconsistent brand image that fails to project professionalism or authority.',
-    value: 'Market differentiation and immediate recognition in a crowded digital landscape.',
-    outcome: 'A powerful brand identity that commands premium pricing and loyalty.',
+    title: 'Brand That Commands',
+    description: 'Stand out. Be remembered.',
+    longDescription: 'Your brand is your promise to customers. We make it unforgettable.',
+    problem: 'Invisible in a crowded market.',
+    value: 'Instant recognition and trust.',
+    outcome: 'A brand worth premium pricing.',
     icon: 'PenTool',
     tools: ['Adobe Illustrator', 'Visual Strategy', 'Brand Guidelines'],
     image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: 'ecosystem',
+    title: 'Complete Digital Presence',
+    description: 'Everything you need. One partner.',
+    longDescription: 'Web. Design. Branding. SEO. Maintenance. One agency, seamlessly integrated. No more managing multiple vendors—we handle everything.',
+    problem: 'Fragmented agencies, fragmented results.',
+    value: 'Single source of truth for all digital needs.',
+    outcome: 'A powerful, unified digital presence.',
+    icon: 'Rocket',
+    tools: ['All Services', 'Unified Strategy', 'Priority Support'],
+    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800',
   }
 ];
 
@@ -69,7 +92,7 @@ export const PROJECTS: Project[] = [
     solution: 'A "Control Center" UI featuring live metadata displays, system status indicators, and a data-dense grid architecture.',
     impact: 'Established immediate technical authority and streamlined the consultation process for global corporate leaders.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Lucide React'],
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/precisionapex.jpeg',
     liveUrl: 'https://precisionapex.vercel.app/',
     category: 'Corporate Industrial'
   },
@@ -82,7 +105,7 @@ export const PROJECTS: Project[] = [
     solution: 'A minimal, ritual-focused interface emphasizing ingredient transparency and botanical aesthetics.',
     impact: 'Created a high-trust shopping environment that elevated brand prestige and emphasized sustainable luxury.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'E-commerce UI'],
-    image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/vine.jpeg',
     liveUrl: 'https://vine-six.vercel.app/',
     category: 'E-commerce'
   },
@@ -95,7 +118,7 @@ export const PROJECTS: Project[] = [
     solution: 'A high-contrast "Neon" aesthetic utilizing layered visuals, cinematic motion, and a bold creator-centric layout.',
     impact: 'Positioned the brand as a leader in the digital revolution, effectively showcasing 10M+ views in social proof.',
     tech: ['React', 'Framer Motion', 'Tailwind CSS', 'High-Energy UI'],
-    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/neonpulse.jpeg',
     liveUrl: 'https://neonpulse-six.vercel.app/',
     category: 'Media & Entertainment'
   },
@@ -108,7 +131,7 @@ export const PROJECTS: Project[] = [
     solution: 'An elegant, minimal UI utilizing editorial-style layouts, sophisticated typography, and limited-release scarcity cues.',
     impact: 'Elevated perceived brand value and positioned the store as a premium destination for high-ticket fashion.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Editorial UI'],
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/elysian.jpeg',
     liveUrl: 'https://elysian-green.vercel.app/',
     category: 'Luxury Retail'
   },
@@ -121,7 +144,7 @@ export const PROJECTS: Project[] = [
     solution: 'A calm, trust-oriented UI featuring integrated booking workflows, expert profiles, and a resource-rich health blog.',
     impact: 'Reduced booking drop-off rates and established a supportive digital environment for over 10,000+ patients.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Conversion-Optimized UI'],
-    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/lumina.jpeg',
     liveUrl: 'https://lumina-six-rust.vercel.app/',
     category: 'Healthcare'
   },
@@ -134,7 +157,7 @@ export const PROJECTS: Project[] = [
     solution: 'A high-fidelity interface focused on clarity, featuring real-time data visualization, smart alerts, and an intuitive visual logic builder.',
     impact: 'Improved decision-making speed and reduced manual hours by providing a centralized "brain" for complex business operations.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Data Visualization UI'],
-    image: 'https://images.unsplash.com/photo-1551288049-bbbda5366392?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/synapse.jpeg',
     liveUrl: 'https://synapse-omega-two.vercel.app/',
     category: 'SaaS & Fintech'
   },
@@ -147,7 +170,7 @@ export const PROJECTS: Project[] = [
     solution: 'A "Slow Living" design aesthetic featuring soft palettes, room-inspiration galleries, and a seamless "Shop the Look" integration.',
     impact: 'Increased average order value by bridging the gap between individual products and holistic interior aesthetics.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Lifestyle E-commerce UI'],
-    image: 'https://images.unsplash.com/photo-1513519247388-44735dd9563c?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/nook.jpeg',
     liveUrl: 'https://nook-psi.vercel.app/',
     category: 'E-commerce'
   },
@@ -160,7 +183,7 @@ export const PROJECTS: Project[] = [
     solution: 'A sophisticated, "Consultant-First" UI featuring structured methodology breakdowns, revenue-impact metrics, and deep-trust testimonials.',
     impact: 'Established a premium digital presence that justifies high-ticket advisory fees and streamlines lead qualification.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Professional Services UI'],
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/Arial.jpeg',
     liveUrl: 'https://nook-1vyb.vercel.app/',
     category: 'Personal Brand'
   },
@@ -173,7 +196,7 @@ export const PROJECTS: Project[] = [
     solution: 'Scroll-driven cinematic motion design showcasing career highlights and achievements.',
     impact: 'Enhanced global fan engagement and brand value.',
     tech: ['React', 'Framer Motion', 'Three.js'],
-    image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/victoroshimen.jpeg',
     liveUrl: 'https://victoroshimen.vercel.app',
     category: 'Personal Brand'
   },
@@ -186,8 +209,8 @@ export const PROJECTS: Project[] = [
     solution: 'AI-powered influencer discovery and automated booking system.',
     impact: 'Streamlined operations and increased successful bookings.',
     tech: ['React', 'Node.js', 'AI/ML', 'PostgreSQL'],
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800',
-    liveUrl: 'https://aura-ex.vercel.app',
+    image: '/assets/aura.jpeg',
+    liveUrl: 'https://aura-frontend-omega.vercel.app/',
     category: 'B2B Platform'
   },
   {
@@ -199,7 +222,7 @@ export const PROJECTS: Project[] = [
     solution: 'Immersive media showcase with event integration and seamless video streaming.',
     impact: 'Enhanced global presence and fan engagement.',
     tech: ['React', 'Video Integration', 'Social Media API'],
-    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/djcuppy.jpeg',
     liveUrl: 'https://djcuppy-theta.vercel.app',
     category: 'Entertainment'
   },
@@ -212,7 +235,7 @@ export const PROJECTS: Project[] = [
     solution: 'A visual-heavy, grid-based layout with smooth transitions for recipe exploration.',
     impact: 'Elevated user appetite and engagement through high-fidelity food photography and UX.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion'],
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/gourmet.jpeg',
     liveUrl: 'https://gourmet-beta.vercel.app',
     category: 'Food & Lifestyle'
   },
@@ -225,7 +248,7 @@ export const PROJECTS: Project[] = [
     solution: 'A clean, typography-focused "app-like" experience optimized for mobile reading.',
     impact: 'Improved session duration and content discoverability for entertainment news.',
     tech: ['React', 'Next.js', 'Responsive Design'],
-    image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/necole.jpeg',
     liveUrl: 'https://necole.vercel.app',
     category: 'Media'
   },
@@ -238,7 +261,7 @@ export const PROJECTS: Project[] = [
     solution: 'A minimal, spacious layout that emphasizes high-resolution architectural imagery.',
     impact: 'Positioned the brand as a top-tier luxury interior designer for high-net-worth clients.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion'],
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/coco.jpeg',
     liveUrl: 'https://coco-two-nu.vercel.app',
     category: 'Architecture'
   },
@@ -251,7 +274,7 @@ export const PROJECTS: Project[] = [
     solution: 'A streamlined dashboard with refactored components for lightning-fast performance.',
     impact: 'Simplified complex data visualization for faster executive decision-making.',
     tech: ['React', 'Next.js', 'Data Vis'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/benlytics.jpeg',
     liveUrl: 'https://www.benlytics.dev',
     category: 'SaaS'
   },

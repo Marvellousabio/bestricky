@@ -50,7 +50,7 @@ const BlogPostDetail: React.FC<Props> = ({ slug }) => {
               <a href="/services" className="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors">
                 View Service Details
               </a>
-              <a href="/contact" className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-colors">
+              <a href="/booking" className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-colors">
                 Schedule a Call
               </a>
             </div>
