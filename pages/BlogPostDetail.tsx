@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BLOG_POSTS, SERVICES } from '../constants';
 
 interface Props {
@@ -9,6 +9,33 @@ interface Props {
 const BlogPostDetail: React.FC<Props> = ({ slug }) => {
   const post = BLOG_POSTS.find(p => p.slug === slug);
   const relatedService = post?.relatedServiceId ? SERVICES.find(s => s.id === post.relatedServiceId) : null;
+
+  useEffect(() => {
+    if (post) {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "description": post.excerpt,
+        "image": post.image,
+        "datePublished": post.date,
+        "author": {
+          "@type": "Person",
+          "name": post.author
+        }
+      };
+      
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
+      
+      return () => {
+        document.head.removeChild(script);
+      };
+    }
+  }, [post]);
 
   if (!post) return <div className="pt-40 text-center">Post not found.</div>;
 

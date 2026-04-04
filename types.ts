@@ -43,6 +43,7 @@ export interface BlogPost {
 	category: string;
 	image: string;
 	relatedServiceId?: string;
+	faqs?: FAQ[];
 }
 
 export interface Testimonial {
@@ -52,4 +53,14 @@ export interface Testimonial {
 	company: string;
 	content: string;
 	image: string;
+}
+
+export interface TeamMember {
+	id: string;
+	name: string;
+	role: string;
+	bio: string;
+	image: string;
+	linkedin: string;
+	website?: string;
 }

@@ -391,7 +391,12 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Bestricky Team',
     category: 'Business Strategy',
     image: 'https://images.unsplash.com/photo-1553484771-371a605b060b?auto=format&fit=crop&q=80&w=800',
-    relatedServiceId: 'web-dev'
+    relatedServiceId: 'web-dev',
+    faqs: [
+      { question: "How much does a custom business website cost in Nigeria?", answer: "A professional website in Nigeria costs between ₦500,000 - ₦2 million depending on features and complexity." },
+      { question: "How long does it take to build a website?", answer: "Most projects take 6-10 weeks from discovery to launch." },
+      { question: "Why do websites fail to generate leads?", answer: "Websites fail due to slow load times, poor mobile design, confusing navigation, and lack of clear call-to-action buttons." }
+    ]
   },
   {
     id: '2',
@@ -492,7 +497,12 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Engineering Team',
     category: 'Technical SEO',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
-    relatedServiceId: 'web-dev'
+    relatedServiceId: 'web-dev',
+    faqs: [
+      { question: "Why does my website load slowly?", answer: "Slow load times are caused by large unoptimized images, too many plugins, cheap hosting, and lack of caching." },
+      { question: "How can I make my website faster?", answer: "Optimize images, use fast hosting, enable caching, minify code, and use a CDN." },
+      { question: "What is a good website load time?", answer: "A good load time is under 2 seconds. Google recommends under 3 seconds for optimal user experience." }
+    ]
   },
   {
     id: '3',
@@ -624,7 +634,12 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Bestricky Team',
     category: 'Mobile Development',
     image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800',
-    relatedServiceId: 'full-stack'
+    relatedServiceId: 'full-stack',
+    faqs: [
+      { question: "How much does mobile app development cost in Nigeria?", answer: "Mobile app development in Nigeria starts from ₦150,000 for basic apps and can go up to ₦600,000+ for complex applications." },
+      { question: "How long does it take to develop a mobile app?", answer: "Basic apps take 6-8 weeks, while complex apps with advanced features take 12-16 weeks." },
+      { question: "Which mobile platform should I choose?", answer: "We recommend React Native for cross-platform apps that work on both iOS and Android with single codebase." }
+    ]
   },
   {
     id: '4',
@@ -1137,4 +1152,100 @@ export const TESTIMONIALS: Testimonial[] = [
     content: 'Our corporate website now showcases our industrial capabilities perfectly. Professional, sleek, and effective.',
     image: 'https://i.pravatar.cc/150?u=james'
   }
+];
+
+// Client logos for marquee
+export const CLIENT_LOGOS = [
+  { name: 'Precision Apex', logo: '/assets/precisionlogo.png' },
+  { name: 'Velvet & Vine', logo: '/assets/velvetlogo.png' },
+  { name: 'Neon Pulse', logo: '/assets/neonlogo.png' },
+  { name: 'AuraEx', logo: '/assets/aura.jpeg' },
+  { name: 'DJ Cuppy', logo: '/assets/cuppylogo.png' },
+  { name: 'Lumina Wellness', logo: '/assets/luminalogo.png' },
+  { name: 'Synapse Flow', logo: '/assets/synapselogo.png' },
+  { name: 'Nook & Hearth', logo: '/assets/nooklogo.png' },
+  { name: 'Elysian', logo: '/assets/elysianlogo.png' },
+  { name: 'Coco', logo: '/assets/cocologo.png' },
+  { name: 'Necole', logo: '/assets/ecolelogo.png' },
+];
+
+// FAQs for accordion section
+export const FAQS = [
+  {
+    question: "How long does it take to build a website?",
+    answer: "Most projects take 6-10 weeks from discovery to launch. Complex platforms may take 12-16 weeks. We provide a detailed timeline during our initial consultation."
+  },
+  {
+    question: "What's included in the website price?",
+    answer: "Our packages include design, development, responsive layout, basic SEO setup, CMS integration, and 30 days of post-launch support. Custom features are priced separately."
+  },
+  {
+    question: "Do you offer ongoing maintenance?",
+    answer: "Yes! We offer monthly maintenance packages that include security updates, content changes, backups, and performance monitoring. Starting from ₦50,000/month."
+  },
+  {
+    question: "Can you work with our existing brand guidelines?",
+    answer: "Absolutely. We adapt to your existing brand identity while enhancing it. We'll conduct a brand audit and propose improvements that align with your goals."
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer: "We accept bank transfers, mobile money (MTN, Airtel, Opay), Paystack, and Flutterwave. We also offer payment plans for larger projects (50% upfront, 50% on completion)."
+  },
+  {
+    question: "Do you offer refunds?",
+    answer: "We offer a satisfaction guarantee within the first 14 days. If you're not satisfied with our initial concepts, we provide a full refund of the design phase."
+  }
+];
+
+// Team members
+export const TEAM = [
+  {
+    id: 't1',
+    name: 'Marvellous Ogunleke',
+    role: 'Founder & Full Stack Developer',
+    bio: '3+ years building scalable web applications. Expert in React, Next.js, and modern web technologies.',
+    image: '/assets/marvellous.png',
+    linkedin: 'https://www.linkedin.com/in/marvellous-ogunleke2025/',
+    website: 'https://marvellous-ogunleke.vercel.app/'
+  },
+  {
+    id: 't2',
+    name: 'Sarah Design',
+    role: 'UI/UX Design Lead',
+    bio: '4+ years creating intuitive user experiences. Expert in Figma, user research, and conversion optimization.',
+    image: 'https://i.pravatar.cc/400?u=sarah-designer',
+    linkedin: 'https://linkedin.com'
+  },
+  {
+    id: 't3',
+    name: 'Mike Development',
+    role: 'Mobile Developer',
+    bio: '3+ years building mobile apps with React Native. Expert in iOS, Android, and cross-platform development.',
+    image: 'https://i.pravatar.cc/400?u=mike-dev',
+    linkedin: 'https://linkedin.com'
+  },
+  {
+    id: 't4',
+    name: 'Alex Backend',
+    role: 'Backend Engineer',
+    bio: '4+ years building scalable APIs and databases. Expert in Node.js, PostgreSQL, and cloud infrastructure.',
+    image: 'https://i.pravatar.cc/400?u=alex-backend',
+    linkedin: 'https://linkedin.com'
+  }
+];
+
+// Tech stack badges
+export const TECH_STACK = [
+  { name: 'Next.js', icon: '⚡' },
+  { name: 'React', icon: '⚛️' },
+  { name: 'TypeScript', icon: '💎' },
+  { name: 'Tailwind CSS', icon: '🎨' },
+  { name: 'Node.js', icon: '🟢' },
+  { name: 'PostgreSQL', icon: '🐘' },
+  { name: 'MongoDB', icon: '🍃' },
+  { name: 'AWS', icon: '☁️' },
+  { name: 'Figma', icon: '✏️' },
+  { name: 'Framer Motion', icon: '🎬' },
+  { name: 'GraphQL', icon: '◼️' },
+  { name: 'Docker', icon: '🐳' }
 ];

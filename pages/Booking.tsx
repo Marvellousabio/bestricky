@@ -1,15 +1,18 @@
 
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Booking: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     // Load Calendly widget script
     const script = document.createElement('script');
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
     script.async = true;
+    script.onload = () => setIsLoading(false);
     document.body.appendChild(script);
 
     return () => {
@@ -140,12 +143,29 @@ const Booking: React.FC = () => {
           
           {/* Calendly inline widget begin */}
           <motion.div 
-            className="calendly-inline-widget w-full min-w-[320px] h-[700px]" 
+            className="calendly-inline-widget w-full min-w-[320px] h-[700px] relative overflow-hidden rounded-2xl"
             data-url="https://calendly.com/marvellousabiola08/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=1a1a1a&primary_color=2563eb"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-          ></motion.div>
+          >
+            {/* Loading Skeleton */}
+            {isLoading && (
+              <div className="absolute inset-0 bg-slate-100 flex flex-col items-center justify-center p-8">
+                <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-6"></div>
+                <div className="text-center">
+                  <p className="text-lg font-bold text-slate-700 mb-2">Loading Calendar...</p>
+                  <p className="text-sm text-slate-500">Please wait while we connect you with our booking system</p>
+                </div>
+                {/* Skeleton cards */}
+                <div className="mt-8 w-full max-w-md space-y-3">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="h-16 bg-slate-200 rounded-xl animate-pulse"></div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </motion.div>
           {/* Calendly inline widget end */}
           
           <motion.p 
