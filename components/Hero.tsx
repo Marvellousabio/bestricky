@@ -42,154 +42,87 @@ const niches = [
 	},
 ];
 
-// Mobile Carousel Component with scroll-controlled 3D rotation
+// Mobile Carousel Component - horizontal swipe carousel
 const MobileCarousel: React.FC = () => {
-	const containerRef = useRef<HTMLDivElement>(null);
+	const scrollRef = useRef<HTMLDivElement>(null);
 	const [activeIndex, setActiveIndex] = useState(0);
-	const lastScrollY = useRef(0);
-	const [scrollDirection, setScrollDirection] = useState<"down" | "up">(
-		"down",
-	);
 
-	// Track scroll direction
 	useEffect(() => {
+		const container = scrollRef.current;
+		if (!container) return;
+
 		const handleScroll = () => {
-			const currentScrollY = window.scrollY;
-			if (currentScrollY > lastScrollY.current) {
-				setScrollDirection("down");
-				// Move to next item when scrolling down
-				setActiveIndex((prev) => (prev + 1) % niches.length);
-			} else if (
-				currentScrollY < lastScrollY.current &&
-				currentScrollY > 0
-			) {
-				setScrollDirection("up");
-				// Move to previous item when scrolling up
-				setActiveIndex(
-					(prev) => (prev - 1 + niches.length) % niches.length,
-				);
-			}
-			lastScrollY.current = currentScrollY;
+			const scrollLeft = container.scrollLeft;
+			const cardWidth = 240 + 16; // card width + gap
+			const newIndex = Math.round(scrollLeft / cardWidth);
+			setActiveIndex(Math.min(newIndex, niches.length - 1));
 		};
 
-		window.addEventListener("scroll", handleScroll, { passive: true });
-		return () => window.removeEventListener("scroll", handleScroll);
+		container.addEventListener("scroll", handleScroll, { passive: true });
+		return () => container.removeEventListener("scroll", handleScroll);
 	}, []);
 
-	// Calculate 3D transform for curved carousel effect
-	const get3DTransform = (index: number) => {
-		const diff = (index - activeIndex + niches.length) % niches.length;
-		const isActive = diff === 0;
-
-		// Curved effect - items behind/behind have different transforms
-		const rotateY = isActive ? 0 : diff * 15;
-		const translateZ = isActive ? 0 : -50;
-		const scale = isActive ? 1 : 0.85;
-		const opacity = isActive ? 1 : 0.5;
-		const zIndex = isActive ? 10 : niches.length - diff;
-
-		return {
-			rotateY,
-			translateZ,
-			scale,
-			opacity,
-			zIndex,
-		};
-	};
-
 	return (
-		<div
-			ref={containerRef}
-			className="relative w-full h-[400px] overflow-hidden"
-		>
-			{/* Curved carousel container with 3D perspective */}
-			<div className="relative w-full h-full flex items-center justify-center perspective-1000">
-				{niches.map((niche, index) => {
-					const transform = get3DTransform(index);
-					const isActive = transform.zIndex === 10;
-
-					return (
-						<motion.div
-							key={niche.id}
-							className="absolute w-[280px] h-[350px] rounded-3xl overflow-hidden shadow-2xl"
-							style={{
-								zIndex: transform.zIndex,
-								transformStyle: "preserve-3d",
-							}}
-							animate={{
-								rotateY: transform.rotateY,
-								translateZ: transform.translateZ,
-								scale: transform.scale,
-								opacity: transform.opacity,
-								x: isActive
-									? 0
-									: transform.zIndex > 10
-										? 60
-										: -60,
-							}}
-							transition={{
-								type: "spring",
-								stiffness: 200,
-								damping: 25,
-								mass: 0.8,
-							}}
-						>
-							{/* Image */}
-                          <img
-                            src={niche.image}
-                            alt={niche.label}
-                            className="w-full h-full object-cover"
-                            width="280"
-                            height="350"
-                            decoding="async"
-                          />
-
-							{/* Gradient overlay */}
+		<div className="relative w-full">
+			{/* Horizontal scroll container */}
+			<div
+				ref={scrollRef}
+				className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 py-8"
+				style={{ scrollBehavior: "smooth" }}
+			>
+				{niches.map((niche, index) => (
+					<motion.div
+						key={niche.id}
+						className={`flex-shrink-0 snap-center ${
+							index === activeIndex ? "scale-100" : "scale-90 opacity-60"
+						}`}
+						animate={{
+							scale: index === activeIndex ? 1 : 0.9,
+							opacity: index === activeIndex ? 1 : 0.5,
+						}}
+						transition={{ type: "spring", stiffness: 300, damping: 30 }}
+					>
+						<div className="w-[240px] h-[300px] rounded-3xl overflow-hidden shadow-2xl bg-slate-900">
+							<img
+								src={niche.image}
+								alt={niche.label}
+								className="w-full h-full object-cover"
+								width="240"
+								height="300"
+								decoding="async"
+							/>
 							<div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
-
-							{/* Active label */}
-							{isActive && (
-								<motion.div
-									initial={{ opacity: 0, y: 20 }}
-									animate={{ opacity: 1, y: 0 }}
-									className="absolute bottom-6 left-6 right-6"
-								>
-									<div className="bg-white/95 backdrop-blur-sm px-5 py-3 rounded-2xl">
-										<p className="text-slate-900 font-bold text-lg">
-											{niche.label}
-										</p>
-									</div>
-								</motion.div>
-							)}
-						</motion.div>
-					);
-				})}
+							<div className="absolute bottom-4 left-4 right-4">
+								<div className="bg-white/95 backdrop-blur-sm px-4 py-2.5 rounded-xl">
+									<p className="text-slate-900 font-bold text-base">
+										{niche.label}
+									</p>
+								</div>
+							</div>
+						</div>
+					</motion.div>
+				))}
 			</div>
 
-			{/* Scroll indicator */}
-			<motion.div
-				className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"
-				animate={{ opacity: scrollDirection === "down" ? 0.5 : 1 }}
-			>
+			{/* Dots indicator */}
+			<div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
 				{niches.map((_, idx) => (
 					<div
 						key={idx}
-						className={`w-2 h-2 rounded-full transition-all ${
-							idx === activeIndex ? "bg-white w-6" : "bg-white/40"
+						className={`h-1.5 rounded-full transition-all ${
+							idx === activeIndex ? "bg-white w-6" : "bg-white/40 w-1.5"
 						}`}
 					/>
 				))}
-			</motion.div>
+			</div>
 
-			{/* Scroll hint */}
+			{/* Swipe hint */}
 			<motion.div
-				className="absolute top-4 left-1/2 -translate-x-1/2 text-white/60 text-xs font-medium"
-				animate={{ opacity: [0.5, 1, 0.5] }}
+				className="absolute top-2 left-1/2 -translate-x-1/2 text-white/40 text-[10px] font-medium"
+				animate={{ opacity: [0.3, 0.6, 0.3] }}
 				transition={{ duration: 2, repeat: Infinity }}
 			>
-				{scrollDirection === "down"
-					? "↓ Scroll down for more"
-					: "↑ Scroll up"}
+				← Swipe →
 			</motion.div>
 		</div>
 	);

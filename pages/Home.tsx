@@ -11,15 +11,15 @@ const Home: React.FC = () => {
 			<Hero />
 
 			{/* Trust Stats - Apple Style */}
-			<section className="  py-12">
-				<div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+			<section className="py-8 md:py-12">
+				<div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
 					{BRAND.metrics.map((stat, index) => (
 						<ScrollFade key={stat.label} delay={index * 100}>
 							<div className="text-center">
-								<div className="text-3xl md:text-4xl font-black text-slate-900 mb-1">
+								<div className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-1">
 									{stat.value}
 								</div>
-								<div className="text-sm font-medium text-slate-400 uppercase tracking-wide">
+								<div className="text-xs sm:text-sm font-medium text-slate-400 uppercase tracking-wide">
 									{stat.label}
 								</div>
 							</div>
