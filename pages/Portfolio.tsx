@@ -181,25 +181,49 @@ const Portfolio: React.FC = () => {
 
         {/* Category Filter */}
         <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-16"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          {categories.map((category, i) => (
-            <motion.button
-              key={category} custom={i}
-              variants={categoryVariants} initial="hidden" animate="visible"
-              onClick={() => setActiveCategory(category)}
-              className={`px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 ${
-                activeCategory === category
-                  ? "bg-blue-600 text-white shadow-lg shadow-blue-500/25"
-                  : "bg-white text-slate-600 border border-slate-200 hover:border-blue-600 hover:text-blue-600"
-              }`}
-              whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-            >
-              {category}
-            </motion.button>
-          ))}
+          {/* Desktop: wrap normally */}
+          <div className="hidden sm:flex flex-wrap justify-center gap-3">
+            {categories.map((category, i) => (
+              <motion.button
+                key={category} custom={i}
+                variants={categoryVariants} initial="hidden" animate="visible"
+                onClick={() => setActiveCategory(category)}
+                className={`px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 ${
+                  activeCategory === category
+                    ? "bg-blue-600 text-white shadow-lg shadow-blue-500/25"
+                    : "bg-white text-slate-600 border border-slate-200 hover:border-blue-600 hover:text-blue-600"
+                }`}
+                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+              >
+                {category}
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Mobile: horizontal scrollable pills */}
+          <div className="sm:hidden flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-2 pb-2 -mx-4 px-4">
+            {categories.map((category, i) => (
+              <motion.button
+                key={category} custom={i}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.05 }}
+                onClick={() => setActiveCategory(category)}
+                className={`flex-shrink-0 snap-center px-5 py-2.5 rounded-full font-bold text-xs transition-all duration-300 ${
+                  activeCategory === category
+                    ? "bg-blue-600 text-white shadow-lg shadow-blue-500/25"
+                    : "bg-white text-slate-600 border border-slate-200"
+                }`}
+                whileTap={{ scale: 0.95 }}
+              >
+                {category}
+              </motion.button>
+            ))}
+          </div>
         </motion.div>
 
         {/* Projects Grid */}

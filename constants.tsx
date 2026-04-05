@@ -945,7 +945,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '8 min read',
     author: 'Bestricky Team',
     category: 'SEO & Marketing',
-    image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8f2c893?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
     relatedServiceId: 'web-dev'
   },
   {
@@ -1194,6 +1194,685 @@ export const FAQS = [
   {
     question: "Do you offer refunds?",
     answer: "We offer a satisfaction guarantee within the first 14 days. If you're not satisfied with our initial concepts, we provide a full refund of the design phase."
+  }
+];
+
+// Blog posts
+export const FAQ_BLOGS = [
+  {
+    id: 'website-customers',
+    title: 'How will this website actually help me get more customers?',
+    slug: 'website-get-more-customers',
+    excerpt: 'Understanding conversion rate optimization and user journey mapping.',
+    content: `
+      <h1>How Will This Website Actually Help Me Get More Customers?</h1>
+      <p>It's a fair question. You're spending money, and you want to know what you'll get in return. The short answer: a well-built website doesn't just exist—it works. Here's how.</p>
+      
+      <h2>Understanding the User Journey</h2>
+      <p>Every visitor who lands on your site is at a different stage of their buying journey. Some are just browsing. Others are comparing options. A few are ready to buy right now.</p>
+      <p>A strategic website guides each type of visitor toward the next step:</p>
+      <ul>
+        <li><strong>Awareness:</strong> Clear value proposition above the fold</li>
+        <li><strong>Consideration:</strong> Social proof, case studies, detailed service pages</li>
+        <li><strong>Decision:</strong> Easy-to-use contact forms, clear pricing, direct call-to-action</li>
+      </ul>
+      
+      <h2>Conversion Rate Optimization (CRO)</h2>
+      <p>Most Nigerian websites get less than 1% conversion. That means 99 out of 100 visitors leave without taking action. We focus on:</p>
+      <ul>
+        <li>Speed: A 1-second delay can reduce conversions by 7%</li>
+        <li>Clarity: Visitors should understand what you offer within 3 seconds</li>
+        <li>Trust: Professional design signals credibility</li>
+        <li>Mobile-first: 70%+ of your traffic is likely mobile</li>
+      </ul>
+      
+      <h2>Real Results You Can Expect</h2>
+      <p>We've helped clients achieve:</p>
+      <ul>
+        <li>300% increase in leads for e-commerce businesses</li>
+        <li>50% reduction in bounce rate through better UX</li>
+        <li>40% more booking inquiries for service businesses</li>
+      </ul>
+      
+      <h2>The Bottom Line</h2>
+      <p>A website is an investment in your business growth. When built right, it works 24/7 to attract, engage, and convert potential customers—long after you've closed your office for the day.</p>
+      <p>Ready to see how a conversion-optimized website can grow your business? Let's talk about your specific goals.</p>
+    `
+  },
+  {
+    id: 'animations-performance',
+    title: 'How do you handle animations without killing site performance?',
+    slug: 'animations-without-performance-issues',
+    excerpt: 'Balancing cinematic web design with fast load times.',
+    content: `
+      <h1>How Do You Handle Animations Without Killing Site Performance?</h1>
+      <p>You've seen those stunning websites with smooth transitions, parallax effects, and micro-interactions. They're beautiful—but they can also be performance killers if not done right.</p>
+      
+      <h2>The Performance-Animation Balance</h2>
+      <p>We use several techniques to deliver cinematic experiences without sacrificing speed:</p>
+      
+      <h3>1. GPU-Accelerated Properties</h3>
+      <p>We animate only properties that can be hardware-accelerated: transform and opacity. Animating properties like width, height, or top triggers layout recalculations—expensive for the browser.</p>
+      
+      <h3>2. Lazy Loading Animations</h3>
+      <p>Animations below the fold don't load until users scroll to them. This reduces initial page weight significantly.</p>
+      
+      <h3>3. SVG Over Video</h3>
+      <p>For complex animations, we prefer SVG and CSS over video. A 50KB SVG animates smoothly; a video could be 5MB.</p>
+      
+      <h3>4. RequestAnimationFrame</h3>
+      <p>We use RAF to sync animations with the browser's refresh rate (60fps), preventing jank and dropped frames.</p>
+      
+      <h2>Our Stack Choice</h2>
+      <p>Framer Motion (for React) is our go-to. It automatically optimizes animations, uses spring physics instead of linear timing (more natural), and includes built-in gesture support.</p>
+      
+      <h2>The Results</h2>
+      <p>Our animated sites consistently achieve:</p>
+      <ul>
+        <li>Core Web Vitals in the green (LCP under 2.5s)</li>
+        <li>Smooth 60fps animations even on mid-range phones</li>
+        <li>No layout shifts from animation timing</li>
+      </ul>
+      
+      <h2>Want Cinema-Quality Without Compromise?</h2>
+      <p>We'd love to show you how modern animations can look and perform. Our team combines design expertise with technical precision.</p>
+    `
+  },
+  {
+    id: 'website-scaling',
+    title: 'How does this project scale if my user base triples in six months?',
+    slug: 'website-scaling-triple-users',
+    excerpt: 'Planning for growth: infrastructure, architecture, and scalability.',
+    content: `
+      <h1>How Does This Project Scale If My User Base Triples in Six Months?</h1>
+      <p>Scaling isn't an afterthought—it's built into every decision we make from day one. Here's how we ensure your website grows with your business.</p>
+      
+      <h2>Scalable Architecture</h2>
+      <p>We don't just build for today. Our architecture considers tomorrow:</p>
+      
+      <h3>Frontend: Static + Dynamic</h3>
+      <p>We use Static Site Generation (SSG) for content that rarely changes (blog posts, service pages). This gives you incredible speed and reduces server load. Dynamic content loads on-demand.</p>
+      
+      <h3>Backend: Microservices Ready</h3>
+      <p>Instead of a monolithic backend, we structure code in modular services. Need to add a new feature? We can plug it in without rebuilding everything.</p>
+      
+      <h3>Database: Right-Sized from Start</h3>
+      <p>For most businesses, we start with PostgreSQL (relational, handles complex queries well). As you scale, we can add caching layers (Redis) and read replicas.</p>
+      
+      <h2>CDN and Edge Computing</h2>
+      <p>We deploy to edge networks (Vercel/Netlify). This means:</p>
+      <ul>
+        <li>Content served from servers closest to your users</li>
+        <li>Automatic DDoS protection</li>
+        <li>Zero-config scaling—no traffic limit worries</li>
+      </ul>
+      
+      <h2>Real-World Scaling: What "Tripling" Actually Looks Like</h2>
+      <p>Here's what happens when traffic grows 3x:</p>
+      <ul>
+        <li>Current: 1,000 visitors/month → No changes needed</li>
+        <li>After scaling: 3,000 visitors/month → CDN handles it, no extra cost</li>
+        <li>10,000+ visitors/month → We add caching, optimize database queries</li>
+      </ul>
+      
+      <h2>Plan for Growth Now</h2>
+      <p>Building scalability in from the start costs a fraction of retrofitting it later. Let's discuss your growth projections and build a system that grows with you.</p>
+    `
+  },
+  {
+    id: 'local-vs-global',
+    title: 'Is it better to hire a local developer or a global agency?',
+    slug: 'local-developer-vs-global-agency',
+    excerpt: 'Weighing the pros and cons of local vs remote web development partners.',
+    content: `
+      <h1>Is It Better to Hire a Local Developer or a Global Agency?</h1>
+      <p>This is one of the most common questions we hear from Nigerian business owners. Let's break it down honestly.</p>
+      
+      <h2>The Local Developer Argument</h2>
+      <h3>Pros:</h3>
+      <ul>
+        <li><strong>Easy communication:</strong> Same timezone, easy to meet in person</li>
+        <li><strong>Local market knowledge:</strong> They understand Nigerian payment systems, customer behavior, cultural preferences</li>
+        <li><strong>Accountability:</strong> You can physically visit their office</li>
+      </ul>
+      <h3>Cons:</h3>
+      <ul>
+        <li>Limited talent pool—best developers often work remotely for global companies</li>
+        <li>Inconsistent quality—hard to verify actual skills</li>
+        <li>Limited expertise in modern stacks and best practices</li>
+      </ul>
+      
+      <h2>The Global Agency Argument</h2>
+      <h3>Pros:</h3>
+      <ul>
+        <li>Access to world-class talent and latest technologies</li>
+        <li>Proven processes and project management</li>
+        <li>Portfolio with diverse, international clients</li>
+      </ul>
+      <h3>Cons:</h3>
+      <ul>
+        <li>Higher costs—they charge premium rates</li>
+        <li>Timezone challenges for ongoing support</li>
+        <li>Less understanding of local market nuances</li>
+      </ul>
+      
+      <h2>The Best of Both Worlds</h2>
+      <p>Here's what many Nigerian businesses are discovering: a local team with global standards.</p>
+      <p>We combine:</p>
+      <ul>
+        <li>Local presence—you can meet us, call us, WhatsApp us</li>
+        <li>Global quality—modern tech stack, international best practices</li>
+        <li>Fair pricing—no inflated agency rates, no cheap-vendor risk</li>
+        <li>Timezone alignment—same timezone, real-time communication</li>
+      </ul>
+      
+      <h2>Making the Right Choice</h2>
+      <p>Don't just choose based on price or location. Consider: What's your growth timeline? How important is ongoing support? What's your risk tolerance?</p>
+      <p>We're happy to have an honest conversation about whether we're the right fit—or to point you to alternatives if we're not.</p>
+    `
+  },
+  {
+    id: 'website-speed-2-seconds',
+    title: 'How to make my website load in under 2 seconds',
+    slug: 'website-load-under-2-seconds',
+    excerpt: 'Practical techniques for achieving lightning-fast load times.',
+    content: `
+      <h1>How to Make My Website Load in Under 2 Seconds</h2>
+      <p>Speed isn't just a nice-to-have—it's a ranking factor, a conversion driver, and a user expectation. Here's exactly how we achieve sub-2-second load times.</p>
+      
+      <h2>The 2-Second Rule: Why It Matters</h2>
+      <ul>
+        <li>40% of users abandon sites that take more than 3 seconds</li>
+        <li>Google uses page speed as a ranking signal</li>
+        <li>Every second of delay can reduce conversions by 7%</li>
+      </ul>
+      
+      <h2>Our Speed Optimization Strategy</h2>
+      
+      <h3>1. Image Optimization</h3>
+      <p>Images are usually 50%+ of page weight. We:</p>
+      <ul>
+        <li>Use WebP format (30% smaller than JPEG)</li>
+        <li>Implement lazy loading for below-fold images</li>
+        <li>Set explicit dimensions to prevent layout shifts</li>
+        <li>Use responsive images (serve smaller versions to mobile)</li>
+      </ul>
+      
+      <h3>2. Code Splitting</h3>
+      <p>Instead of loading all JavaScript at once, we split it into chunks. Users only download what they need for the current page.</p>
+      
+      <h3>3. CDN Distribution</h3>
+      <p>We host on edge networks. A user in Lagos loads from Lagos servers, not a server in America.</p>
+      
+      <h3>4. Minimal Dependencies</h3>
+      <p>Many developers add heavy libraries "just in case." We build lean—only what's needed.</p>
+      
+      <h3>5. Font Optimization</h3>
+      <p>Web fonts can block rendering. We use font-display: swap and subset fonts to only include needed characters.</p>
+      
+      <h2>What Your Site Can Achieve</h2>
+      <p>Our typical client sites achieve:</p>
+      <ul>
+        <li>1.2-1.8 second first contentful paint</li>
+        <li>95+ Lighthouse performance score</li>
+        <li>Core Web Vitals in the green</li>
+      </ul>
+      
+      <h2>Speed Is Earned, Not Given</h2>
+      <p>Getting under 2 seconds requires intentional architecture, not just tweaks. We'd love to analyze your current site and show you what's possible.</p>
+    `
+  },
+  {
+    id: 'best-web-stack-seo-2026',
+    title: 'Best web stack for SEO ranking in 2026',
+    slug: 'best-web-stack-seo-2026',
+    excerpt: 'Choosing the right technology for search engine optimization.',
+    content: `
+      <h1>Best Web Stack for SEO Ranking in 2026</h1>
+      <p>SEO isn't just about content anymore—your technical foundation matters just as much. Here's what we recommend for maximum search visibility.</p>
+      
+      <h2>The SEO-Tech Connection</h2>
+      <p>Google's algorithm evaluates technical factors that are directly influenced by your stack:</p>
+      <ul>
+        <li>Core Web Vitals (page experience)</li>
+        <li>Crawlability and indexation</li>
+        <li>Mobile-friendliness</li>
+        <li>Site architecture</li>
+      </ul>
+      
+      <h2>Our Recommended Stack for 2026</h2>
+      
+      <h3>1. Next.js (React Framework)</h3>
+      <ul>
+        <li>Server-Side Rendering (SSR) for better crawlability</li>
+        <li>Static Site Generation (SSG) for lightning-fast pages</li>
+        <li>Automatic image optimization</li>
+        <li>Built-in internationalization for global SEO</li>
+      </ul>
+      
+      <h3>2. Tailwind CSS</h3>
+      <ul>
+        <li>Minimal CSS output (less bloat = faster pages)</li>
+        <li>Purge unused styles automatically</li>
+        <li>Mobile-first = Google-approved responsive design</li>
+      </ul>
+      
+      <h3>3. Vercel/Netlify Hosting</h3>
+      <ul>
+        <li>Edge caching worldwide</li>
+        <li>Automatic SSL</li>
+        <li>Built-in analytics</li>
+        <li>Instant invalidation for content updates</li>
+      </ul>
+      
+      <h3>4. Structured Data (JSON-LD)</h3>
+      <p>We implement proper schema markup for:</p>
+      <ul>
+        <li>Organization</li>
+        <li>Local Business</li>
+        <li>Products/Services</li>
+        <li>FAQ pages</li>
+        <li>Articles/Blog posts</li>
+      </ul>
+      
+      <h2>What Actually Moves the Needle</h2>
+      <p>Technical SEO is table stakes. To actually rank, you also need:</p>
+      <ul>
+        <li>Quality, original content</li>
+        <li>Backlinks from reputable sources</li>
+        <li>User engagement signals</li>
+        <li>Local SEO (Google Business Profile optimization)</li>
+      </ul>
+      
+      <h2>Build for SEO from Day One</h2>
+      <p>Retrofitting SEO onto a poorly-built site is expensive and often incomplete. We build SEO into every project from the ground up.</p>
+      <p>Want a site that Google loves? Let's talk.</p>
+    `
+  },
+  {
+    id: 'cheap-vs-expensive-developer',
+    title: 'Why is one developer charging $500 and another $5,000?',
+    slug: 'cheap-vs-expensive-developer',
+    excerpt: 'Understanding the real cost differences in web development.',
+    content: `
+      <h1>Why Is One Developer Charging $500 and Another $5,000?</h1>
+      <p>You've seen the spectrum: a freelancer on Upwork quoting $500, an agency quoting $5,000 for what seems like the "same" website. Here's what's actually different.</p>
+      
+      <h2>The $500 Developer</h2>
+      <h3>What's Usually Included:</h3>
+      <ul>
+        <li>Template-based design (no custom UI)</li>
+        <li>Basic functionality (contact form, about page)</li>
+        <li>Limited mobile optimization</li>
+        <li>No ongoing support or maintenance</li>
+        <li>Minimal SEO setup</li>
+      </ul>
+      <h3>The Hidden Costs:</h3>
+      <ul>
+        <li>You'll likely need to rebuild within 1-2 years</li>
+        <li>Poor performance hurts conversions</li>
+        <li>Security vulnerabilities</li>
+        <li>No strategic thinking about your business goals</li>
+        <li>Rework costs when things break</li>
+      </ul>
+      
+      <h2>The $5,000+ Developer</h2>
+      <h3>What You're Actually Paying For:</h3>
+      <ul>
+        <li>Custom design (not a template)</li>
+        <li>Strategic consultation on conversion optimization</li>
+        <li>Performance optimization (Core Web Vitals)</li>
+        <li>Security hardening</li>
+        <li>SEO foundation</li>
+        <li>Documentation and training</li>
+        <li>Ongoing support and maintenance</li>
+        <li>Reliability and accountability</li>
+      </ul>
+      
+      <h2>The Real Math</h2>
+      <p>Let's compare total cost over 3 years:</p>
+      <ul>
+        <li>Cheap developer: $500 + $1,500 (rebuild) + $500 (fixes) = $2,500</li>
+        <li>Quality developer: $5,000 + $0 (no rebuild needed) = $5,000</li>
+      </ul>
+      <p>But here's the real difference: the quality site probably generated $10,000+ more in leads because it actually converts.</p>
+      
+      <h2>Finding the Sweet Spot</h2>
+      <p>You don't need to spend $5,000 if you're just starting. But don't chase the cheapest option either. Look for:</p>
+      <ul>
+        <li>Transparent pricing with clear scope</li>
+        <li>Portfolio with actual business results</li>
+        <li>Clear communication and process</li>
+        <li>Willingness to explain their approach</li>
+      </ul>
+      
+      <h2>Invest Wisely, Not Minimally</h2>
+      <p>Your website is often the first impression potential customers have. It's worth getting right. Let's discuss what level of investment makes sense for your specific situation.</p>
+    `
+  },
+  {
+    id: 'freelance-developer-red-flags',
+    title: 'Red flags when hiring a freelance web developer',
+    slug: 'freelance-developer-red-flags',
+    excerpt: 'Warning signs to watch for before handing over your money.',
+    content: `
+      <h1>Red Flags When Hiring a Freelance Web Developer</h2>
+      <p>Choosing a developer is a significant decision. Here are the warning signs that should make you walk away—no matter how good their pitch sounds.</p>
+      
+      <h2>Red Flag #1: No Portfolio or Vague Portfolio</h2>
+      <p>If they can't show live websites they've built—or only show "mockups"—that's a problem. Ask for specific URLs, then actually visit them. Better yet, contact those clients directly.</p>
+      
+      <h2>Red Flag #2: No Clear Process</h2>
+      <p>Developers who say "just tell me what you want" are setting you up for disaster. You need:</p>
+      <ul>
+        <li>Discovery/discovery phase</li>
+        <li>Wireframes or mockups before coding</li>
+        <li>Clear milestones and deliverables</li>
+        <li>Testing and QA process</li>
+      </ul>
+      
+      <h2:Red Flag #3: Unrealistic Timelines</h2>
+      <p>If someone promises a full custom website in 2 weeks, they're either cutting corners or inexperienced. Quality takes time.</p>
+      
+      <h2>Red Flag #4: No Discussion of Performance or SEO</h2>
+      <p>A developer who doesn't mention page speed, mobile optimization, or SEO doesn't understand modern web development. These aren't optional extras—they're essential.</p>
+      
+      <h2>Red Flag #5: Vague or Missing Contract</h2>
+      <p>Everything should be in writing: scope, timeline, payment terms, revisions included, what happens if things go wrong. No contract = no accountability.</p>
+      
+      <h2>Red Flag #6: Communication Issues Early</h2>
+      <p>If they're hard to reach during the "sales" phase, imagine how they'll be when you've already paid. Test their responsiveness before committing.</p>
+      
+      <h2>Red Flag #7: No Discussion of Maintenance</h2>
+      <p>Websites need updates—security patches, content changes, occasional fixes. If they say "it's done, good luck," that's a red flag.</p>
+      
+      <h2>Red Flag #8: Price Seems Too Good</h2>
+      <p>In Nigeria, a custom business website realistically costs ₦150,000+. If someone is offering a "full website" for ₦30,000, something's wrong—you'll either get nothing or something worthless.</p>
+      
+      <h2>Trust Your Gut</h2>
+      <p>If something feels off, it probably is. The right developer will welcome your questions, explain their process, and have nothing to hide.</p>
+      <p>We've built our reputation on transparency and reliability. Ask us anything about our process—we're happy to explain.</p>
+    `
+  },
+  {
+    id: 'check-developer-portfolio',
+    title: 'How to check a developer\'s portfolio for real results',
+    slug: 'check-developer-portfolio-real-results',
+    excerpt: 'Evaluating portfolios beyond the pretty screenshots.',
+    content: `
+      <h1>How to Check a Developer's Portfolio for Real Results</h2>
+      <p>A portfolio looks impressive—but can you trust it? Here's how to actually evaluate what you're seeing.</p>
+      
+      <h2>Beyond the Screenshots</h2>
+      
+      <h3>1. Visit the Live Sites</h3>
+      <p>Screenshots can hide a multitude of sins. Visit the actual URLs and evaluate:</p>
+      <ul>
+        <li>Does the site load quickly? (Google PageSpeed Insights)</li>
+        <li>Is it mobile-responsive? (Try it on your phone)</li>
+        <li>Are the links working?</li>
+        <li>Does it feel professional and trustworthy?</li>
+      </ul>
+      
+      <h3>2. Ask for Specific Metrics</h3>
+      <p>Don't just ask "what did you do?" Ask:</p>
+      <ul>
+        <li>"What was their conversion rate before vs after?"</li>
+        <li>"How much did traffic increase?"</li>
+        <li>"How long has the site been live with no issues?"</li>
+      </ul>
+      <p>Real developers have this data. Vague answers like "they were happy" are suspicious.</p>
+      
+      <h3>3. Contact Their Clients</h2>
+      <p>The best way to verify quality: talk to past clients. Ask:</p>
+      <ul>
+        <li>Was the project delivered on time and on budget?</li>
+        <li>How was communication throughout?</li>
+        <li>Has the site performed well since launch?</li>
+        <li>Would you hire them again?</li>
+        <li>Any issues after launch?</li>
+      </ul>
+      
+      <h3>4. Check for Technical Depth</h3>
+      <p>A developer might show a pretty site, but can they explain:</p>
+      <ul>
+        <li>How they optimized for speed?</li>
+        <li>What SEO foundations they implemented?</li>
+        <li>How the site scales?</li>
+        <li>What happens if you need to make changes?</li>
+      </ul>
+      
+      <h3>5. Look for Diversity</h3>
+      <p>A portfolio of 10 e-commerce sites might mean they only know e-commerce. Look for variety—they should be able to handle different business types and requirements.</p>
+      
+      <h3>6. Check for "Own Work" vs "Company Work"</h3>
+      <p>Be clear: Did they build it solo, or were they part of a team? Did they use a template or build custom? There's nothing wrong with templates—but you should know what you're getting.</p>
+      
+      <h2>Your Due Diligence Matters</h2>
+      <p>We're confident in our portfolio because we can verify every claim. We'd be happy to share client references and let you verify our work yourself.</p>
+    `
+  },
+  {
+    id: 'questions-before-hiring-developer',
+    title: 'Questions to ask a web developer before hiring',
+    slug: 'questions-ask-web-developer-hiring',
+    excerpt: 'Essential questions to separate professionals from amateurs.',
+    content: `
+      <h1>Questions to Ask a Web Developer Before Hiring</h2>
+      <p>Don't hire until you've asked these questions. They'll separate the professionals from the amateurs.</p>
+      
+      <h2>Technical Questions</h2>
+      <ol>
+        <li><strong>What tech stack do you use and why?</strong> (Look for modern, well-supported technologies)</li>
+        <li><strong>How do you handle page speed optimization?</strong> (Should mention image optimization, code splitting, CDN)</li>
+        <li><strong>What's your approach to mobile responsiveness?</strong> (Should be mobile-first, not "we'll make it responsive later")</li>
+        <li><strong>How do you approach SEO?</strong> (Should mention technical SEO, Core Web Vitals, schema markup)</li>
+        <li><strong>How will this handle my growing traffic?</strong> (Should discuss scalability, caching, CDN)</li>
+        <li><strong>Who owns the code after completion?</strong> (You should own everything)</li>
+      </ol>
+      
+      <h2>Process Questions</h2>
+      <ol>
+        <li><strong>What's your process from start to finish?</strong> (Look for structured phases: discovery, design, development, QA)</li>
+        <li><strong>How do you handle revisions?</strong> (How many included? What's the process?)</li>
+        <li><strong>Who will be my point of contact?</strong> (Direct access vs. passing messages through project managers)</li>
+        <li><strong>What's your timeline for a project like mine?</strong> (Be wary of very short timelines)</li>
+        <li><strong>What happens after the site launches?</strong> (Ongoing support? Training? Maintenance?)</li>
+      </ol>
+      
+      <h2>Business Questions</h2>
+      <ol>
+        <li><strong>Can I see your contract/scope document?</strong> (Everything should be in writing)</li>
+        <li><strong>What's included in the price? What's not?</strong> (Hidden costs often appear later)</li>
+        <li><strong>Do you have insurance or business registration?</strong> (Shows professionalism)</li>
+        <li><strong>Can I speak to 2-3 past clients?</strong> (References are essential)</li>
+        <li><strong>What happens if you're unavailable or the project goes wrong?</strong> (Backup plans matter)</li>
+      </ol>
+      
+      <h2>Red Flag Answers</h2>
+      <ul>
+        <li>"I just need a few days" → Too fast = cut corners</li>
+        <li>"I'll use WordPress" (when you need custom) → Might not be right for your needs</li>
+        <li>"I work alone" (for complex projects) → May not have all needed skills</li>
+        <li>"I don't have any past clients who can talk" → Major red flag</li>
+        <li>"Payment upfront in full" → Usually milestone-based is safer</li>
+      </ul>
+      
+      <h2>Ask Away</h2>
+      <p>We welcome these questions—we have answers for all of them and references you can verify. That's how confident we are in our work.</p>
+    `
+  },
+  {
+    id: 'cheap-web-developer-near-me',
+    title: 'Cheap web developer near me - what to watch for',
+    slug: 'cheap-web-developer-near-me',
+    excerpt: 'Understanding what "cheap" really means and the hidden costs.',
+    content: `
+      <h1>"Cheap Web Developer Near Me" - What to Watch For</h2>
+      <p>You've typed "cheap web developer near me" into Google. Let's talk about what you're actually finding—and what to avoid.</p>
+      
+      <h2>The Real Cost of "Cheap"</h2>
+      <p>In Nigeria, here's the pricing reality:</p>
+      <ul>
+        <li><strong>₦20,000-₦50,000:</strong> Template installation, basic setup. Often no customization, poor mobile experience.</li>
+        <li><strong>₦80,000-₦150,000:</strong> Entry-level custom site. Functional but likely missing performance optimization, proper SEO, and scalability.</li>
+        <li><strong>₦150,000-₦400,000:</strong> Quality custom site with proper process, optimization, and support.</li>
+        <li><strong>₦400,000+:</strong> Complex projects, e-commerce, custom functionality.</li>
+      </ul>
+      
+      <h2>What "Cheap" Usually Means</h2>
+      <ul>
+        <li>Using pre-made templates (no uniqueness)</li>
+        <li>Minimal or no strategic planning</li>
+        <li>Little attention to speed or performance</li>
+        <li>No SEO foundation</li>
+        <li>Limited or no mobile optimization</li>
+        <li>No ongoing support</li>
+        <li>No proper contract or accountability</li>
+      </ul>
+      
+      <h2>The Hidden Costs of Cheap</h2>
+      <p>That ₦30,000 website might end up costing you:</p>
+      <ul>
+        <li>Lost leads because the site doesn't convert</li>
+        <li>Rebuilding from scratch in 1-2 years (another ₦30,000+)</li>
+        <li>Fixing security vulnerabilities</li>
+        <li>Missed business because the site is often down or slow</li>
+        <li>Damage to your brand from a poor-quality site</li>
+      </ul>
+      
+      <h2>Finding Value Instead of Just Cheap</h2>
+      <p>Instead of "cheap," search for:</p>
+      <ul>
+        <li>"Professional web developer Nigeria" + portfolio</li>
+        <li>"Best web agency Lagos" + reviews</li>
+        <li>"Custom website developer" + case studies</li>
+      </ul>
+      
+      <h2>The Smart Approach</h2>
+      <p>Start with a clear budget and priorities. A smaller budget might mean:</p>
+      <ul>
+        <li>Fewer pages (just what you need)</li>
+        <li>Phased approach (launch basic, add features later)</li>
+        <li>Clear scope (avoid feature creep)</li>
+      </ul>
+      <p>We've worked with businesses at every budget level. Tell us your situation—we'll tell you what's realistic.</p>
+    `
+  },
+  {
+    id: 'build-website-24-hours',
+    title: 'Can you really build a website in 24 hours?',
+    slug: 'build-website-24-hours',
+    excerpt: 'The truth about rapid website development and what you can actually achieve.',
+    content: `
+      <h1>Can You Really Build a Website in 24 Hours?</h2>
+      <p>You've seen the YouTube videos: "I built a website in 24 hours!" Here's the honest truth about what's possible—and what's not.</p>
+      
+      <h2>What CAN Be Built in 24 Hours</h2>
+      <ul>
+        <li>Landing pages using page builders (Carrd, Wix, WordPress themes)</li>
+        <li>Simple brochure sites with minimal customization</li>
+        <li>Basic e-commerce with pre-made themes</li>
+        <li>One-page sites for events or simple businesses</li>
+      </ul>
+      
+      <h2>What CANNOT Be Built in 24 Hours</h2>
+      <ul>
+        <li>Custom designs (takes research, planning, multiple revisions)</li>
+        <li>Complex functionality (booking systems, custom dashboards)</li>
+        <li>SEO-optimized content (needs strategy and writing)</li>
+        <li>Performance optimization (takes testing and tweaking)</li>
+        <li>Anything that requires legal/compliance considerations</li>
+      </ul>
+      
+      <h2>The Real Timeline for Quality</h2>
+      <p>A professional custom website typically takes:</p>
+      <ul>
+        <li>Discovery & Strategy: 1-2 weeks</li>
+        <li>Design: 1-2 weeks</li>
+        <li>Development: 2-4 weeks</li>
+        <li>Testing & Launch: 1 week</li>
+        <li><strong>Total: 5-9 weeks for quality</strong></li>
+      </ul>
+      
+      <h2>The Page Builder Trap</h2>
+      <p>Tools like Wix, Squarespace, or WordPress page builders can get you online quickly. But:</p>
+      <ul>
+        <li>You'll spend hours learning the tool</li>
+        <li>Limited customization = generic look</li>
+        <li>Performance often suffers</li>
+        <li>Hard to scale or add features later</li>
+        <li>You're on your own for troubleshooting</li>
+      </ul>
+      
+      <h2>When 24 Hours Might Work</h2>
+      <ul>
+        <li>Time-sensitive events</li>
+        <li>Very simple informational sites</li>
+        <li>When you just need "something" online quickly</li>
+      </ul>
+      
+      <h2>The Better Question</h2>
+      <p>Don't ask "how fast can it be built?" Ask "how fast can it be built RIGHT?" A quick site that doesn't convert is a waste of money.</p>
+      <p>Let us know your timeline and requirements—we'll tell you what's realistic for your specific needs.</p>
+    `
+  },
+  {
+    id: 'free-website-builders',
+    title: 'Free website builders: When they make sense (and when to avoid)',
+    slug: 'free-website-builders-guide',
+    excerpt: 'Honest assessment of free website building options for Nigerian businesses.',
+    content: `
+      <h1>Free Website Builders: When They Make Sense (And When to Avoid)</h2>
+      <p>Free website builders exist—but are they right for your business? Here's an honest assessment.</p>
+      
+      <h2>Free Options Available in Nigeria</h2>
+      <ul>
+        <li><strong>Wix Free:</strong> Limited features, Wix branding</li>
+        <li><strong>WordPress.com Free:</strong> Limited customization, WordPress subdomain</li>
+        <li><strong>Google Sites:</strong> Very basic, limited design options</li>
+        <li><strong> Carrd:</strong> One-page sites, free tier available</li>
+      </ul>
+      
+      <h2>When Free Makes Sense</h2>
+      <ul>
+        <li>Personal portfolios (not for business)</li>
+        <li>Test ideas before investing</li>
+        <li>Very temporary landing pages</li>
+        <li>Learning web design basics</li>
+      </ul>
+      
+      <h2>When to Avoid Free</h2>
+      <ul>
+        <li>Any business website → <strong>You need professional credibility</strong></li>
+        <li>E-commerce → <strong>You need trust signals and proper checkout</strong></li>
+        <li>Lead generation → <strong>You need conversion optimization</strong></li>
+        <li>Long-term business → <strong>You'll outgrow it quickly, wasting effort</strong></li>
+      </ul>
+      
+      <h2>The Hidden Costs of "Free"</h2>
+      <ul>
+        <li><strong>Branding:</strong> Your URL is theirbrand.com/yourname</li>
+        <li><strong>Features:</strong> Basic analytics, limited forms, no e-commerce</li>
+        <li><strong>SEO:</strong> Weak foundation, hard to rank</li>
+        <li><strong>Support:</strong> Limited or no help when things break</li>
+        <li><strong>Data:</strong> You're locked into their platform</li>
+        <li><strong>Credibility:</strong> "Free" often looks like "not serious about business"</li>
+      </ul>
+      
+      <h2>The Real Question</h2>
+      <p>Ask yourself: What's the cost of NOT having a professional website?</p>
+      <ul>
+        <li>Lost leads from unprofessional appearance</li>
+        <li>Lost trust from potential customers</li>
+        <li>Lost search visibility (SEO limitations)</li>
+        <li>Lost time fixing limitations</li>
+      </ul>
+      
+      <h2>Our Recommendation</h2>
+      <p>If you're serious about your business, invest in a proper website—even a simple, well-built one. The ROI far exceeds any "savings" from free tools.</p>
+      <p>We offer packages for every budget. Let's find what works for you.</p>
+    `
   }
 ];
 

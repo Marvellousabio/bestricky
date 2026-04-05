@@ -411,7 +411,7 @@ const Home: React.FC = () => {
 
 			{/* FAQ Accordion */}
 			<section className="py-24 bg-slate-50">
-				<div className="max-w-3xl mx-auto px-6">
+				<div className="max-w-4xl mx-auto px-6">
 					<ScrollFade>
 						<div className="text-center mb-16">
 							<h2 className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">
@@ -426,16 +426,21 @@ const Home: React.FC = () => {
 					<div className="space-y-4">
 						{FAQS.map((faq, index) => (
 							<ScrollFade key={index} delay={index * 100}>
-								<details className="group bg-white rounded-2xl border border-slate-200 overflow-hidden">
+								<details className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300">
 									<summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-										<span className="text-lg font-bold text-slate-900 pr-4">{faq.question}</span>
+										<div className="flex items-start gap-4">
+											<span className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 font-bold text-sm">
+												{String(index + 1).padStart(2, '0')}
+											</span>
+											<span className="text-lg font-bold text-slate-900 pr-4">{faq.question}</span>
+										</div>
 										<span className="flex-shrink-0 w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center group-open:bg-blue-600 group-open:text-white transition-all">
-											<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M+12v-7m0 7l-3-3m3 3l3-3M12 19V5m-7 7l3-3m-3 3l3 3" />
+											<svg className="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
 											</svg>
 										</span>
 									</summary>
-									<div className="px-6 pb-6">
+									<div className="px-6 pb-6 pl-[5.5rem]">
 										<p className="text-slate-600 leading-relaxed">{faq.answer}</p>
 									</div>
 								</details>
