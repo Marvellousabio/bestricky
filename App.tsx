@@ -148,7 +148,7 @@ const App: React.FC = () => {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<main className="flex-grow">{renderContent()}</main>
+			<main id="main-content" className="flex-grow">{renderContent()}</main>
 			<Footer />
 		</div>
 	);

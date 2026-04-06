@@ -15,31 +15,31 @@ const niches = [
 	{
 		id: "brands",
 		label: "Brands",
-		image: "/assets/brand.jpg",
+		image: "/assets/brand.webp",
 		color: "#3B82F6",
 	},
 	{
 		id: "real-estate",
 		label: "Real Estate",
-		image: "/assets/realestate.jpg",
+		image: "/assets/realestate.webp",
 		color: "#10B981",
 	},
 	{
 		id: "healthcare",
 		label: "Healthcare",
-		image: "/assets/healthcare.jpg",
+		image: "/assets/healthcare.webp",
 		color: "#EC4899",
 	},
 	{
 		id: "construction",
 		label: "Construction",
-		image: "/assets/construction.jpg",
+		image: "/assets/construction.webp",
 		color: "#F59E0B",
 	},
 	{
 		id: "ecommerce",
 		label: "E-commerce",
-		image: "/assets/ecommerce.jpg",
+		image: "/assets/ecommerce.webp",
 		color: "#8B5CF6",
 	},
 ];
@@ -87,10 +87,11 @@ const MobileCarousel: React.FC = () => {
 						<div className="w-[240px] h-[300px] rounded-3xl overflow-hidden shadow-2xl bg-slate-900">
 							<img
 								src={niche.image}
-								alt={niche.label}
+								alt={`${niche.label} - Bestricky portfolio project`}
 								className="w-full h-full object-cover"
 								width="240"
 								height="300"
+								loading="lazy"
 								decoding="async"
 							/>
 							<div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />

@@ -92,7 +92,7 @@ export const PROJECTS: Project[] = [
     solution: 'A "Control Center" UI featuring live metadata displays, system status indicators, and a data-dense grid architecture.',
     impact: 'Established immediate technical authority and streamlined the consultation process for global corporate leaders.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Lucide React'],
-    image: '/assets/precisionapex.jpeg',
+    image: '/assets/precisionapex.webp',
     liveUrl: 'https://precisionapex.vercel.app/',
     category: 'Corporate Industrial'
   },
@@ -105,7 +105,7 @@ export const PROJECTS: Project[] = [
     solution: 'A minimal, ritual-focused interface emphasizing ingredient transparency and botanical aesthetics.',
     impact: 'Created a high-trust shopping environment that elevated brand prestige and emphasized sustainable luxury.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'E-commerce UI'],
-    image: '/assets/vine.jpeg',
+    image: '/assets/vine.webp',
     liveUrl: 'https://vine-six.vercel.app/',
     category: 'E-commerce'
   },
@@ -118,7 +118,7 @@ export const PROJECTS: Project[] = [
     solution: 'A high-contrast "Neon" aesthetic utilizing layered visuals, cinematic motion, and a bold creator-centric layout.',
     impact: 'Positioned the brand as a leader in the digital revolution, effectively showcasing 10M+ views in social proof.',
     tech: ['React', 'Framer Motion', 'Tailwind CSS', 'High-Energy UI'],
-    image: '/assets/neonpulse.jpeg',
+    image: '/assets/neonpulse.webp',
     liveUrl: 'https://neonpulse-six.vercel.app/',
     category: 'Media & Entertainment'
   },
@@ -131,7 +131,7 @@ export const PROJECTS: Project[] = [
     solution: 'An elegant, minimal UI utilizing editorial-style layouts, sophisticated typography, and limited-release scarcity cues.',
     impact: 'Elevated perceived brand value and positioned the store as a premium destination for high-ticket fashion.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Editorial UI'],
-    image: '/assets/elysian.jpeg',
+    image: '/assets/elysian.webp',
     liveUrl: 'https://elysian-green.vercel.app/',
     category: 'Luxury Retail'
   },
@@ -144,7 +144,7 @@ export const PROJECTS: Project[] = [
     solution: 'A calm, trust-oriented UI featuring integrated booking workflows, expert profiles, and a resource-rich health blog.',
     impact: 'Reduced booking drop-off rates and established a supportive digital environment for over 10,000+ patients.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Conversion-Optimized UI'],
-    image: '/assets/lumina.jpeg',
+    image: '/assets/lumina.webp',
     liveUrl: 'https://lumina-six-rust.vercel.app/',
     category: 'Healthcare'
   },
@@ -157,7 +157,7 @@ export const PROJECTS: Project[] = [
     solution: 'A high-fidelity interface focused on clarity, featuring real-time data visualization, smart alerts, and an intuitive visual logic builder.',
     impact: 'Improved decision-making speed and reduced manual hours by providing a centralized "brain" for complex business operations.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Data Visualization UI'],
-    image: '/assets/synapse.jpeg',
+    image: '/assets/synapse.webp',
     liveUrl: 'https://synapse-omega-two.vercel.app/',
     category: 'SaaS & Fintech'
   },
@@ -170,7 +170,7 @@ export const PROJECTS: Project[] = [
     solution: 'A "Slow Living" design aesthetic featuring soft palettes, room-inspiration galleries, and a seamless "Shop the Look" integration.',
     impact: 'Increased average order value by bridging the gap between individual products and holistic interior aesthetics.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Lifestyle E-commerce UI'],
-    image: '/assets/nook.jpeg',
+    image: '/assets/nook.webp',
     liveUrl: 'https://nook-psi.vercel.app/',
     category: 'E-commerce'
   },
@@ -183,7 +183,7 @@ export const PROJECTS: Project[] = [
     solution: 'A sophisticated, "Consultant-First" UI featuring structured methodology breakdowns, revenue-impact metrics, and deep-trust testimonials.',
     impact: 'Established a premium digital presence that justifies high-ticket advisory fees and streamlines lead qualification.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Professional Services UI'],
-    image: '/assets/Arial.jpeg',
+    image: '/assets/Arial.webp',
     liveUrl: 'https://nook-1vyb.vercel.app/',
     category: 'Personal Brand'
   },
@@ -196,7 +196,7 @@ export const PROJECTS: Project[] = [
     solution: 'Scroll-driven cinematic motion design showcasing career highlights and achievements.',
     impact: 'Enhanced global fan engagement and brand value.',
     tech: ['React', 'Framer Motion', 'Three.js'],
-    image: '/assets/victoroshimen.jpeg',
+    image: '/assets/victoroshimen.webp',
     liveUrl: 'https://victoroshimen.vercel.app',
     category: 'Personal Brand'
   },
@@ -209,7 +209,7 @@ export const PROJECTS: Project[] = [
     solution: 'AI-powered influencer discovery and automated booking system.',
     impact: 'Streamlined operations and increased successful bookings.',
     tech: ['React', 'Node.js', 'AI/ML', 'PostgreSQL'],
-    image: '/assets/aura.jpeg',
+    image: '/assets/aura.webp',
     liveUrl: 'https://aura-frontend-omega.vercel.app/',
     category: 'B2B Platform'
   },
@@ -222,7 +222,7 @@ export const PROJECTS: Project[] = [
     solution: 'Immersive media showcase with event integration and seamless video streaming.',
     impact: 'Enhanced global presence and fan engagement.',
     tech: ['React', 'Video Integration', 'Social Media API'],
-    image: '/assets/djcuppy.jpeg',
+    image: '/assets/djcuppy.webp',
     liveUrl: 'https://djcuppy-theta.vercel.app',
     category: 'Entertainment'
   },
@@ -235,7 +235,7 @@ export const PROJECTS: Project[] = [
     solution: 'A visual-heavy, grid-based layout with smooth transitions for recipe exploration.',
     impact: 'Elevated user appetite and engagement through high-fidelity food photography and UX.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion'],
-    image: '/assets/gourmet.jpeg',
+    image: '/assets/gourmet.webp',
     liveUrl: 'https://gourmet-beta.vercel.app',
     category: 'Food & Lifestyle'
   },
@@ -248,7 +248,7 @@ export const PROJECTS: Project[] = [
     solution: 'A clean, typography-focused "app-like" experience optimized for mobile reading.',
     impact: 'Improved session duration and content discoverability for entertainment news.',
     tech: ['React', 'Next.js', 'Responsive Design'],
-    image: '/assets/necole.jpeg',
+    image: '/assets/necole.webp',
     liveUrl: 'https://necole.vercel.app',
     category: 'Media'
   },
@@ -261,7 +261,7 @@ export const PROJECTS: Project[] = [
     solution: 'A minimal, spacious layout that emphasizes high-resolution architectural imagery.',
     impact: 'Positioned the brand as a top-tier luxury interior designer for high-net-worth clients.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion'],
-    image: '/assets/coco.jpeg',
+    image: '/assets/coco.webp',
     liveUrl: 'https://coco-two-nu.vercel.app',
     category: 'Architecture'
   },
@@ -274,7 +274,7 @@ export const PROJECTS: Project[] = [
     solution: 'A streamlined dashboard with refactored components for lightning-fast performance.',
     impact: 'Simplified complex data visualization for faster executive decision-making.',
     tech: ['React', 'Next.js', 'Data Vis'],
-    image: '/assets/benlytics.jpeg',
+    image: '/assets/benlytics.webp',
     liveUrl: 'https://www.benlytics.dev',
     category: 'SaaS'
   },
@@ -1159,7 +1159,7 @@ export const CLIENT_LOGOS = [
   { name: 'Precision Apex', logo: '/assets/precisionlogo.png' },
   { name: 'Velvet & Vine', logo: '/assets/velvetlogo.png' },
   { name: 'Neon Pulse', logo: '/assets/neonlogo.png' },
-  { name: 'AuraEx', logo: '/assets/aura.jpeg' },
+  { name: 'AuraEx', logo: '/assets/aura.webp' },
   { name: 'DJ Cuppy', logo: '/assets/cuppylogo.png' },
   { name: 'Lumina Wellness', logo: '/assets/luminalogo.png' },
   { name: 'Synapse Flow', logo: '/assets/synapselogo.png' },

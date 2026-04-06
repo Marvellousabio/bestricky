@@ -25,6 +25,12 @@ const Navbar: React.FC = () => {
 		<nav
 			className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"}`}
 		>
+			<a
+				href="#main-content"
+				className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-full focus:z-50 focus:font-semibold"
+			>
+				Skip to main content
+			</a>
 			<div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
 						<Link to="/" className="flex items-center gap-2">
 					<span className="text-2xl font-black tracking-tight" style={{ fontFamily: 'Outfit, sans-serif' }}>
