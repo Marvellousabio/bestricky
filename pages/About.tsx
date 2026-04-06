@@ -67,12 +67,11 @@ const About: React.FC = () => {
 							About Us
 						</span>
 						<h1 className="text-5xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
-							Building Digital Excellence Together
+							Why 50+ Businesses Chose <br />
+							<span className="text-blue-600">Bestricky Over Others</span>
 						</h1>
 						<p className="text-xl text-slate-600 leading-relaxed">
-							We're a team of passionate digital experts dedicated
-							to transforming your ideas into powerful online
-							experiences that drive real business results.
+							We don't just build websites—we build revenue-generating machines that work 24/7 while you focus on your business.
 						</p>
 					</div>
 				</div>

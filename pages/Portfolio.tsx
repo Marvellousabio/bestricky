@@ -134,11 +134,15 @@ const projectVariants = {
 // --- Main Portfolio Component ---
 const Portfolio: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [visibleCount, setVisibleCount] = useState(10);
   const categories = ["All", ...new Set(PROJECTS.map((p) => p.category))];
   const filteredProjects =
     activeCategory === "All"
       ? PROJECTS
       : PROJECTS.filter((p) => p.category === activeCategory);
+  
+  const displayedProjects = filteredProjects.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredProjects.length;
 
   // Scroll to project on page load if hash exists
   useEffect(() => {
@@ -153,6 +157,11 @@ const Portfolio: React.FC = () => {
     }
   }, []);
 
+  // Reset visible count when category changes
+  useEffect(() => {
+    setVisibleCount(10);
+  }, [activeCategory]);
+
   return (
     <div className="pt-32 pb-24 min-h-screen">
       <div className="max-w-7xl mx-auto px-6">
@@ -166,8 +175,8 @@ const Portfolio: React.FC = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tight"
           >
-            Case Studies <br />
-            <span className="text-blue-600">& Business Impact</span>
+            See How We Turned <br />
+            <span className="text-blue-600">Slow Sites Into Sales</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
@@ -229,7 +238,7 @@ const Portfolio: React.FC = () => {
         {/* Projects Grid */}
         <motion.div layout className="grid grid-cols-1 gap-24">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, idx) => (
+            {displayedProjects.map((project, idx) => (
               <div key={project.id} id={project.id}>
               <motion.div
                 custom={idx}
@@ -315,6 +324,22 @@ const Portfolio: React.FC = () => {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* See More Button */}
+        {hasMore && (
+          <motion.div
+            className="text-center mt-16"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 10)}
+              className="bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-blue-500/20 hover:bg-blue-700 hover:shadow-2xl transition-all transform hover:-translate-y-1"
+            >
+              See More Projects ({filteredProjects.length - visibleCount} remaining)
+            </button>
+          </motion.div>
+        )}
       </div>
     </div>
   );

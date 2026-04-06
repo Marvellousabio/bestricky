@@ -75,11 +75,11 @@ const Contact: React.FC = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
             }}>
               <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tight">
-                Let's Build <br />
-                <span className="text-blue-600">Something Great</span>
+                Let's Stop Your <br />
+                <span className="text-blue-600">Leads From Leaking</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-10">
-                Ready to take your business to the next level? Fill out the form or reach out directly via email or phone. We respond to all inquiries within 24 business hours.
+                Every day your slow website runs, you're losing customers to faster competitors. Get a high-converting site that closes deals 24/7.
               </p>
             </motion.div>
 

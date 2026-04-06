@@ -53,14 +53,14 @@ const Services: React.FC = () => {
             variants={itemVariants}
             className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tight"
           >
-            How We Deliver <br />
-            <span className="text-blue-600">Business Value</span>
+            We Fix Websites That <br />
+            <span className="text-blue-600">Don't Generate Revenue</span>
           </motion.h1>
           <motion.p 
             variants={itemVariants}
             className="text-xl text-slate-600 leading-relaxed"
           >
-            We've refined our offerings into four core departments to provide specialized expertise that covers the entire digital product lifecycle.
+            Fast. Beautiful. Built to convert. Every service is engineered to turn visitors into paying customers.
           </motion.p>
         </motion.div>
 

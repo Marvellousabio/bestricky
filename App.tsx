@@ -40,10 +40,10 @@ export const Link: React.FC<{
 };
 
 const App: React.FC = () => {
- 	const [currentPath, setCurrentPath] = useState(
- 		window.location.pathname || "/",
- 	);
- 	const originalTitle = "Websites That Convert | Bestricky - Digital Agency Nigeria";
+  	const [currentPath, setCurrentPath] = useState(
+  		window.location.pathname || "/",
+  	);
+  const originalTitle = "Bestricky | Web Developer in Lagos - Digital Agency Nigeria";
 
  	useEffect(() => {
  		const handlePopState = () => {
@@ -76,21 +76,53 @@ const App: React.FC = () => {
  		};
  	}, []);
 
- 	// Dynamic title change when user leaves the page
- 	useEffect(() => {
- 		const handleVisibilityChange = () => {
- 			if (document.hidden) {
- 				document.title = "Come back! We want to build your website - Bestricky";
- 			} else {
- 				document.title = originalTitle;
- 			}
- 		};
+  // Dynamic title and favicon change when user leaves the page
+  useEffect(() => {
+    const originalFavicon = document.querySelector<HTMLLinkElement>('link[rel*="icon"]')?.href || null;
+    
+    // Compelling away favicon - Blue smile face for positive psychological response
+    // Uses face recognition (faces process 60% faster in brain) + blue for trust
+    const awayFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%233b82f6'/><circle cx='11' cy='13' r='3' fill='white'/><circle cx='21' cy='13' r='3' fill='white'/><path d='M11 22 Q16 26 21 22' stroke='white' stroke-width='2' fill='none'/></svg>";
 
- 		document.addEventListener("visibilitychange", handleVisibilityChange);
- 		return () => {
- 			document.removeEventListener("visibilitychange", handleVisibilityChange);
- 		};
- 	}, [originalTitle]);
+    // Multiple compelling away titles - rotates randomly when user leaves
+    const awayTitles = [
+      "💸 Your Competitors Are Stealing Your Customers While You Sleep | Bestricky",
+      "😟 Don't Let Your Website Lose More Customers | Bestricky",
+      "⚡ Your Slow Website Is Costing You Money Right Now | Bestricky",
+      "🚨 You're Losing Customers to Faster Competitors | Bestricky",
+      "📉 Every Second Your Site Loads = Lost Revenue | Bestricky",
+    ];
+
+    const getRandomAwayTitle = () => awayTitles[Math.floor(Math.random() * awayTitles.length)];
+
+    const handleVisibilityChange = () => {
+      const faviconLink = document.querySelector<HTMLLinkElement>('link[rel*="icon"]');
+      
+      if (document.hidden) {
+        // User navigated away - show compelling favicon + random away title
+        if (faviconLink) {
+          faviconLink.href = awayFavicon;
+        }
+        document.title = getRandomAwayTitle();
+      } else {
+        // User returned - restore original favicon + title
+        if (faviconLink && originalFavicon) {
+          faviconLink.href = originalFavicon;
+        }
+        document.title = originalTitle;
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      // Cleanup: restore original favicon
+      const faviconLink = document.querySelector<HTMLLinkElement>('link[rel*="icon"]');
+      if (faviconLink && originalFavicon) {
+        faviconLink.href = originalFavicon;
+      }
+    };
+  }, [originalTitle]);
 
 	// Simple Router logic
 	const renderContent = () => {

@@ -26,12 +26,10 @@ const Navbar: React.FC = () => {
 			className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"}`}
 		>
 			<div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-				<Link to="/" className="flex items-center gap-2">
-					<img
-						src="/assets/Bestricky logo.png"
-						alt="Bestricky Logo"
-						className="h-10 w-auto"
-					/>
+						<Link to="/" className="flex items-center gap-2">
+					<span className="text-2xl font-black tracking-tight" style={{ fontFamily: 'Outfit, sans-serif' }}>
+						<span className="text-slate-900">Bestricky</span>
+					</span>
 				</Link>
 
 				{/* Desktop Nav */}

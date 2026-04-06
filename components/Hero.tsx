@@ -7,37 +7,39 @@ import {
 	useScroll,
 	useTransform,
 } from "framer-motion";
+import DelightfulElements from "./DelightfulElements";
+import SparkleExplosion from "./SparkleExplosion";
 
 // Niche data with images
 const niches = [
 	{
 		id: "brands",
 		label: "Brands",
-		image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&q=80&w=800",
+		image: "/assets/brand.jpg",
 		color: "#3B82F6",
 	},
 	{
 		id: "real-estate",
 		label: "Real Estate",
-		image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800",
+		image: "/assets/realestate.jpg",
 		color: "#10B981",
 	},
 	{
 		id: "healthcare",
 		label: "Healthcare",
-		image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
+		image: "/assets/healthcare.jpg",
 		color: "#EC4899",
 	},
 	{
 		id: "construction",
 		label: "Construction",
-		image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800",
+		image: "/assets/construction.jpg",
 		color: "#F59E0B",
 	},
 	{
 		id: "ecommerce",
 		label: "E-commerce",
-		image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800",
+		image: "/assets/ecommerce.jpg",
 		color: "#8B5CF6",
 	},
 ];
@@ -130,6 +132,16 @@ const MobileCarousel: React.FC = () => {
 
 const Hero: React.FC = () => {
 	const [activeNiche, setActiveNiche] = useState(0);
+	const [sparkleTrigger, setSparkleTrigger] = useState(false);
+
+	// Trigger sparkle explosion on first load
+	useEffect(() => {
+		const hasSeenSparkle = sessionStorage.getItem("hasSeenSparkle");
+		if (!hasSeenSparkle) {
+			setSparkleTrigger(true);
+			sessionStorage.setItem("hasSeenSparkle", "true");
+		}
+	}, []);
 
 	// Auto-cycle through niches every 3 seconds (desktop only)
 	useEffect(() => {
@@ -152,6 +164,7 @@ const Hero: React.FC = () => {
 
 	return (
 		<section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+			<SparkleExplosion trigger={sparkleTrigger} />
 			{/* Original background elements */}
 			<div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-blue-100 rounded-full blur-3xl opacity-50 z-0"></div>
 			<div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[400px] h-[400px] bg-slate-200 rounded-full blur-3xl opacity-50 z-0"></div>
@@ -166,13 +179,13 @@ const Hero: React.FC = () => {
 							Now Accepting New Projects
 						</div>
 						<h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tight">
-							Websites That{" "}
+							We Build Websites That{" "}
 							<span className="gradient-text">
-								Convert
+								Make Money While You Sleep
 							</span>.
 						</h1>
 						<p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-xl">
-							Your 24/7 salesperson. Built to generate leads and close deals while you sleep.
+							Your 24/7 salesperson that works around the clock. Built to generate leads and close deals while you focus on your business.
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4">
 							<a
@@ -203,13 +216,13 @@ const Hero: React.FC = () => {
 							Now Accepting New Projects
 						</div>
 						<h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tight">
-							Websites That{" "}
+							We Build Websites That{" "}
 							<span className="gradient-text">
-								Convert
+								Make Money While You Sleep
 							</span>.
 						</h1>
 						<p className="text-xl text-slate-600 leading-relaxed mb-10 max-w-xl">
-							Your 24/7 salesperson. Built to generate leads and close deals while you sleep.
+							Your 24/7 salesperson that works around the clock. Built to generate leads and close deals while you focus on your business.
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4">
 							<a

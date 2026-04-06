@@ -11,7 +11,7 @@ const FAQ: React.FC = () => {
 	const faqs: FAQItem[] = [
 		{
 			question: "How long does it take to build a website?",
-			answer: "The timeline varies depending on the complexity of your project. A simple landing page typically takes 1-2 weeks, while a full website with custom features can take 4-8 weeks. We'll provide a detailed timeline during our initial consultation.",
+			answer: "Simple websites take 2-3 weeks to build, while complex websites take 4-6 weeks. We'll provide a detailed timeline during our initial consultation.",
 		},
 		{
 			question: "What technologies do you use?",
@@ -63,10 +63,10 @@ const FAQ: React.FC = () => {
 						FAQ
 					</span>
 					<h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
-						Frequently Asked Questions
+						Your Website Questions, <span className="text-blue-600">Answered</span>
 					</h1>
 					<p className="text-lg text-slate-600 max-w-2xl mx-auto">
-						Everything you need to know about working with us
+						Get clarity on pricing, timelines, and how we turn slow sites into sales machines.
 					</p>
 				</div>
 
