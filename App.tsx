@@ -14,6 +14,7 @@ import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
+import WebDesignLagos from "./pages/WebDesignLagos";
 
 // Custom Link component to handle navigation
 export const Link: React.FC<{
@@ -141,6 +142,7 @@ const App: React.FC = () => {
 		if (path.startsWith("/terms")) return <TermsOfService />;
 		if (path.startsWith("/about")) return <About />;
 		if (path.startsWith("/faq")) return <FAQ />;
+		if (path.startsWith("/web-design-lagos")) return <WebDesignLagos />;
 		if (path === "/" || path === "") return <Home />;
 		return <NotFound />;
 	};

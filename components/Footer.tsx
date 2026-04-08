@@ -9,11 +9,9 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <img
-                src="/assets/Bestricky logo.png"
-                alt="Bestricky Logo"
-                className="h-10 w-auto"
-              />
+              <span className="text-2xl font-black tracking-tight" style={{ fontFamily: 'Outfit, sans-serif' }}>
+                <span className="text-white">Bestricky</span>
+              </span>
             </Link>
             <p className="max-w-md text-slate-400 text-sm mb-6 hidden md:block">
               Premium digital solutions for modern businesses. We craft stunning websites, powerful applications, and brands that stand out.
@@ -46,6 +44,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm">
               <li><Link to="/about" className="hover:text-blue-400 transition-colors">About Us</Link></li>
               <li><Link to="/services" className="hover:text-blue-400 transition-colors">Our Services</Link></li>
+              <li><Link to="/web-design-lagos" className="hover:text-blue-400 transition-colors">Web Design Lagos</Link></li>
               <li><Link to="/portfolio" className="hover:text-blue-400 transition-colors">Case Studies</Link></li>
               <li><Link to="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link></li>
               <li><Link to="/blog" className="hover:text-blue-400 transition-colors">Expert Insights</Link></li>
@@ -57,7 +56,7 @@ const Footer: React.FC = () => {
             <h4 className="text-white font-bold mb-4">Contact</h4>
             <ul className="space-y-3 text-sm text-slate-300 mb-6">
               <li>Lagos, Nigeria</li>
-              <li>marvellousabiola08@gmail.com</li>
+              <li>bestrickywebdesign@gmail.com</li>
               <li>+234 802 287 1344</li>
             </ul>
             

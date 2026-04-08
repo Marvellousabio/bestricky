@@ -30,7 +30,7 @@ const Contact: React.FC = () => {
         details: formData.get('details')
       };
 
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const Contact: React.FC = () => {
   };
 
   const contactInfo = [
-    { icon: "📧", title: "Email Us", value: "marvellousabiola08@gmail.com" },
+    { icon: "📧", title: "Email Us", value: "bestrickywebdesign@gmail.com" },
     { icon: "📞", title: "Call Us", value: "+234 802 287 1344" },
     { icon: "📍", title: "Our Location", value: "Lagos, Nigeria (Serving clients globally)" }
   ];

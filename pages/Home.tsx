@@ -451,9 +451,9 @@ const Home: React.FC = () => {
 			</section>
 
 			{/* Final CTA */}
-			<section className="py-24">
-				<div className="max-w-7xl mx-auto px-6">
-					<div className="relative rounded-[3rem] p-12 md:p-24 text-center text-white overflow-hidden">
+			<section className="py-16 md:py-24">
+				<div className="max-w-7xl mx-auto px-4 md:px-6">
+					<div className="relative rounded-2xl md:rounded-[3rem] p-8 md:p-16 lg:p-24 text-center text-white overflow-hidden">
 						{/* Professional business background */}
 						<div className="absolute inset-0">
                         <img
@@ -468,21 +468,21 @@ const Home: React.FC = () => {
 							<div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-slate-900/95"></div>
 						</div>
 						{/* Decorative elements */}
-						<div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-						<div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-						<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-3xl"></div>
+						<div className="absolute top-0 right-0 w-40 md:w-80 h-40 md:h-80 bg-blue-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+						<div className="absolute bottom-0 left-0 w-40 md:w-80 h-40 md:h-80 bg-purple-500/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+						<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-blue-600/10 rounded-full blur-3xl"></div>
 						{/* Content */}
 						<div className="relative z-10">
-							<h3 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
+							<h3 className="text-2xl md:text-4xl lg:text-6xl font-black mb-6 md:mb-8 leading-tight">
 								Ready to build your <br /> next success story?
 							</h3>
-							<p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
+							<p className="text-base md:text-xl text-slate-300 mb-8 md:mb-12 max-w-xl md:max-w-2xl mx-auto">
 								Join the 50+ businesses that have transformed their
 								digital presence with Bestricky Web Agency.
 							</p>
 							<a
 								href="/booking"
-								className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-12 py-6 rounded-2xl text-xl font-black shadow-2xl transform transition-all hover:scale-105 active:scale-95 border-2 border-blue-400/50"
+								className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-8 md:px-12 py-4 md:py-6 rounded-xl md:rounded-2xl text-base md:text-xl font-black shadow-2xl transform transition-all hover:scale-105 active:scale-95 border-2 border-blue-400/50"
 							>
 								Get Your Free Consultation
 							</a>

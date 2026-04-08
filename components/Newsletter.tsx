@@ -13,19 +13,27 @@ const Newsletter: React.FC = () => {
     
     setStatus('loading');
     
-    // Simulate API call - replace with actual endpoint
-    setTimeout(() => {
-      // Simple email validation
-      if (!email.includes('@')) {
-        setStatus('error');
-        setMessage('Please enter a valid email address');
-        return;
-      }
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
       
-      setStatus('success');
-      setMessage('Thanks for subscribing! We\'ll keep you updated.');
-      setEmail('');
-    }, 1000);
+      const result = await response.json();
+      
+      if (response.ok) {
+        setStatus('success');
+        setMessage('Thanks for subscribing! We\'ll keep you updated.');
+        setEmail('');
+      } else {
+        setStatus('error');
+        setMessage(result.error || 'Failed to subscribe. Please try again.');
+      }
+    } catch (error) {
+      setStatus('error');
+      setMessage('Failed to subscribe. Please try again.');
+    }
   };
 
   return (
