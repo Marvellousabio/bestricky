@@ -11,14 +11,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: 'Please enter a valid email address' });
   }
 
-  const EMAILJS_PUBLIC_KEY = process.env.EMAILJS_PUBLIC_KEY;
-  const EMAILJS_SERVICE_ID = process.env.EMAILJS_SERVICE_ID;
-  const EMAILJS_TEMPLATE_ID = process.env.EMAILJS_TEMPLATE_ID;
+  const EMAILJS_PUBLIC_KEY = process.env.EMAILJS_PUBLIC_KEY?.trim();
+  const EMAILJS_SERVICE_ID = process.env.EMAILJS_SERVICE_ID?.trim();
+  const EMAILJS_TEMPLATE_ID = process.env.EMAILJS_TEMPLATE_ID?.trim();
 
   if (!EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
-    console.error('Missing EmailJS configuration:', { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID });
+    console.error('Missing EmailJS configuration:', { 
+      EMAILJS_PUBLIC_KEY: EMAILJS_PUBLIC_KEY ? 'set' : 'missing',
+      EMAILJS_SERVICE_ID: EMAILJS_SERVICE_ID ? 'set' : 'missing', 
+      EMAILJS_TEMPLATE_ID: EMAILJS_TEMPLATE_ID ? 'set' : 'missing'
+    });
     return res.status(500).json({ error: 'Server configuration error - Missing EmailJS keys' });
   }
+
+  console.log('EmailJS config:', {
+    publicKey: EMAILJS_PUBLIC_KEY?.substring(0, 8) + '...',
+    serviceId: EMAILJS_SERVICE_ID,
+    templateId: EMAILJS_TEMPLATE_ID
+  });
 
   try {
     const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
@@ -27,10 +37,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        publicKey: EMAILJS_PUBLIC_KEY,
-        serviceId: EMAILJS_SERVICE_ID,
-        templateId: EMAILJS_TEMPLATE_ID,
-        templateParams: {
+        user_id: EMAILJS_PUBLIC_KEY,   
+        service_id: EMAILJS_SERVICE_ID,  
+        template_id: EMAILJS_TEMPLATE_ID, 
+        template_params: {
           email: email,
           subscribe_date: new Date().toLocaleString()
         }
