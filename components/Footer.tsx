@@ -29,11 +29,11 @@ const Footer: React.FC = () => {
         setEmail('');
       } else {
         setStatus('error');
-        setMessage(result.error || 'Failed to subscribe');
+        setMessage(result.error + (result.details ? ` (${result.details})` : '') || 'Failed to subscribe');
       }
     } catch (error) {
       setStatus('error');
-      setMessage('Failed to subscribe');
+      setMessage('Failed to subscribe - network error');
     }
   };
   

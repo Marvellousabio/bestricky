@@ -16,8 +16,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const EMAILJS_TEMPLATE_ID = process.env.EMAILJS_TEMPLATE_ID;
 
   if (!EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
-    console.error('Missing EmailJS configuration');
-    return res.status(500).json({ error: 'Server configuration error' });
+    console.error('Missing EmailJS configuration:', { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID });
+    return res.status(500).json({ error: 'Server configuration error - Missing EmailJS keys' });
   }
 
   try {
@@ -41,8 +41,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       res.status(200).json({ message: 'Successfully subscribed!' });
     } else {
       const errorData = await response.text();
-      console.error('EmailJS error:', errorData);
-      res.status(500).json({ error: 'Failed to subscribe. Please try again.' });
+      console.error('EmailJS error response:', response.status, response.statusText, errorData);
+      res.status(500).json({ error: 'Failed to subscribe. Please try again.', details: errorData });
     }
   } catch (error) {
     console.error('Error subscribing:', error);
