@@ -1,8 +1,42 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from '../App';
 
 const Footer: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    setStatus('loading');
+    setMessage('');
+    
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok) {
+        setStatus('success');
+        setMessage('Thanks for subscribing!');
+        setEmail('');
+      } else {
+        setStatus('error');
+        setMessage(result.error || 'Failed to subscribe');
+      }
+    } catch (error) {
+      setStatus('error');
+      setMessage('Failed to subscribe');
+    }
+  };
+  
   return (
     <footer className="bg-slate-900 text-slate-200 font-medium pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
@@ -63,16 +97,37 @@ const Footer: React.FC = () => {
             {/* Newsletter in Footer */}
             <h4 className="text-white font-bold mb-3">Stay Updated</h4>
             <p className="text-xs text-slate-400 mb-3">Get insights on digital trends.</p>
-            <div className="flex gap-2">
+            <form onSubmit={handleSubscribe} className="flex gap-2">
               <input 
                 type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email" 
-                className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-600"
+                disabled={status === 'loading' || status === 'success'}
+                className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-600 disabled:opacity-50"
               />
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors">
-                Subscribe
+              <button 
+                type="submit"
+                disabled={status === 'loading' || status === 'success'}
+                className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold transition-colors disabled:opacity-50 ${status === 'success' ? 'bg-green-600' : 'bg-blue-600 hover:bg-blue-700'}`}
+              >
+                {status === 'loading' ? (
+                  <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                ) : status === 'success' ? (
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                ) : 'Subscribe'}
               </button>
-            </div>
+            </form>
+            {message && (
+              <p className={`text-xs mt-2 ${status === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+                {message}
+              </p>
+            )}
           </div>
         </div>
 
