@@ -1883,7 +1883,7 @@ export const TEAM = [
     name: 'Marvellous Ogunleke',
     role: 'Founder & Full Stack Developer',
     bio: '3+ years building scalable web applications. Expert in React, Next.js, and modern web technologies.',
-    image: '/assets/marvellous.png',
+    image: './assets/marvellous.webp',
     linkedin: 'https://www.linkedin.com/in/marvellous-ogunleke2025/',
     website: 'https://marvellous-ogunleke.vercel.app/'
   },
