@@ -2,10 +2,17 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from 'framer-motion';
-import { PROJECTS } from "../constants";
+import { PROJECTS, generateSrcSet } from "../constants";
 
 // --- Animated Website Preview Component ---
-const WebsitePreview: React.FC<{ url: string; image: string; title: string }> = ({ url, image, title }) => {
+const WebsitePreview: React.FC<{ 
+  url: string; 
+  image: string; 
+  title: string;
+  imgWidth?: number;
+  imgHeight?: number;
+  priority?: boolean;
+}> = ({ url, image, title, imgWidth = 400, imgHeight = 225, priority = false }) => {
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [iframeError, setIframeError] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -53,7 +60,22 @@ const WebsitePreview: React.FC<{ url: string; image: string; title: string }> = 
                 onError={() => setIframeError(true)}
               />
             ) : (
-              <img src={image} alt={title} className="w-full h-full object-cover" />
+              <img 
+                src={image} 
+                alt={title} 
+                className="w-full h-full object-cover"
+                width={imgWidth}
+                height={imgHeight}
+                loading={priority ? "eager" : "lazy"}
+                fetchPriority={priority ? "high" : "auto"}
+                decoding="async"
+                srcSet={
+                  !image.startsWith('http')
+                    ? generateSrcSet(image.replace(/\.webp$/, ''), imgWidth)
+                    : undefined
+                }
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             )}
           </div>
         ) : (
@@ -64,10 +86,17 @@ const WebsitePreview: React.FC<{ url: string; image: string; title: string }> = 
               src={image}
               alt={title}
               className="absolute inset-0 w-full h-full object-cover"
-              width="400"
-              height="300"
-              loading="lazy"
+              width={imgWidth}
+              height={imgHeight}
+              loading={priority ? "eager" : "lazy"}
+              fetchPriority={priority ? "high" : "auto"}
               decoding="async"
+              srcSet={
+                !image.startsWith('http')
+                  ? generateSrcSet(image.replace(/\.webp$/, ''), imgWidth)
+                  : undefined
+              }
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
 
             {/* iframe Preview - Only on hover */}
@@ -248,11 +277,14 @@ const Portfolio: React.FC = () => {
               >
                 
                 <div className="w-full md:w-1/2">
-                  <WebsitePreview
-                    url={project.liveUrl}   
-                    image={project.image}
-                    title={project.title}
-                  />
+                <WebsitePreview
+                  url={project.liveUrl}   
+                  image={project.image}
+                  title={project.title}
+                  imgWidth={project.imgWidth}
+                  imgHeight={project.imgHeight}
+                  priority={project.id === 'brands'}
+                />
                 </div>
 
                 {/* Right: Content */}

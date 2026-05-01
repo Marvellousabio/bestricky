@@ -1,5 +1,5 @@
 import React from "react";
-import { SERVICES, PROJECTS, TESTIMONIALS, BRAND, CLIENT_LOGOS, FAQS, TEAM } from "../constants";
+import { SERVICES, PROJECTS, TESTIMONIALS, BRAND, CLIENT_LOGOS, FAQS, TEAM, generateSrcSet } from "../constants";
 import { ScrollFade, CountUp } from "../components/Animations";
 import Hero from "../components/Hero";
 import ServicesShowcase from "../components/ServicesShowcase";
@@ -40,11 +40,19 @@ const Home: React.FC = () => {
 				<div className="relative">
 					<div className="flex animate-scroll gap-16 items-center">
 						{[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((client, index) => (
-							<div key={`${client.name}-${index}`} className="flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity">
+							<div key={`${client.name}-${index}`} className="flex-shrink-0 opacity-60 hover:opacity-100 transition-all">
 								<img 
-									src={client.logo} 
+									src={
+										client.width && client.width > 400
+											? `${client.logo.replace(/\.webp$/, '')}-400.webp`
+											: client.logo
+									}
 									alt={client.name}
 									className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all"
+									width={client.width || client.displayWidth}
+									height={client.height || client.displayHeight}
+									loading="lazy"
+									decoding="async"
 								/>
 							</div>
 						))}
@@ -147,22 +155,28 @@ const Home: React.FC = () => {
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 						{PROJECTS.slice(0, 2).map((project) => (
 							<a key={project.id} href={`/portfolio#${project.id}`} className="group block">
-								<div className="overflow-hidden rounded-3xl mb-6 bg-slate-100 aspect-video relative">
-                                    <img
-                                      src={project.image}
-                                      alt={project.title}
-                                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                                      width="400"
-                                      height="225"
-                                      loading="lazy"
-                                      decoding="async"
-                                    />
+                                <div className="overflow-hidden rounded-3xl mb-6 bg-slate-100 aspect-video relative">
+                                     <img
+                                       src={project.image}
+                                       alt={project.title}
+                                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                       width={project.imgWidth || 400}
+                                       height={project.imgHeight || 225}
+                                       loading="lazy"
+                                       decoding="async"
+                                       srcSet={
+                                         project.imgWidth
+                                           ? generateSrcSet(project.image.replace(/\.webp$/, ''), project.imgWidth)
+                                           : undefined
+                                       }
+                                       sizes="(max-width: 768px) 100vw, 50vw"
+                                     />
                                     <div className="absolute inset-0 bg-blue-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                         <span className="bg-white text-slate-900 px-8 py-3 rounded-full font-bold hover:bg-slate-50 transition-colors">
                                             View Project Details
                                         </span>
                                     </div>
-								</div>
+                                </div>
 								<div className="flex flex-col gap-2">
 									<span className="text-blue-600 text-xs font-bold uppercase tracking-widest">
 										{project.category}
@@ -311,13 +325,21 @@ const Home: React.FC = () => {
 						{PROJECTS.slice(0, 3).map((project, index) => (
 							<ScrollFade key={project.id} delay={index * 150}>
 								<div className="group bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:shadow-2xl transition-all">
-									<div className="relative aspect-[4/3] overflow-hidden">
-										<img
-											src={project.image}
-											alt={project.title}
-											className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-										/>
-										<div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+                                <div className="relative aspect-[4/3] overflow-hidden">
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                            width={project.imgWidth || 400}
+                                            height={project.imgHeight || 300}
+                                            srcSet={
+                                                project.imgWidth
+                                                    ? `${project.image.replace(/\.webp$/, '')}-400.webp 400w, ${project.image.replace(/\.webp$/, '')}-600.webp 600w, ${project.image.replace(/\.webp$/, '')}-800.webp 800w, ${project.image.replace(/\.webp$/, '')}-1200.webp 1200w, ${project.image.replace(/\.webp$/, '')}-1600.webp 1600w`
+                                                    : undefined
+                                            }
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
 										<div className="absolute bottom-4 left-4">
 											<span className="px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full">
 												{project.category}
@@ -381,6 +403,10 @@ const Home: React.FC = () => {
 											src={member.image}
 											alt={member.name}
 											className="w-32 h-32 rounded-full object-cover border-4 border-slate-800 group-hover:border-blue-500 transition-all"
+											width="128"
+											height="128"
+											loading="lazy"
+											decoding="async"
 										/>
 										<div className="absolute bottom-0 right-0 flex gap-2">
 											{member.linkedin && (

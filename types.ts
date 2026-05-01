@@ -29,6 +29,10 @@ export interface Project {
 	image: string;
 	category: string;
 	liveUrl?: string;
+	imgWidth?: number;
+	imgHeight?: number;
+	displayWidth?: number;
+	displayHeight?: number;
 }
 
 export interface BlogPost {

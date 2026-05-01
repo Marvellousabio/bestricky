@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import DelightfulElements from "./DelightfulElements";
 import SparkleExplosion from "./SparkleExplosion";
+import { generateSrcSet } from "../constants";
 
 // Niche data with images
 const niches = [
@@ -16,30 +17,35 @@ const niches = [
 		id: "brands",
 		label: "Brands",
 		image: "/assets/brand.webp",
+		imgWidth: 736,
 		color: "#3B82F6",
 	},
 	{
 		id: "real-estate",
 		label: "Real Estate",
 		image: "/assets/realestate.webp",
+		imgWidth: 736,
 		color: "#10B981",
 	},
 	{
 		id: "healthcare",
 		label: "Healthcare",
 		image: "/assets/healthcare.webp",
+		imgWidth: 736,
 		color: "#EC4899",
 	},
 	{
 		id: "construction",
 		label: "Construction",
 		image: "/assets/construction.webp",
+		imgWidth: 680,
 		color: "#F59E0B",
 	},
 	{
 		id: "ecommerce",
 		label: "E-commerce",
 		image: "/assets/ecommerce.webp",
+		imgWidth: 736,
 		color: "#8B5CF6",
 	},
 ];
@@ -84,15 +90,21 @@ const MobileCarousel: React.FC = () => {
 						}}
 						transition={{ type: "spring", stiffness: 300, damping: 30 }}
 					>
-						<div className="w-[240px] h-[300px] rounded-3xl overflow-hidden shadow-2xl bg-slate-900">
+						<div className="relative w-[240px] h-[300px] rounded-3xl overflow-hidden shadow-2xl bg-slate-900">
 							<img
 								src={niche.image}
 								alt={`${niche.label} - Bestricky portfolio project`}
 								className="w-full h-full object-cover"
-								width="240"
-								height="300"
+								width={240}
+								height={300}
 								loading="lazy"
 								decoding="async"
+								srcSet={
+									!niche.image.startsWith('http')
+										? `${niche.image.replace(/\.webp$/, '')}-400.webp 400w`
+										: undefined
+								}
+								sizes="240px"
 							/>
 							<div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
 							<div className="absolute bottom-4 left-4 right-4">
@@ -327,6 +339,12 @@ const Hero: React.FC = () => {
                                           fetchPriority="high"
                                           loading="eager"
                                           decoding="async"
+                                          srcSet={
+                                            !niches[activeNiche].image.startsWith('http')
+                                              ? generateSrcSet(niches[activeNiche].image.replace(/\.webp$/, ''), niches[activeNiche].imgWidth)
+                                              : undefined
+                                          }
+                                          sizes="300px"
                                         />
 									</motion.div>
 								</AnimatePresence>

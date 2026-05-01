@@ -1,41 +1,9 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from '../App';
+import { NEWSLETTER } from '../constants';
 
 const Footer: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [message, setMessage] = useState('');
-
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    
-    setStatus('loading');
-    setMessage('');
-    
-    try {
-      const response = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-      
-      const result = await response.json();
-      
-      if (response.ok) {
-        setStatus('success');
-        setMessage('Thanks for subscribing!');
-        setEmail('');
-      } else {
-        setStatus('error');
-        setMessage(result.error + (result.details ? ` (${result.details})` : '') || 'Failed to subscribe');
-      }
-    } catch (error) {
-      setStatus('error');
-      setMessage('Failed to subscribe - network error');
-    }
-  };
   
   return (
     <footer className="bg-slate-900 text-slate-200 font-medium pt-16 pb-8">
@@ -86,55 +54,29 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-white font-bold mb-4">Contact</h4>
-            <ul className="space-y-3 text-sm text-slate-300 mb-6">
-              <li>Lagos, Nigeria</li>
-              <li>bestrickywebdesign@gmail.com</li>
-              <li>+234 802 287 1344</li>
-            </ul>
-            
-            {/* Newsletter in Footer */}
-            <h4 className="text-white font-bold mb-3">Stay Updated</h4>
-            <p className="text-xs text-slate-400 mb-3">Get insights on digital trends.</p>
-            <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
-              <input 
-                type="email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email" 
-                disabled={status === 'loading' || status === 'success'}
-                className="w-full  bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-600 disabled:opacity-50"
-              />
-              <button 
-                type="submit"
-                disabled={status === 'loading' || status === 'success'}
-                className={`w-full  cursor-pointer px-4 py-2 rounded-lg text-sm font-bold transition-colors disabled:opacity-50 whitespace-nowrap ${status === 'success' ? 'bg-green-600' : 'bg-blue-600 hover:bg-blue-700'}`}
-              >
-                {status === 'loading' ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <span className="lg:hidden">Sending</span>
-                  </span>
-                ) : status === 'success' ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="lg:hidden">Done</span>
-                  </span>
-                ) : 'Subscribe'}
-              </button>
-            </form>
-            {message && (
-              <p className={`text-xs mt-2 ${status === 'success' ? 'text-green-400' : 'text-red-400'}`}>
-                {message}
-              </p>
-            )}
-          </div>
+           <div>
+             <h4 className="text-white font-bold mb-4">Contact</h4>
+             <ul className="space-y-3 text-sm text-slate-300 mb-6">
+               <li>Lagos, Nigeria</li>
+               <li>bestrickywebdesign@gmail.com</li>
+               <li>+234 802 287 1344</li>
+             </ul>
+             
+             {/* Substack Newsletter Embed */}
+             <h4 className="text-white font-bold mb-3">Stay Updated</h4>
+             <p className="text-xs text-slate-400 mb-3">Get insights on digital trends.</p>
+             <div className="w-full bg-slate-800 rounded-lg overflow-hidden" style={{ minHeight: '320px' }}>
+               <iframe
+                 src={`${NEWSLETTER.substackUrl}/embed`}
+                 width={NEWSLETTER.embedWidth}
+                 height={NEWSLETTER.embedHeight}
+                 style={{ border: '1px solid #202020', background: '#ffffff' }}
+                 frameBorder="0"
+                 scrolling="no"
+                 title="Subscribe to Substack"
+               />
+             </div>
+           </div>
         </div>
 
         <div className="pt-6 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">

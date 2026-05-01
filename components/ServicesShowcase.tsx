@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { SERVICES, PROJECTS } from "../constants";
+import { SERVICES, PROJECTS, generateSrcSet } from "../constants";
 
 // Map services to their related projects
 const serviceProjects: Record<string, typeof PROJECTS> = {
@@ -181,11 +181,19 @@ const DesktopShowcase: React.FC = () => {
 															: "bg-slate-800 shadow-2xl shadow-black/50"
 													}`}
 												>
-													<img
-														src={project.image}
-														alt={project.title}
-														className="w-full h-full object-cover"
-													/>
+												<img
+													src={project.image}
+													alt={project.title}
+													className="w-full h-full object-cover"
+													width={project.imgWidth || 400}
+													height={project.imgHeight || 300}
+													srcSet={
+														project.imgWidth
+															? generateSrcSet(project.image.replace(/\.webp$/, ''), project.imgWidth)
+															: undefined
+													}
+													sizes="(max-width: 768px) 100vw, 50vw"
+												/>
 													<div
 														className={`absolute bottom-0 left-0 right-0 p-4 ${
 															isEven
@@ -368,11 +376,19 @@ const MobileShowcase: React.FC = () => {
 														: "bg-slate-800 shadow-xl shadow-black/50"
 												}`}
 											>
-												<img
-													src={project.image}
-													alt={project.title}
-													className="w-full h-full object-cover"
-												/>
+                                                <img
+                                                    src={project.image}
+                                                    alt={project.title}
+                                                    className="w-full h-full object-cover"
+                                                    width={project.imgWidth || 400}
+                                                    height={project.imgHeight || 300}
+                                                    srcSet={
+                                                        project.imgWidth
+                                                            ? `${project.image.replace(/\.webp$/, '')}-400.webp 400w, ${project.image.replace(/\.webp$/, '')}-600.webp 600w, ${project.image.replace(/\.webp$/, '')}-800.webp 800w, ${project.image.replace(/\.webp$/, '')}-1200.webp 1200w, ${project.image.replace(/\.webp$/, '')}-1600.webp 1600w`
+                                                            : undefined
+                                                    }
+                                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                                />
 												<div
 													className={`absolute bottom-0 left-0 right-0 p-3 ${
 														isEven
