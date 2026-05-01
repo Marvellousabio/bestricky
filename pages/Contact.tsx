@@ -4,17 +4,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const contactInfoVariants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: {
-      delay: i * 0.15,
-      duration: 0.5
-    }
-  })
-};
+const API_BASE = import.meta.env.VITE_API_URL || '';
 
 const Contact: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -30,7 +20,7 @@ const Contact: React.FC = () => {
         details: formData.get('details')
       };
 
-      const response = await fetch('/api/contact', {
+      const response = await fetch(`${API_BASE}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

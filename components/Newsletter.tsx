@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 const Newsletter: React.FC = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -25,7 +27,7 @@ const Newsletter: React.FC = () => {
     setMessage('');
     
     try {
-      const response = await fetch('/api/newsletter', {
+      const response = await fetch(`${API_BASE}/api/newsletter`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })

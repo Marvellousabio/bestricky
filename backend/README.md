@@ -33,3 +33,4 @@ Backend server for handling contact form submissions via email using Gmail.
 ## API
 
 - POST `/api/contact`: Send contact form data and receive email notification.
+- POST `/api/newsletter`: Subscribe to newsletter with email address.
