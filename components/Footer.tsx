@@ -1,10 +1,46 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from '../App';
-import { NEWSLETTER } from '../constants';
+
+const API_BASE = import.meta.env.VITE_API_URL || '';
 
 const Footer: React.FC = () => {
-  
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!email) return;
+
+    setStatus('loading');
+    setMessage('');
+
+    try {
+      const response = await fetch(`${API_BASE}/api/newsletter`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setStatus('success');
+        setMessage('Thanks for subscribing! We\'ll keep you updated.');
+        setEmail('');
+      } else {
+        setStatus('error');
+        setMessage(result.error || 'Failed to subscribe. Please try again.');
+      }
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+      setStatus('error');
+      setMessage('Failed to subscribe. Please try again.');
+    }
+  };
+
   return (
     <footer className="bg-slate-900 text-slate-200 font-medium pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
@@ -62,20 +98,36 @@ const Footer: React.FC = () => {
                <li>+234 802 287 1344</li>
              </ul>
              
-             {/* Substack Newsletter Embed */}
              <h4 className="text-white font-bold mb-3">Stay Updated</h4>
-             <p className="text-xs text-slate-400 mb-3">Get insights on digital trends.</p>
-             <div className="w-full bg-slate-800 rounded-lg overflow-hidden" style={{ minHeight: '320px' }}>
-               <iframe
-                 src={`${NEWSLETTER.substackUrl}/embed`}
-                 width={NEWSLETTER.embedWidth}
-                 height={NEWSLETTER.embedHeight}
-                 style={{ border: '1px solid #202020', background: '#ffffff' }}
-                 frameBorder="0"
-                 scrolling="no"
-                 title="Subscribe to Substack"
-               />
-             </div>
+             <p className="text-xs text-slate-400 mb-3">Get digital growth tips, web strategy insights, and product updates.</p>
+             <form onSubmit={handleSubmit} className="space-y-3">
+               <div className="flex flex-col sm:flex-row gap-2">
+                 <input
+                   type="email"
+                   required
+                   value={email}
+                   onChange={(e) => setEmail(e.target.value)}
+                   disabled={status === 'loading' || status === 'success'}
+                   placeholder="Enter your email"
+                   className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-70 disabled:cursor-not-allowed"
+                 />
+                 <button
+                   type="submit"
+                   disabled={status === 'loading' || status === 'success'}
+                   className="px-5 py-3 rounded-xl bg-blue-600 text-white font-bold text-sm hover:bg-blue-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed whitespace-nowrap"
+                 >
+                   {status === 'loading' ? 'Sending...' : status === 'success' ? 'Subscribed' : 'Subscribe'}
+                 </button>
+               </div>
+               {message && (
+                 <p className={`text-xs font-medium ${status === 'success' ? 'text-green-400' : 'text-red-300'}`}>
+                   {message}
+                 </p>
+               )}
+               <p className="text-xs text-slate-500">
+                 By subscribing, you agree to our <Link to="/privacy" className="text-blue-400 hover:text-blue-300">Privacy Policy</Link>. Unsubscribe anytime.
+               </p>
+             </form>
            </div>
         </div>
 
