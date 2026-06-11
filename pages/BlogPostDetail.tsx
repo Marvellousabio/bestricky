@@ -1,40 +1,92 @@
 
-import React, { useEffect } from 'react';
-import { BLOG_POSTS, FAQ_BLOGS, SERVICES } from '../constants';
+import React, { useEffect, useState } from 'react';
+import { SERVICES } from '../constants';
+
+interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  readTime: string;
+  author: string;
+  date: string;
+  lastUpdated?: string;
+  image: string;
+  imgWidth: number;
+  imgHeight: number;
+  excerpt: string;
+  content: string;
+  htmlContent: string;
+  tags?: string[];
+  relatedServiceId?: string;
+  featured?: boolean;
+  schemaMarkup?: object;
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords?: string[];
+  internalLinks?: Array<{text: string, url: string}>;
+  externalLinks?: Array<{text: string, url: string}>;
+}
 
 interface Props {
   slug: string;
 }
 
 const BlogPostDetail: React.FC<Props> = ({ slug }) => {
-  const post = BLOG_POSTS.find(p => p.slug === slug);
-  const faqPost = FAQ_BLOGS.find(p => p.slug === slug);
-  const activePost = post || faqPost;
-  const relatedService = activePost && 'relatedServiceId' in activePost && activePost.relatedServiceId ? SERVICES.find(s => s.id === activePost.relatedServiceId) : null;
+  const [blogData, setBlogData] = useState<{posts: BlogPost[], pillars: BlogPost[]} | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (activePost) {
+    const loadBlogData = async () => {
+      try {
+        const response = await fetch('/blog/_data/blog-data.json');
+        if (response.ok) {
+          const data = await response.json();
+          setBlogData(data);
+        }
+      } catch (error) {
+        console.error('Failed to load blog data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadBlogData();
+  }, []);
+
+  if (loading) {
+    return <div className="pt-40 text-center">Loading...</div>;
+  }
+
+  if (!blogData) {
+    return <div className="pt-40 text-center">Blog data not available.</div>;
+  }
+
+  const activePost = [...blogData.posts, ...blogData.pillars].find(p => p.slug === slug);
+  const relatedService = activePost?.relatedServiceId ? SERVICES.find(s => s.id === activePost.relatedServiceId) : null;
+
+  useEffect(() => {
+    if (activePost && activePost.schemaMarkup) {
       const script = document.createElement('script');
       script.type = 'application/ld+json';
-      
-      const schema = {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": activePost.title,
-        "description": activePost.excerpt,
-        "image": 'image' in activePost ? activePost.image : '',
-        "datePublished": 'date' in activePost ? activePost.date : '',
-        "author": {
-          "@type": "Person",
-          "name": 'author' in activePost ? activePost.author : 'Bestricky'
-        }
-      };
-      
-      script.textContent = JSON.stringify(schema);
+      script.textContent = JSON.stringify(activePost.schemaMarkup);
       document.head.appendChild(script);
-      
+
+      // Update page title and meta tags
+      if (activePost.metaTitle) {
+        document.title = activePost.metaTitle;
+      }
+      if (activePost.metaDescription) {
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          metaDesc.setAttribute('content', activePost.metaDescription);
+        }
+      }
+
       return () => {
         document.head.removeChild(script);
+        // Reset title on unmount
+        document.title = "Bestricky | Web Developer in Lagos - Digital Agency Nigeria";
       };
     }
   }, [activePost]);
@@ -45,35 +97,29 @@ const BlogPostDetail: React.FC<Props> = ({ slug }) => {
     <div className="pt-32 pb-24 bg-white">
       <article className="max-w-4xl mx-auto px-6">
         <div className="mb-12">
-          {'category' in activePost && (
-            <div className="flex items-center gap-4 text-xs font-bold text-blue-600 uppercase tracking-[0.2em] mb-6">
-              <span>{'category' in activePost ? activePost.category : 'Q&A'}</span>
-              <span className="w-1 h-1 bg-slate-300 rounded-full"></span>
-              <span>{'readTime' in activePost ? activePost.readTime : '3 min read'}</span>
-            </div>
-          )}
+          <div className="flex items-center gap-4 text-xs font-bold text-blue-600 uppercase tracking-[0.2em] mb-6">
+            <span>{activePost.category}</span>
+            <span className="w-1 h-1 bg-slate-300 rounded-full"></span>
+            <span>{activePost.readTime}</span>
+          </div>
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">{activePost.title}</h1>
-          {'author' in activePost && (
-            <div className="flex items-center gap-4 border-b border-slate-100 pb-12">
-              <div className="w-12 h-12 bg-blue-100 rounded-full overflow-hidden">
-                 <img src="https://i.pravatar.cc/150?u=bestricky" alt={'author' in activePost ? activePost.author : 'Bestricky'} />
-              </div>
-              <div>
-                 <p className="font-bold text-slate-900">{'author' in activePost ? activePost.author : 'Bestricky'}</p>
-                 <p className="text-sm text-slate-500">{'date' in activePost ? activePost.date : 'April 2026'}</p>
-              </div>
+          <div className="flex items-center gap-4 border-b border-slate-100 pb-12">
+            <div className="w-12 h-12 bg-blue-100 rounded-full overflow-hidden">
+                <img src="https://i.pravatar.cc/150?u=bestricky" alt={activePost.author} />
             </div>
-          )}
+            <div>
+                <p className="font-bold text-slate-900">{activePost.author}</p>
+                <p className="text-sm text-slate-500">{activePost.date}</p>
+            </div>
+          </div>
         </div>
 
-        {'image' in activePost && (
-          <div className="aspect-[21/9] rounded-[2.5rem] overflow-hidden mb-16 shadow-2xl">
-            <img src={activePost.image} alt={activePost.title} className="w-full h-full object-cover" width="800" height="343" loading="eager" decoding="async" />
-          </div>
-        )}
+        <div className="aspect-[21/9] rounded-[2.5rem] overflow-hidden mb-16 shadow-2xl">
+          <img src={activePost.image} alt={activePost.title} className="w-full h-full object-cover" width={activePost.imgWidth} height={activePost.imgHeight} loading="eager" decoding="async" />
+        </div>
 
         <div className="prose prose-lg prose-slate max-w-none mb-20 text-slate-700 leading-relaxed">
-          <div className="blog-content" dangerouslySetInnerHTML={{ __html: activePost.content }} />
+          <div className="blog-content speakable-content" dangerouslySetInnerHTML={{ __html: activePost.htmlContent }} />
         </div>
 
         {/* Inline Service CTA */}

@@ -1,0 +1,57 @@
+# Bestricky AI Context File
+# This file provides context for AI systems crawling our website
+
+## Company Overview
+Bestricky is a Lagos-based web development agency specializing in custom websites for Nigerian businesses. We build high-performance, SEO-optimized websites using modern technologies like React, Next.js, and TypeScript.
+
+## Services
+- Custom Web Development
+- UI/UX Design
+- Full-Stack Solutions
+- Brand Identity Design
+- SEO Optimization
+- E-commerce Development
+- Mobile App Development
+
+## Target Industries
+- Real Estate & Construction
+- Healthcare & Medical
+- Professional Services (Law, Accounting, Consulting)
+- E-commerce & Retail
+- Education & EdTech
+- Hospitality & Tourism
+- Financial Services & Fintech
+
+## Technologies We Use
+- Frontend: React, Next.js, TypeScript, Tailwind CSS
+- Backend: Node.js, PostgreSQL, AWS
+- Hosting: Vercel, Netlify
+- Design: Figma, Adobe Creative Suite
+
+## Key Differentiators
+- Nigerian market expertise
+- Fast 7-day MVP delivery
+- Transparent development process
+- Focus on performance and SEO
+- Local payment integration (Paystack, Flutterwave)
+
+## Contact Information
+- Email: bestrickywebdesign@gmail.com
+- Phone: +234 802 287 1344
+- Location: Lagos, Nigeria
+- Website: https://bestricky.vercel.app
+
+## Content Focus
+Our blog provides actionable guides for Nigerian businesses building websites, with emphasis on:
+- Industry-specific website requirements
+- SEO strategies for local markets
+- Platform comparisons and recommendations
+- Cost estimates and budget planning
+- Compliance and legal considerations
+
+## Important Pages
+- /services - Our service offerings
+- /portfolio - Case studies and projects
+- /blog - Educational content and guides
+- /contact - Get in touch
+- /about - Our story and team

@@ -134,7 +134,7 @@ const Services: React.FC = () => {
                   variants={itemVariants}
                   className="text-lg text-slate-600 mb-10 leading-relaxed"
                 >
-                  {service.longDescription}
+                  {service.longDescription || service.description}
                 </motion.p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

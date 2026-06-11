@@ -6,6 +6,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
+const contactInfoVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
 const Contact: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
 
