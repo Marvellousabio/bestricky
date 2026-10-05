@@ -19,6 +19,29 @@ body {
 	font-family: "Outfit", sans-serif;
 }
 
+.editorial-light-field::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	background-image:
+		radial-gradient(ellipse at 72% 34%, rgba(255, 255, 255, 0.68), transparent 44%),
+		radial-gradient(ellipse at 18% 82%, rgba(221, 213, 197, 0.22), transparent 48%);
+	background-size: 140% 140%;
+	background-position: 20% 40%;
+	animation: editorial-light-drift 48s ease-in-out infinite alternate;
+}
+
+@keyframes editorial-light-drift {
+	from {
+		background-position: 20% 40%;
+	}
+	to {
+		background-position: 80% 60%;
+	}
+}
+
 /* Smooth scrolling */
 html {
 	scroll-behavior: smooth;
@@ -244,6 +267,10 @@ input:focus, textarea:focus, button:focus {
 
 /* Accessibility: Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+	.editorial-light-field::before {
+		animation: none;
+	}
+
   *,
   *::before,
   *::after {

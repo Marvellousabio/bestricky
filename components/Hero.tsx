@@ -1,375 +1,119 @@
-"use client";
-
-import React, { useState, useEffect, useRef } from "react";
-import {
-	motion,
-	AnimatePresence,
-	useScroll,
-	useTransform,
-} from "framer-motion";
-import DelightfulElements from "./DelightfulElements";
-import SparkleExplosion from "./SparkleExplosion";
-import { generateSrcSet } from "../constants";
-
-// Niche data with images
-const niches = [
-	{
-		id: "brands",
-		label: "Brands",
-		image: "/assets/brand.webp",
-		imgWidth: 736,
-		color: "#3B82F6",
-	},
-	{
-		id: "real-estate",
-		label: "Real Estate",
-		image: "/assets/realestate.webp",
-		imgWidth: 736,
-		color: "#10B981",
-	},
-	{
-		id: "healthcare",
-		label: "Healthcare",
-		image: "/assets/healthcare.webp",
-		imgWidth: 736,
-		color: "#EC4899",
-	},
-	{
-		id: "construction",
-		label: "Construction",
-		image: "/assets/construction.webp",
-		imgWidth: 680,
-		color: "#F59E0B",
-	},
-	{
-		id: "ecommerce",
-		label: "E-commerce",
-		image: "/assets/ecommerce.webp",
-		imgWidth: 736,
-		color: "#8B5CF6",
-	},
-];
-
-// Mobile Carousel Component - horizontal swipe carousel
-const MobileCarousel: React.FC = () => {
-	const scrollRef = useRef<HTMLDivElement>(null);
-	const [activeIndex, setActiveIndex] = useState(0);
-
-	useEffect(() => {
-		const container = scrollRef.current;
-		if (!container) return;
-
-		const handleScroll = () => {
-			const scrollLeft = container.scrollLeft;
-			const cardWidth = 240 + 16; // card width + gap
-			const newIndex = Math.round(scrollLeft / cardWidth);
-			setActiveIndex(Math.min(newIndex, niches.length - 1));
-		};
-
-		container.addEventListener("scroll", handleScroll, { passive: true });
-		return () => container.removeEventListener("scroll", handleScroll);
-	}, []);
-
-	return (
-		<div className="relative w-full">
-			{/* Horizontal scroll container */}
-			<div
-				ref={scrollRef}
-				className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 py-8"
-				style={{ scrollBehavior: "smooth" }}
-			>
-				{niches.map((niche, index) => (
-					<motion.div
-						key={niche.id}
-						className={`flex-shrink-0 snap-center ${
-							index === activeIndex ? "scale-100" : "scale-90 opacity-60"
-						}`}
-						animate={{
-							scale: index === activeIndex ? 1 : 0.9,
-							opacity: index === activeIndex ? 1 : 0.5,
-						}}
-						transition={{ type: "spring", stiffness: 300, damping: 30 }}
-					>
-						<div className="relative w-[240px] h-[300px] rounded-3xl overflow-hidden shadow-2xl bg-slate-900">
-							<img
-								src={niche.image}
-								alt={`${niche.label} - Bestricky portfolio project`}
-								className="w-full h-full object-cover"
-								width={240}
-								height={300}
-								loading="lazy"
-								decoding="async"
-								srcSet={
-									!niche.image.startsWith('http')
-										? `${niche.image.replace(/\.webp$/, '')}-400.webp 400w`
-										: undefined
-								}
-								sizes="240px"
-							/>
-							<div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
-							<div className="absolute bottom-4 left-4 right-4">
-								<div className="bg-white/95 backdrop-blur-sm px-4 py-2.5 rounded-xl">
-									<p className="text-slate-900 font-bold text-base">
-										{niche.label}
-									</p>
-								</div>
-							</div>
-						</div>
-					</motion.div>
-				))}
-			</div>
-
-			{/* Dots indicator */}
-			<div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
-				{niches.map((_, idx) => (
-					<div
-						key={idx}
-						className={`h-1.5 rounded-full transition-all ${
-							idx === activeIndex ? "bg-white w-6" : "bg-white/40 w-1.5"
-						}`}
-					/>
-				))}
-			</div>
-
-			{/* Swipe hint */}
-			<motion.div
-				className="absolute top-2 left-1/2 -translate-x-1/2 text-white/40 text-[10px] font-medium"
-				animate={{ opacity: [0.3, 0.6, 0.3] }}
-				transition={{ duration: 2, repeat: Infinity }}
-			>
-				← Swipe →
-			</motion.div>
-		</div>
-	);
-};
+import React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 const Hero: React.FC = () => {
-	const [activeNiche, setActiveNiche] = useState(0);
-	const [sparkleTrigger, setSparkleTrigger] = useState(false);
-
-	// Trigger sparkle explosion on first load
-	useEffect(() => {
-		const hasSeenSparkle = sessionStorage.getItem("hasSeenSparkle");
-		if (!hasSeenSparkle) {
-			setSparkleTrigger(true);
-			sessionStorage.setItem("hasSeenSparkle", "true");
-		}
-	}, []);
-
-	// Auto-cycle through niches every 3 seconds (desktop only)
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setActiveNiche((prev) => (prev + 1) % niches.length);
-		}, 3000);
-
-		return () => clearInterval(interval);
-	}, []);
-
-	// Calculate positions for rotating niches
-	const getPosition = (index: number, total: number, radius: number) => {
-		const angle = index * (360 / total) - 90;
-		const radian = (angle * Math.PI) / 180;
-		return {
-			x: Math.cos(radian) * radius,
-			y: Math.sin(radian) * radius,
-		};
-	};
+	const reduceMotion = useReducedMotion();
+	const reveal = (delay: number) => ({
+		initial: reduceMotion ? false : { opacity: 0, y: 18 },
+		animate: { opacity: 1, y: 0 },
+		transition: {
+			duration: reduceMotion ? 0 : 0.65,
+			delay: reduceMotion ? 0 : delay,
+			ease: "easeOut" as const,
+		},
+	});
 
 	return (
-		<section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-			<SparkleExplosion trigger={sparkleTrigger} />
-			{/* Original background elements */}
-			<div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-blue-100 rounded-full blur-3xl opacity-50 z-0"></div>
-			<div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[400px] h-[400px] bg-slate-200 rounded-full blur-3xl opacity-50 z-0"></div>
+		<section className="editorial-light-field relative overflow-hidden bg-[#f6f3ed]">
+			<div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-16 pt-32 md:gap-16 md:pb-24 md:pt-40 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+				<div className="max-w-2xl">
+					<motion.p
+						{...reveal(0.08)}
+						className="mb-7 text-xs font-semibold uppercase tracking-[0.24em] text-slate-600"
+					>
+						Executive digital presence
+					</motion.p>
 
-			<div className="max-w-7xl mx-auto px-6 relative z-10">
-				{/* Mobile: Stacked layout with carousel */}
-				<div className="lg:hidden">
-					{/* Left side - Text */}
-					<div className="mb-12">
-						<div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-							<span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
-							Now Accepting New Projects
-						</div>
-						<h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tight">
-							We Build Websites That{" "}
-							<span className="gradient-text">
-								Make Money While You Sleep
-							</span>.
-						</h1>
-						<p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-xl">
-							Your 24/7 salesperson that works around the clock. Built to generate leads and close deals while you focus on your business.
-						</p>
-						<div className="flex flex-col sm:flex-row gap-4">
-							<a
-								href="/booking"
-								className="bg-blue-600 text-white px-8 py-4 rounded-2xl text-base font-bold shadow-xl shadow-blue-500/20 hover:bg-blue-700 hover:shadow-2xl transition-all transform hover:-translate-y-1 text-center"
-							>
-								Start Your Project
-							</a>
-							<a
-								href="/portfolio"
-								className="bg-white text-slate-700 px-8 py-4 rounded-2xl text-base font-bold border border-slate-200 hover:bg-slate-50 transition-all transform hover:-translate-y-1 text-center"
-							>
-								See Our Work
-							</a>
-						</div>
-					</div>
+					<h1 className="mb-7 font-serif text-5xl font-medium leading-[1.04] tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
+						{[
+							"Your reputation",
+							"deserves a digital",
+							"presence that matches it.",
+						].map((line, index) => (
+							<span key={line} className="block overflow-hidden pb-1">
+								<motion.span
+									{...reveal(0.18 + index * 0.1)}
+									className="block"
+								>
+									{line}
+								</motion.span>
+							</span>
+						))}
+					</h1>
 
-					{/* Right side - Mobile Carousel */}
-					<MobileCarousel />
+					<motion.p
+						{...reveal(0.55)}
+						className="mb-8 max-w-xl text-lg leading-relaxed text-slate-600 md:text-xl"
+					>
+						Premium personal websites for CEOs, founders, executives,
+						and thought leaders—alongside considered digital products
+						for businesses, SaaS teams, and ambitious startups.
+					</motion.p>
+
+					<motion.div
+						{...reveal(0.66)}
+						className="mb-8 flex flex-col gap-3 sm:flex-row"
+					>
+						<a
+							href="/booking"
+							className="group inline-flex min-h-14 items-center justify-center gap-3 bg-slate-950 px-7 py-4 text-sm font-semibold text-white transition-colors duration-300 hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
+						>
+							Build my digital presence
+							<span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">↗</span>
+						</a>
+						<a
+							href="/portfolio"
+							className="group inline-flex min-h-14 items-center justify-center gap-2 border border-slate-300 px-7 py-4 text-sm font-semibold text-slate-900 transition-colors duration-300 hover:border-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
+						>
+							Explore selected work
+							<span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
+						</a>
+					</motion.div>
+
+					<motion.p
+						{...reveal(0.74)}
+						className="text-sm leading-relaxed text-slate-500"
+					>
+						Featured focus this season: executive and founder websites.
+						Our work also spans business websites, SaaS, and idea-to-MVP builds.
+					</motion.p>
 				</div>
 
-				{/* Desktop: Original two-column layout */}
-				<div className="hidden lg:grid lg:grid-cols-2 gap-12 items-center">
-					{/* LEFT SIDE - Original Text */}
-					<div>
-						<div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-							<span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
-							Now Accepting New Projects
+				<motion.figure
+					initial={reduceMotion ? false : { opacity: 0, scale: 1.03 }}
+					animate={{ opacity: 1, scale: 1 }}
+					transition={{
+						duration: reduceMotion ? 0 : 1.1,
+						delay: reduceMotion ? 0 : 0.3,
+						ease: "easeOut",
+					}}
+					className="relative min-h-[420px] sm:min-h-[540px] lg:min-h-[660px]"
+				>
+					<img
+						src="/assets/djcuppy.webp"
+						alt="DJ Cuppy personal-brand website project"
+						className="absolute inset-0 h-full w-full object-cover object-top"
+						width="1200"
+						height="800"
+						fetchPriority="high"
+						decoding="async"
+					/>
+					<div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
+					<figcaption className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-6 p-6 text-white md:p-9">
+						<div>
+							<p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/75">
+								Personal brand website
+							</p>
+							<p className="font-serif text-3xl md:text-4xl">DJ Cuppy</p>
 						</div>
-						<h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tight">
-							We Build Websites That{" "}
-							<span className="gradient-text">
-								Make Money While You Sleep
-							</span>.
-						</h1>
-						<p className="text-xl text-slate-600 leading-relaxed mb-10 max-w-xl">
-							Your 24/7 salesperson that works around the clock. Built to generate leads and close deals while you focus on your business.
-						</p>
-						<div className="flex flex-col sm:flex-row gap-4">
-							<a
-								href="/booking"
-								className="bg-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-bold shadow-xl shadow-blue-500/20 hover:bg-blue-700 hover:shadow-2xl transition-all transform hover:-translate-y-1"
-							>
-								Start Your Project
-							</a>
-							<a
-								href="/portfolio"
-								className="bg-white text-slate-700 px-10 py-5 rounded-2xl text-lg font-bold border border-slate-200 hover:bg-slate-50 transition-all transform hover:-translate-y-1"
-							>
-								See Our Work
-							</a>
-						</div>
-					</div>
-
-					{/* RIGHT SIDE - Rotating Niche Carousel */}
-					<div className="relative flex items-center justify-center">
-						<div className="relative w-[500px] h-[500px]">
-							{/* Bold thick outer ring */}
-							<div className="absolute inset-0 rounded-full border-[12px] border-slate-900"></div>
-
-							{/* Inner decorative ring */}
-							<div className="absolute inset-6 rounded-full border-[2px] border-slate-300"></div>
-
-							{/* Rotating niches on the ring */}
-							{niches.map((niche, index) => {
-								const pos = getPosition(
-									index,
-									niches.length,
-									210,
-								);
-								const isActive = index === activeNiche;
-
-								return (
-									<motion.div
-										key={niche.id}
-										className="absolute"
-										style={{
-											left: "50%",
-											top: "50%",
-											x: pos.x,
-											y: pos.y,
-											marginLeft: "-50px",
-											marginTop: "-25px",
-										}}
-										animate={{
-											scale: isActive ? 1.3 : 1,
-											zIndex: isActive ? 10 : 1,
-										}}
-										transition={{ duration: 0.5 }}
-									>
-										<motion.button
-											className={`w-[100px] h-[50px] rounded-full text-xs font-bold transition-all ${
-												isActive
-													? "bg-slate-900 text-white shadow-2xl"
-													: "bg-white text-slate-700 border-2 border-slate-900"
-											}`}
-											style={{
-												boxShadow: isActive
-													? "0 10px 40px rgba(0,0,0,0.3)"
-													: "none",
-											}}
-										>
-											{niche.label}
-										</motion.button>
-									</motion.div>
-								);
-							})}
-
-							{/* Large central image container */}
-							<div className="absolute inset-0 m-auto w-[300px] h-[300px] rounded-full overflow-hidden border-4 border-slate-900 shadow-2xl bg-slate-100">
-								<AnimatePresence mode="wait">
-									<motion.div
-										key={activeNiche}
-										initial={{
-											opacity: 0,
-											scale: 0.8,
-											rotate: -10,
-										}}
-										animate={{
-											opacity: 1,
-											scale: 1,
-											rotate: 0,
-										}}
-										exit={{
-											opacity: 0,
-											scale: 1.2,
-											rotate: 10,
-										}}
-										transition={{ duration: 0.5 }}
-										className="w-full h-full"
-									>
-                                        <img
-                                          src={niches[activeNiche].image}
-                                          alt={niches[activeNiche].label}
-                                          className="w-full h-full object-cover"
-                                          width="300"
-                                          height="300"
-                                          fetchPriority="high"
-                                          loading="eager"
-                                          decoding="async"
-                                          srcSet={
-                                            !niches[activeNiche].image.startsWith('http')
-                                              ? generateSrcSet(niches[activeNiche].image.replace(/\.webp$/, ''), niches[activeNiche].imgWidth)
-                                              : undefined
-                                          }
-                                          sizes="300px"
-                                        />
-									</motion.div>
-								</AnimatePresence>
-
-								{/* Gradient overlay */}
-								<div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
-
-								{/* Active label at bottom */}
-								<div className="absolute bottom-4 left-0 right-0 text-center">
-									<motion.span
-										className="inline-block px-6 py-2 rounded-full text-sm font-bold uppercase bg-white text-slate-900"
-										initial={{ y: 10, opacity: 0 }}
-										animate={{ y: 0, opacity: 1 }}
-										key={activeNiche}
-									>
-										{niches[activeNiche].label}
-									</motion.span>
-								</div>
-							</div>
-
-							{/* Center dot */}
-							<div className="absolute inset-0 m-auto w-4 h-4 rounded-full bg-slate-900 z-20"></div>
-						</div>
-					</div>
-				</div>
+						<a
+							href="/portfolio#djcuppy"
+							className="shrink-0 border-b border-white/70 pb-1 text-xs font-semibold transition-colors hover:border-white"
+						>
+							View case study <span aria-hidden="true">↗</span>
+						</a>
+					</figcaption>
+				</motion.figure>
 			</div>
 		</section>
 	);

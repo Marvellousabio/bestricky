@@ -28,9 +28,19 @@ export const Link: React.FC<{
 			onClick(e);
 		}
 		e.preventDefault();
+		e.stopPropagation();
 		window.history.pushState({}, "", to);
 		window.dispatchEvent(new PopStateEvent("popstate"));
-		window.scrollTo(0, 0);
+		const targetId = new URL(to, window.location.origin).hash.slice(1);
+		if (targetId) {
+			window.requestAnimationFrame(() => {
+				document.getElementById(decodeURIComponent(targetId))?.scrollIntoView({
+					behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+				});
+			});
+		} else {
+			window.scrollTo(0, 0);
+		}
 	};
 
 	return (
@@ -47,9 +57,22 @@ const App: React.FC = () => {
   const originalTitle = "Bestricky | Web Developer in Lagos - Digital Agency Nigeria";
 
  	useEffect(() => {
+		const scrollToCurrentHash = () => {
+			const targetId = window.location.hash.slice(1);
+			if (targetId) {
+				window.requestAnimationFrame(() => {
+					document.getElementById(decodeURIComponent(targetId))?.scrollIntoView({
+						behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+					});
+				});
+			} else {
+				window.scrollTo(0, 0);
+			}
+		};
+
  		const handlePopState = () => {
  			setCurrentPath(window.location.pathname);
- 			window.scrollTo(0, 0);
+			scrollToCurrentHash();
  		};
 
  		// Handle all anchor tag clicks for SPA navigation
@@ -62,15 +85,27 @@ const App: React.FC = () => {
  				anchor.href.startsWith(window.location.origin)
  			) {
  				e.preventDefault();
- 				const path = anchor.href.replace(window.location.origin, "");
- 				window.history.pushState({}, "", path);
- 				setCurrentPath(path);
- 				window.scrollTo(0, 0);
+				const url = new URL(anchor.href);
+				const path = url.pathname;
+				window.history.pushState({}, "", `${path}${url.search}${url.hash}`);
+				setCurrentPath(path);
+				if (url.hash) {
+					window.requestAnimationFrame(() => {
+						document.getElementById(decodeURIComponent(url.hash.slice(1)))?.scrollIntoView({
+							behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+						});
+					});
+				} else {
+					window.scrollTo(0, 0);
+				}
  			}
  		};
 
  		window.addEventListener("popstate", handlePopState);
  		document.addEventListener("click", handleClick);
+		if (window.location.hash) {
+			scrollToCurrentHash();
+		}
  		return () => {
  			window.removeEventListener("popstate", handlePopState);
  			document.removeEventListener("click", handleClick);

@@ -91,6 +91,22 @@ export const PROJECTS = [
     description: "A comprehensive platform connecting influencers with brands for authentic partnerships and collaborations.",
     problem: "Fragmented influencer marketing landscape with no centralized platform for genuine connections.",
     solution: "Built a modern web platform with advanced matching algorithms, secure payments, and performance tracking.",
+    heroRationale: "Lead with the value exchange between brands and creators, rather than a generic description of a marketplace. Both audiences should recognize their place in the product before they are asked to explore it.",
+    ctaRationale: "Offer a clear next step for each side near the promise, then reinforce it after the matching and payment model is explained. The action becomes easier to trust once visitors understand how a partnership moves forward.",
+    designDecisions: [
+      {
+        decision: "Bring brand discovery and influencer matching into one platform.",
+        rationale: "A single path from discovery to partnership addresses the fragmentation at the heart of the brief."
+      },
+      {
+        decision: "Make secure payments part of the collaboration workflow.",
+        rationale: "Keeping payment in the product gives both sides a clearer, more trustworthy way to transact."
+      },
+      {
+        decision: "Include campaign performance tracking.",
+        rationale: "Visible performance data helps brands evaluate partnerships and gives creators a clearer view of campaign outcomes."
+      }
+    ],
     impact: "Connected 500+ influencers with 200+ brands, processing $2M+ in successful campaigns.",
     tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
     liveUrl: "https://auraex.com",
@@ -106,6 +122,22 @@ export const PROJECTS = [
     description: "A sleek, modern portfolio and media hub showcasing DJ Cuppy's global branding, music, and entertainment career.",
     problem: "No centralized online presence to showcase extensive portfolio and connect with global audience.",
     solution: "Created a dynamic portfolio website with media gallery, booking system, and social media integration.",
+    heroRationale: "Lead with a recognizable personal brand and make the range of work immediately visible. For a public figure, the opening needs to establish identity and give fans, press, and partners a clear reason to continue.",
+    ctaRationale: "Keep booking easy to find for high-intent visitors, while letting the media and portfolio content build context for everyone else. The page serves both immediate opportunities and longer consideration without forcing them into one path.",
+    designDecisions: [
+      {
+        decision: "Bring portfolio, media, and music into one central destination.",
+        rationale: "A single, maintained hub makes it easier for audiences and professional partners to find the right current information."
+      },
+      {
+        decision: "Give booking a direct route from the site.",
+        rationale: "Potential partners should be able to act on interest without hunting through social profiles."
+      },
+      {
+        decision: "Connect the experience to active social channels.",
+        rationale: "Social integration joins the owned website to the platforms where the audience already follows the brand."
+      }
+    ],
     impact: "Increased booking inquiries by 300% and grew social media following by 150K+ followers.",
     tech: ["Next.js", "Tailwind CSS", "Sanity CMS", "Vercel"],
     liveUrl: "https://djcuppy.com",
@@ -121,6 +153,22 @@ export const PROJECTS = [
     description: "Powerful analytics platform processing 21K+ edge requests daily, providing businesses with actionable insights.",
     problem: "Complex data analytics tools were inaccessible to non-technical business users.",
     solution: "Built an intuitive analytics dashboard with real-time data visualization, custom reports, and API integrations.",
+    heroRationale: "Start with the business question analytics helps answer, not a wall of charts or technical terminology. The first screen should make the value legible to the people who need to act on the data.",
+    ctaRationale: "Keep a demo or product-exploration action close to that outcome, then repeat it after the dashboard and reporting capabilities are demonstrated. That gives buyers a next step without asking them to commit before they understand the product.",
+    designDecisions: [
+      {
+        decision: "Lead with a clear dashboard and visual summaries.",
+        rationale: "Non-technical users need to understand important signals without first interpreting raw data."
+      },
+      {
+        decision: "Pair real-time visualizations with custom reports.",
+        rationale: "Quick status checks and deeper, tailored analysis serve different business questions in the same product."
+      },
+      {
+        decision: "Connect external data through API integrations.",
+        rationale: "Bringing data into one analytics workflow reduces the need to switch between disconnected tools."
+      }
+    ],
     impact: "Serving 500+ businesses with 99.9% uptime and processing millions of data points daily.",
     tech: ["React", "D3.js", "Node.js", "Redis", "AWS"],
     liveUrl: "https://benlytics.com",
@@ -136,6 +184,22 @@ export const PROJECTS = [
     description: "Comprehensive digital receipt management system for small businesses to digitize, organize, and track expenses.",
     problem: "Small businesses struggling with paper receipts, manual expense tracking, and tax compliance.",
     solution: "Developed a mobile-first web app with OCR receipt scanning, automated categorization, and tax reporting.",
+    heroRationale: "Frame the product around the full job—capture, organize, and prepare expenses—so a business owner sees relief from admin work rather than just another scanning tool. The mobile experience should be visible from the start because capture happens away from a desk.",
+    ctaRationale: "Make the first-use action easy to find beside the product promise, then return to it after explaining automation and reporting. The explanation earns confidence; the repeated action removes the need to search for how to begin.",
+    designDecisions: [
+      {
+        decision: "Design the experience mobile-first around receipt capture.",
+        rationale: "Receipts are created during day-to-day spending, so capturing them on the go avoids a later paper backlog."
+      },
+      {
+        decision: "Use OCR and automated categorization to reduce manual entry.",
+        rationale: "Automating repetitive expense recording tackles the time cost and error risk in the original process."
+      },
+      {
+        decision: "Carry expense records through to tax reporting.",
+        rationale: "Keeping records useful beyond capture connects the everyday workflow to a key small-business obligation."
+      }
+    ],
     impact: "Helped 2,000+ small businesses save 20+ hours monthly on expense management and reduce errors by 95%.",
     tech: ["React Native", "Node.js", "MongoDB", "AWS", "Tesseract OCR"],
     liveUrl: "https://receiptr.app",
@@ -181,6 +245,22 @@ export const PROJECTS = [
     description: "Professional website showcasing projects, services, and generating qualified leads for a construction firm.",
     problem: "Dated website failing to attract commercial clients.",
     solution: "Portfolio-focused design with project galleries, client testimonials, and clear CTAs.",
+    heroRationale: "A commercial buyer needs to identify the firm's work and relevance quickly. Lead with a clear service proposition and strong project evidence, not a broad slogan that could belong to any contractor.",
+    ctaRationale: "Make an inquiry route visible in the hero for ready-to-talk buyers, then place it again after project examples and testimonials. The second invitation arrives when the site has answered the credibility question.",
+    designDecisions: [
+      {
+        decision: "Put completed projects at the center of the experience.",
+        rationale: "Commercial buyers need relevant proof of delivery before they commit to a high-value conversation."
+      },
+      {
+        decision: "Pair project work with client testimonials.",
+        rationale: "First-hand customer evidence reinforces credibility alongside the visual portfolio."
+      },
+      {
+        decision: "Make the next step clear with direct calls to action.",
+        rationale: "A focused inquiry path turns buyer confidence into a practical route to contact the firm."
+      }
+    ],
     impact: "250% increase in project inquiries within 6 months.",
     tech: ["Next.js", "Tailwind CSS", "Sanity CMS", "Vercel"],
     liveUrl: "https://buildright.ng",
@@ -196,6 +276,22 @@ export const PROJECTS = [
     description: "Feature-rich e-commerce store with inventory management, delivery scheduling, and subscription options.",
     problem: "Manual order processing and no online sales channel.",
     solution: "Custom WooCommerce store with automated workflows and mobile optimization.",
+    heroRationale: "Treat the storefront as a place to shop, not a software feature list. Put the product range and a direct route into browsing first; explain convenience and recurring orders as supporting reasons to buy.",
+    ctaRationale: "Use a prominent shop/browse action in the hero to shorten the path to products, then use product-level purchase actions where intent is highest. This keeps the call to action matched to the customer's stage instead of repeating one generic button.",
+    designDecisions: [
+      {
+        decision: "Create a direct online storefront with a mobile-optimized experience.",
+        rationale: "A usable purchase journey on mobile gives customers a convenient alternative to manual ordering."
+      },
+      {
+        decision: "Connect orders to inventory and delivery scheduling.",
+        rationale: "Coordinating the storefront with fulfillment helps replace disconnected, manual order handling."
+      },
+      {
+        decision: "Support subscriptions alongside one-off purchases.",
+        rationale: "Recurring ordering gives returning customers a more convenient way to buy regularly."
+      }
+    ],
     impact: "$150K in online sales first quarter.",
     tech: ["WooCommerce", "WordPress", "Stripe", "AWS"],
     liveUrl: "https://gourmetfoods.ng",
