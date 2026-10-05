@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { PROJECTS, generateSrcSet } from "../constants";
 
 // --- Animated Website Preview Component ---
@@ -17,6 +17,7 @@ const WebsitePreview: React.FC<{
   const [iframeError, setIframeError] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   return (
     <div
@@ -30,16 +31,16 @@ const WebsitePreview: React.FC<{
         target="_blank"
         rel="noopener noreferrer"
         onClick={(e) => e.stopPropagation()}
-        className="absolute top-4 right-4 z-30 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-200"
+        className="absolute top-4 right-4 z-30 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-md hover:bg-slate-950 hover:text-white hover:border-slate-950 transition-colors duration-300"
       >
-        <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+        <span className="w-1.5 h-1.5 bg-emerald-600 rounded-full"></span>
         Live Site ↗
       </a>
 
       {/* Mobile/Desktop View Toggle */}
       <button
         onClick={(e) => { e.stopPropagation(); setShowMobile(!showMobile); }}
-        className={`absolute top-4 left-4 z-30 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-md hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-200 ${showMobile ? 'bg-blue-600 text-white border-blue-600' : ''}`}
+        className={`absolute top-4 left-4 z-30 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-md hover:bg-slate-950 hover:text-white hover:border-slate-950 transition-colors duration-300 ${showMobile ? 'bg-slate-950 text-white border-slate-950' : ''}`}
       >
         {showMobile ? 'Desktop' : 'Mobile'}
       </button>
@@ -85,7 +86,7 @@ const WebsitePreview: React.FC<{
             <img
               src={image}
               alt={title}
-              className="absolute inset-0 w-full h-full object-cover"
+              className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out ${isHovered && !reduceMotion ? "scale-[1.02]" : "scale-100"}`}
               width={imgWidth}
               height={imgHeight}
               loading={priority ? "eager" : "lazy"}
@@ -122,7 +123,7 @@ const WebsitePreview: React.FC<{
 
       {/* Hover overlay: "Visit Site" */}
       <div
-        className={`absolute inset-0 z-20 flex items-center justify-center bg-slate-900/40 backdrop-blur-[2px] transition-opacity duration-300 ${
+        className={`absolute inset-0 z-20 flex items-center justify-center bg-slate-950/20 transition-opacity duration-500 ${
           isHovered ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -130,10 +131,10 @@ const WebsitePreview: React.FC<{
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3 bg-white text-slate-900 font-black rounded-2xl text-sm shadow-xl hover:bg-blue-600 hover:text-white transition-all duration-200 transform hover:scale-105"
+          className="group/link inline-flex items-center gap-2 border border-white/80 bg-white px-6 py-3 text-slate-950 font-semibold text-sm shadow-lg transition-colors duration-300 hover:bg-slate-950 hover:text-white"
           onClick={(e) => e.stopPropagation()}
         >
-          Visit Live Site ↗
+          View live site <span aria-hidden="true" className="transition-transform group-hover/link:translate-x-1">↗</span>
         </a>
       </div>
 
@@ -143,6 +144,7 @@ const WebsitePreview: React.FC<{
 };
 
 const FEATURED_PROJECT_IDS = ["djcuppy", "auraex", "benlytics", "construction", "ecommerce"];
+const ADDITIONAL_PROJECT_IDS = ["necole-bitchie", "precision-apex", "mtn-clarity-ai", "victor-osimhen"];
 const SUPPORTING_OFFERS = [
   {
     title: "Brand identity",
@@ -166,17 +168,15 @@ const SUPPORTING_OFFERS = [
   }
 ];
 
-const projectVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" }
-  }),
-};
+const revealTransition = { duration: 0.65, ease: "easeOut" as const };
 
 // --- Main Portfolio Component ---
 const Portfolio: React.FC = () => {
+  const reduceMotion = useReducedMotion();
   const featuredProjects = FEATURED_PROJECT_IDS
+    .map((projectId) => PROJECTS.find((project) => project.id === projectId))
+    .filter((project) => project !== undefined);
+  const additionalProjects = ADDITIONAL_PROJECT_IDS
     .map((projectId) => PROJECTS.find((project) => project.id === projectId))
     .filter((project) => project !== undefined);
 
@@ -187,34 +187,45 @@ const Portfolio: React.FC = () => {
       setTimeout(() => {
         const element = document.getElementById(hash);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          element.scrollIntoView({
+            behavior: reduceMotion ? "auto" : "smooth",
+            block: "start",
+          });
         }
       }, 100);
     }
-  }, []);
+  }, [reduceMotion]);
 
   return (
-    <div className="pt-32 pb-24 min-h-screen">
+    <div className="min-h-screen bg-[#fbfaf7] pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-20 text-center max-w-4xl mx-auto"
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={reduceMotion ? { duration: 0 } : revealTransition}
+          className="editorial-light-field relative isolate mb-20 overflow-hidden px-6 py-12 text-center max-w-4xl mx-auto md:py-16"
         >
-          <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-5">
+          <motion.p
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: 0.08 }}
+            className="relative z-10 text-sm font-bold text-blue-700 uppercase tracking-[0.2em] mb-5"
+          >
             Selected case studies
-          </p>
+          </motion.p>
           <motion.h1
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tight"
+            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: 0.16 }}
+            className="relative z-10 text-5xl md:text-7xl font-black text-slate-950 mb-8 tracking-tight"
           >
             Built around <span className="text-blue-600">business outcomes.</span>
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg md:text-xl text-slate-600 leading-relaxed"
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: 0.24 }}
+            className="relative z-10 text-lg md:text-xl text-slate-600 leading-relaxed"
           >
             Five selected projects spanning SaaS, marketplaces, personal
             brands, e-commerce, and commercial lead
@@ -223,7 +234,14 @@ const Portfolio: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        <section className="mb-24 overflow-hidden rounded-[2rem] bg-slate-900 text-white" aria-labelledby="executive-focus-heading">
+        <motion.section
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={reduceMotion ? { duration: 0 } : revealTransition}
+          className="mb-24 overflow-hidden rounded-[2rem] bg-slate-900 text-white"
+          aria-labelledby="executive-focus-heading"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="p-8 md:p-12 lg:p-16">
               <p className="text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-5">
@@ -253,15 +271,15 @@ const Portfolio: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="/booking"
-                  className="inline-flex items-center justify-center rounded-xl bg-blue-500 px-6 py-4 font-bold text-white transition hover:bg-blue-600"
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-6 py-4 font-bold text-white transition-colors duration-300 hover:bg-blue-600"
                 >
-                  Build my executive website
+                  Build my executive website <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">↗</span>
                 </a>
                 <a
                   href="#djcuppy"
-                  className="inline-flex items-center justify-center rounded-xl border border-slate-600 px-6 py-4 font-bold text-white transition hover:border-white"
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl border border-slate-600 px-6 py-4 font-bold text-white transition-colors duration-300 hover:border-white"
                 >
-                  See a personal-brand project
+                  See a personal-brand project <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
                 </a>
               </div>
             </div>
@@ -269,7 +287,7 @@ const Portfolio: React.FC = () => {
               <img
                 src="/assets/djcuppy.webp"
                 alt="Personal brand website project for DJ Cuppy"
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 ease-out hover:scale-[1.02]"
                 width="1200"
                 height="800"
                 loading="lazy"
@@ -285,15 +303,17 @@ const Portfolio: React.FC = () => {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 gap-24">
             {featuredProjects.map((project, idx) => (
               <div key={project.id} id={project.id} className="scroll-mt-28">
               <motion.div
-                custom={idx}
-                variants={projectVariants} initial="hidden" animate="visible"
+                initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: idx === 0 ? 0 : 0.08 }}
                 className="flex flex-col md:flex-row gap-12 items-start border-b border-slate-100 pb-24 last:border-0"
               >
                 
@@ -310,44 +330,38 @@ const Portfolio: React.FC = () => {
 
                 {/* Right: Content */}
                 <div className="w-full md:w-1/2 flex flex-col pt-4">
-                  <motion.span
+                  <span
                     className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4"
-                    initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
                   >
                     {project.category}
-                  </motion.span>
-                  <motion.h2
+                  </span>
+                  <h2
                     className="text-4xl md:text-5xl font-black text-slate-900 mb-6"
-                    initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
                   >
                     {project.title}
-                  </motion.h2>
-                  <motion.h3
+                  </h2>
+                  <h3
                     className="text-xl font-bold text-slate-500 mb-8"
-                    initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
                   >
                     {project.subtitle}
-                  </motion.h3>
+                  </h3>
                   <p className="text-slate-600 leading-relaxed -mt-5 mb-8">
                     {project.description}
                   </p>
 
                   <div className="space-y-8 mb-8">
-                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}>
+                    <div>
                       <h4 className="font-bold text-slate-900 text-lg mb-2 flex items-center gap-2">
                         <span className="w-1.5 h-6 bg-red-400 rounded-full"></span> The Business Problem
                       </h4>
                       <p className="text-slate-600 leading-relaxed">{project.problem}</p>
-                    </motion.div>
-                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 }}>
+                    </div>
+                    <div>
                       <h4 className="font-bold text-slate-900 text-lg mb-2 flex items-center gap-2">
                         <span className="w-1.5 h-6 bg-blue-400 rounded-full"></span> What We Built
                       </h4>
                       <p className="text-slate-600 leading-relaxed">{project.solution}</p>
-                    </motion.div>
+                    </div>
                   </div>
 
                   <section className="mb-8" aria-label={`Key design decisions for ${project.title}`}>
@@ -385,36 +399,91 @@ const Portfolio: React.FC = () => {
                     </div>
                   </section>
 
-                  <motion.div className="flex flex-wrap gap-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}>
+                  <div className="flex flex-wrap gap-2">
                     {project.tech.map((t, i) => (
-                      <motion.span
-                        key={t} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 1 + i * 0.1 }}
-                        className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-black text-slate-800"
+                      <span
+                        key={t}
+                        className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 transition-colors duration-300 hover:border-slate-400"
                       >
                         {t}
-                      </motion.span>
+                      </span>
                     ))}
-                  </motion.div>
+                  </div>
 
                   <motion.div
-                    className="mt-8 bg-slate-900 text-white p-8 rounded-3xl relative overflow-hidden shadow-xl shadow-blue-500/10"
-                    initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.8, duration: 0.5 }}
+                    initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: 0.08 }}
+                    className="relative mt-8 overflow-hidden rounded-3xl bg-slate-950 p-8 text-white shadow-xl shadow-slate-900/10"
                   >
                     <h4 className="font-bold text-blue-400 text-sm mb-3 uppercase tracking-wider">Reported Result</h4>
                     <p className="text-xl font-medium leading-relaxed">{project.impact}</p>
-                    <motion.div
-                      className="absolute top-0 right-0 w-32 h-32 bg-blue-600/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"
-                      animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    />
+                    <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-blue-500/10 to-transparent" />
                   </motion.div>
                 </div>
               </motion.div>
               </div>
             ))}
         </div>
+
+        <section className="border-t border-slate-200 py-20" aria-labelledby="additional-work-heading">
+          <div className="mb-10 max-w-3xl">
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-blue-700">
+              More selected work
+            </p>
+            <h2 id="additional-work-heading" className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+              More live products and digital experiences.
+            </h2>
+            <p className="text-lg text-slate-600 leading-relaxed">
+              The five stories above are our in-depth case studies. These
+              additional projects show more of the range—from editorial
+              publishing and industrial websites to AI and personal-brand
+              experiences.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+            {additionalProjects.map((project, index) => (
+              <motion.a
+                key={project.id}
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: index * 0.07 }}
+                className="group relative grid grid-cols-1 gap-5 border-t border-slate-200 pt-5 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-slate-900 after:transition-transform after:duration-500 hover:after:scale-x-100 sm:grid-cols-[0.9fr_1.1fr] sm:items-center"
+              >
+                <div className="aspect-[4/3] overflow-hidden bg-stone-200">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} website preview`}
+                    className="h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.025]"
+                    width={project.imgWidth}
+                    height={project.imgHeight}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-700 mb-2">
+                    {project.category}
+                  </p>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                    {project.subtitle}
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900">
+                    Visit live project <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+                  </span>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </section>
 
         <section className="mt-8 border-y border-slate-200 py-20" aria-labelledby="collaboration-heading">
           <div className="max-w-4xl mb-12">
@@ -449,12 +518,19 @@ const Portfolio: React.FC = () => {
                 title: "Build with clear checkpoints",
                 detail: "Review working progress against scope, test key journeys, and agree launch readiness together."
               }
-            ].map((item) => (
-              <li key={item.step} className="rounded-2xl border border-slate-200 bg-white p-7">
+            ].map((item, index) => (
+              <motion.li
+                key={item.step}
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: index * 0.08 }}
+                className="group rounded-2xl border border-slate-200 bg-white p-7 transition-colors duration-300 hover:border-slate-400"
+              >
                 <span className="text-sm font-black text-blue-600">{item.step}</span>
-                <h3 className="text-xl font-bold text-slate-900 mt-4 mb-3">{item.title}</h3>
+                <h3 className="mt-4 mb-3 text-xl font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1">{item.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{item.detail}</p>
-              </li>
+              </motion.li>
             ))}
           </ol>
         </section>
@@ -474,17 +550,31 @@ const Portfolio: React.FC = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {SUPPORTING_OFFERS.map((offer) => (
-              <article key={offer.title} className="rounded-2xl border border-slate-200 p-7">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{offer.title}</h3>
+            {SUPPORTING_OFFERS.map((offer, index) => (
+              <motion.article
+                key={offer.title}
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: index * 0.07 }}
+                className="group rounded-2xl border border-slate-200 bg-white/60 p-7 transition-colors duration-300 hover:border-slate-400 hover:bg-white"
+              >
+                <h3 className="mb-3 text-xl font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1">{offer.title}</h3>
                 <p className="text-slate-600 leading-relaxed mb-4">{offer.description}</p>
                 <p className="text-sm font-semibold text-slate-800">{offer.value}</p>
-              </article>
+              </motion.article>
             ))}
           </div>
         </section>
 
-        <section className="rounded-[2rem] bg-slate-900 px-8 py-12 text-center md:px-16 md:py-16">
+        <motion.section
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={reduceMotion ? { duration: 0 } : revealTransition}
+          className="relative isolate overflow-hidden rounded-[2rem] bg-slate-950 px-8 py-12 text-center md:px-16 md:py-16"
+        >
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_120%,rgba(59,130,246,0.2),transparent_55%)]" />
           <p className="text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-4">
             The right moment to talk
           </p>
@@ -501,11 +591,11 @@ const Portfolio: React.FC = () => {
           </p>
           <a
             href="/booking"
-            className="inline-flex items-center justify-center rounded-xl bg-blue-500 px-7 py-4 font-bold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-600"
+            className="group inline-flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-7 py-4 font-bold text-white shadow-lg shadow-blue-500/20 transition-colors duration-300 hover:bg-blue-600"
           >
-            Talk through your project
+            Talk through your project <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
           </a>
-        </section>
+        </motion.section>
       </div>
     </div>
   );

@@ -109,7 +109,7 @@ export const PROJECTS = [
     ],
     impact: "Connected 500+ influencers with 200+ brands, processing $2M+ in successful campaigns.",
     tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    liveUrl: "https://auraex.com",
+    liveUrl: "https://aura-frontend-omega.vercel.app/",
     image: "/assets/aura.webp",
     imgWidth: 1200,
     imgHeight: 800
@@ -140,7 +140,7 @@ export const PROJECTS = [
     ],
     impact: "Increased booking inquiries by 300% and grew social media following by 150K+ followers.",
     tech: ["Next.js", "Tailwind CSS", "Sanity CMS", "Vercel"],
-    liveUrl: "https://djcuppy.com",
+    liveUrl: "https://djcuppy-theta.vercel.app/",
     image: "/assets/djcuppy.webp",
     imgWidth: 1200,
     imgHeight: 800
@@ -171,7 +171,7 @@ export const PROJECTS = [
     ],
     impact: "Serving 500+ businesses with 99.9% uptime and processing millions of data points daily.",
     tech: ["React", "D3.js", "Node.js", "Redis", "AWS"],
-    liveUrl: "https://benlytics.com",
+    liveUrl: "https://www.benlytics.dev/",
     image: "/assets/benlytics.webp",
     imgWidth: 1200,
     imgHeight: 800
@@ -202,7 +202,7 @@ export const PROJECTS = [
     ],
     impact: "Helped 2,000+ small businesses save 20+ hours monthly on expense management and reduce errors by 95%.",
     tech: ["React Native", "Node.js", "MongoDB", "AWS", "Tesseract OCR"],
-    liveUrl: "https://receiptr.app",
+    liveUrl: "https://receiptr-plum.vercel.app/",
     image: "/assets/synapse.webp",
     imgWidth: 1200,
     imgHeight: 800
@@ -239,8 +239,8 @@ export const PROJECTS = [
   },
   {
     id: "construction",
-    title: "BuildRight Co",
-    subtitle: "Construction company website",
+    title: "JOO Design and Build Ltd",
+    subtitle: "Architecture and construction in Lagos, Nigeria",
     category: "Construction",
     description: "Professional website showcasing projects, services, and generating qualified leads for a construction firm.",
     problem: "Dated website failing to attract commercial clients.",
@@ -263,7 +263,7 @@ export const PROJECTS = [
     ],
     impact: "250% increase in project inquiries within 6 months.",
     tech: ["Next.js", "Tailwind CSS", "Sanity CMS", "Vercel"],
-    liveUrl: "https://buildright.ng",
+    liveUrl: "https://joo-five.vercel.app/",
     image: "/assets/construction.webp",
     imgWidth: 600,
     imgHeight: 400
@@ -294,10 +294,134 @@ export const PROJECTS = [
     ],
     impact: "$150K in online sales first quarter.",
     tech: ["WooCommerce", "WordPress", "Stripe", "AWS"],
-    liveUrl: "https://gourmetfoods.ng",
+    liveUrl: "https://gourmet-beta.vercel.app/",
     image: "/assets/ecommerce.webp",
     imgWidth: 600,
     imgHeight: 400
+  },
+  {
+    id: "necole-bitchie",
+    title: "Necole Bitchie",
+    subtitle: "Lifestyle editorial platform",
+    category: "Lifestyle & Media",
+    description: "A digital editorial destination for beauty, wellness, and lifestyle stories.",
+    problem: "Readers need a clear way to discover timely lifestyle stories across several editorial topics.",
+    solution: "Created an editorial website that organizes articles by category and brings trending reads, featured coverage, and publication identity together.",
+    heroRationale: "Open with the publication name and editorial promise so visitors immediately understand the audience and point of view.",
+    ctaRationale: "Prioritize browsing and reading actions alongside the editorial content; readers arrive to explore stories, so article links are the natural next step.",
+    designDecisions: [
+      {
+        decision: "Organize content into familiar editorial categories.",
+        rationale: "Clear topics help readers find relevant beauty, wellness, and lifestyle coverage."
+      },
+      {
+        decision: "Give trending stories a prominent place.",
+        rationale: "Surfacing popular reads offers a useful entry point for first-time visitors."
+      },
+      {
+        decision: "Use publication identity consistently across the reading experience.",
+        rationale: "A recognizable editorial voice makes the destination feel coherent as readers move between stories."
+      }
+    ],
+    impact: "Delivered a live editorial destination with category-led discovery and a browsable archive of lifestyle content.",
+    tech: ["React", "Editorial UI", "Responsive web design"],
+    liveUrl: "https://necole.vercel.app/",
+    image: "/assets/necole.webp",
+    imgWidth: 1200,
+    imgHeight: 800
+  },
+  {
+    id: "precision-apex",
+    title: "PrecisionApex",
+    subtitle: "Industrial engineering website concept",
+    category: "Manufacturing",
+    description: "A deployed website concept presenting advanced manufacturing capabilities, engineering solutions, and featured project work.",
+    problem: "Industrial engineering services can be difficult to evaluate when capabilities, process, and project examples are not clearly organized.",
+    solution: "Built a corporate website concept that groups core solutions, featured projects, process information, and consultation pathways.",
+    heroRationale: "Lead with the engineering value proposition and a concise description of the work before asking visitors to explore technical capabilities.",
+    ctaRationale: "Pair consultation and solutions actions in the opening so visitors can either start a conversation or first validate service fit.",
+    designDecisions: [
+      {
+        decision: "Group services into distinct solution areas.",
+        rationale: "Organized capabilities help industrial buyers scan for the type of engineering support they need."
+      },
+      {
+        decision: "Show projects with process context.",
+        rationale: "Examples and delivery steps help explain how technical services move from requirements to production."
+      },
+      {
+        decision: "Use a restrained, technical visual direction.",
+        rationale: "A focused visual system supports a precision-engineering message without distracting from the capabilities."
+      }
+    ],
+    impact: "Delivered a live manufacturing website concept with structured capabilities, project examples, and clear inquiry paths.",
+    tech: ["React", "Responsive web design", "Interactive project showcase"],
+    liveUrl: "https://precisionapex.vercel.app/",
+    image: "/assets/precisionapex.webp",
+    imgWidth: 1200,
+    imgHeight: 800
+  },
+  {
+    id: "mtn-clarity-ai",
+    title: "MTN ClarityAI",
+    subtitle: "AI-powered mobile plan advisor",
+    category: "AI Product Concept",
+    description: "A plan-comparison and AI-advisor experience that helps MTN subscribers understand bundles and explore options for their usage and budget.",
+    problem: "Subscribers may find it difficult to compare plan allowances, prices, and features or identify which option fits their needs.",
+    solution: "Built a live hackathon product experience combining plan comparisons, a conversational assistant, personalized recommendations, and user memory.",
+    heroRationale: "Start with the subscriber benefit—understand a plan and save—before introducing the AI architecture behind the experience.",
+    ctaRationale: "Invite visitors to launch the assistant after the value is clear, while keeping sign-in as a separate action for returning users.",
+    designDecisions: [
+      {
+        decision: "Make plan comparison visible alongside the assistant.",
+        rationale: "Side-by-side plan details support direct evaluation, while conversation helps users who need more guidance."
+      },
+      {
+        decision: "Support natural-language questions, including Nigerian Pidgin.",
+        rationale: "Meeting users in familiar language can make plan information easier to ask about and understand."
+      },
+      {
+        decision: "Use a recommendation flow based on fit, cost, segment, and features.",
+        rationale: "A structured scoring model makes recommendations reflect multiple needs rather than price alone."
+      }
+    ],
+    impact: "Delivered a live MTN Nigeria Hackathon 2026 prototype demonstrating plan comparison and personalized AI guidance.",
+    tech: ["Microsoft AI Foundry", "Semantic Kernel", "Recommendation engine"],
+    liveUrl: "https://mtn-clarityai.vercel.app/",
+    image: "/assets/mtn_clarityAI.png",
+    imgWidth: 1600,
+    imgHeight: 900
+  },
+  {
+    id: "victor-osimhen",
+    title: "Victor Osimhen — VO9 Digital Arena",
+    subtitle: "Footballer personal brand and career storytelling",
+    category: "Personal Brand",
+    description: "A digital storytelling experience presenting Victor Osimhen's football journey, achievements, statistics, and foundation.",
+    problem: "A public career spanning clubs, milestones, and community work benefits from a central experience that gives audiences context beyond match highlights.",
+    solution: "Created an immersive personal-brand website with career statistics, an achievement wall, a visual timeline, and foundation and connection pathways.",
+    heroRationale: "Lead with the athlete's identity and origin story to establish the human journey before introducing records and achievements.",
+    ctaRationale: "Offer a route to explore the career from the hero, then let the achievement and journey sections provide context for deeper engagement.",
+    designDecisions: [
+      {
+        decision: "Structure the experience around a career journey.",
+        rationale: "A timeline gives milestones a narrative sequence instead of presenting achievements as an isolated list."
+      },
+      {
+        decision: "Separate statistics and awards into scannable sections.",
+        rationale: "Visitors can quickly find performance and career proof without interrupting the biographical narrative."
+      },
+      {
+        decision: "Include foundation and connection pathways.",
+        rationale: "The digital presence can represent both the athlete's public career and broader opportunities to engage."
+      }
+    ],
+    impact: "Delivered a live personal-brand experience bringing the athlete's story, career milestones, and foundation together.",
+    tech: ["React", "Interactive data visualization", "Responsive web design"],
+    liveUrl: "https://victoroshimen.vercel.app/",
+    image: "/assets/victoroshimen.webp",
+    imgWidth: 1200,
+    imgHeight: 800
   }
 ];
 
