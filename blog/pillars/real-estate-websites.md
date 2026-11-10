@@ -1,7 +1,7 @@
 ---
 title: "Real Estate Website Design: Complete Guide for Nigerian Agents & Developers"
 category: "Real Estate"
-author: "Marvellous Abiola"
+author: "Marvellous Abiola Ogunleke"
 date: "2026-05-14"
 lastUpdated: "2026-05-14"
 image: "/assets/realestate.webp"

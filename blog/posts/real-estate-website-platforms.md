@@ -1,7 +1,7 @@
 ---
 title: "Custom Development vs Templates: Best Real Estate Website Solutions Nigeria 2026"
 category: "Real Estate"
-author: "Marvellous Abiola"
+author: "Marvellous Abiola Ogunleke"
 date: "2026-05-14"
 readTime: "8 min read"
 image: "/assets/realestate.webp"

@@ -1,7 +1,7 @@
 ---
 title: "Healthcare Website Design Nigeria 2026: HIPAA Compliance, Telemedicine & Patient Engagement"
 category: "Healthcare"
-author: "Marvellous Abiola"
+author: "Marvellous Abiola Ogunleke"
 date: "2026-05-14"
 readTime: "12 min read"
 image: "/assets/healthcare.webp"

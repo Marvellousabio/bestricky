@@ -500,7 +500,7 @@ export type TeamMember = {
 export const TEAM: TeamMember[] = [
   {
     id: "1",
-    name: "Marvellous Ogunleke",
+    name: "Marvellous Abiola Ogunleke",
     role: "Founder & Lead Developer",
     bio: "Full-stack engineer leading strategy, design and development for founders, executives and growing businesses worldwide.",
     image: "/assets/marvellous.webp",
@@ -537,7 +537,7 @@ export const BLOG_POSTS = [
     title: "Why Website Speed Directly Impacts Your Revenue",
     category: "Guides",
     readTime: "8 min read",
-    author: "Marvellous Abiola",
+    author: "Marvellous Abiola Ogunleke",
     date: "April 15, 2026",
     image: "/assets/synapse.webp",
     content: "<p>Website speed is critical for user experience and conversions. In this guide, we explore how loading times affect bounce rates and sales, and what you can do to optimize your site.</p><p>Studies show that a 1-second delay can reduce conversions by 7%. We'll walk through practical steps to improve performance.</p>",

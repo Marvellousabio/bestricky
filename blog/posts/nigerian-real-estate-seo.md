@@ -1,7 +1,7 @@
 ---
 title: "Real Estate SEO: Ranking for Property Searches in Nigeria 2026"
 category: "Real Estate"
-author: "Marvellous Abiola"
+author: "Marvellous Abiola Ogunleke"
 date: "2026-05-14"
 readTime: "7 min read"
 image: "/assets/realestate.webp"

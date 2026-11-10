@@ -1,7 +1,7 @@
 ---
 title: "Telemedicine Website Features: Essential Tools for Nigerian Healthcare Providers 2026"
 category: "Healthcare"
-author: "Marvellous Abiola"
+author: "Marvellous Abiola Ogunleke"
 date: "2026-05-14"
 readTime: "6 min read"
 image: "/assets/healthcare.webp"
