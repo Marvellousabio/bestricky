@@ -486,12 +486,23 @@ export const FAQS = [
 ];
 
 // Team
-export const TEAM = [
+export type TeamMember = {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  image?: string;
+  remote?: boolean;
+  linkedin?: string;
+  website?: string;
+};
+
+export const TEAM: TeamMember[] = [
   {
     id: "1",
-    name: "Marvellous Abiola",
+    name: "Marvellous Ogunleke",
     role: "Founder & Lead Developer",
-    bio: "Full-stack engineer with 5+ years building high-performance web applications for global clients.",
+    bio: "Full-stack engineer leading strategy, design and development for founders, executives and growing businesses worldwide.",
     image: "/assets/marvellous.webp",
     linkedin: "https://linkedin.com/in/marvellous-ogunleke2025",
     website: "https://bestricky.com"
@@ -500,25 +511,22 @@ export const TEAM = [
     id: "2",
     name: "Sarah Nkosi",
     role: "UI/UX Designer",
-    bio: "Award-winning designer passionate about creating intuitive, beautiful user experiences that drive engagement.",
-    image: "/assets/necole.webp",
-    linkedin: "https://linkedin.com"
+    bio: "Shapes interfaces and user journeys that are clear, considered and easy to use.",
+    remote: true
   },
   {
     id: "3",
     name: "David Okafor",
     role: "Backend Engineer",
-    bio: "Server-side specialist focused on scalable architectures, API design, and database optimization.",
-    image: "/assets/victoroshimen.webp",
-    linkedin: "https://linkedin.com"
+    bio: "Builds the APIs, data and infrastructure that keep products fast and reliable.",
+    remote: true
   },
   {
     id: "4",
     name: "Chioma Eze",
     role: "Project Manager",
-    bio: "Ensures every project stays on track, on budget, and exceeds client expectations through meticulous planning.",
-    image: "/assets/lumina.webp",
-    linkedin: "https://linkedin.com"
+    bio: "Keeps timelines, scope and communication on track from kickoff to launch.",
+    remote: true
   }
 ];
 

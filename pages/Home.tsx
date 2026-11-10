@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { PROJECTS, TESTIMONIALS, FAQS, TEAM, generateSrcSet } from "../constants";
+import { PROJECTS, TESTIMONIALS, FAQS, generateSrcSet } from "../constants";
+import TeamGrid from "../components/TeamGrid";
 import Hero, { Sculpture } from "../components/Hero";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -220,20 +221,8 @@ const Home: React.FC = () => {
 					<Reveal className="max-w-3xl">
 						<h2 className="text-4xl font-medium tracking-[-0.04em] text-slate-950 md:text-6xl">The people behind Bestricky</h2>
 					</Reveal>
-					<div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-						{TEAM.map((m, i) => (
-							<Reveal key={m.id} delay={i * 0.08}>
-								<div className="aspect-[4/5] overflow-hidden bg-stone-200">
-									<img src={m.image} alt={m.name} className="h-full w-full object-cover grayscale transition duration-700 hover:grayscale-0" loading="lazy" decoding="async" />
-								</div>
-								<h3 className="mt-5 text-xl font-semibold tracking-[-0.02em] text-slate-950">{m.name}</h3>
-								<p className="text-sm text-slate-500">{m.role}</p>
-								<div className="mt-3 flex gap-4 text-sm font-semibold text-blue-700">
-									{m.linkedin && <a href={m.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>}
-									{m.website && <a href={m.website} target="_blank" rel="noopener noreferrer">Website ↗</a>}
-								</div>
-							</Reveal>
-						))}
+					<div className="mt-16">
+						<TeamGrid />
 					</div>
 				</div>
 			</section>

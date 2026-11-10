@@ -1,32 +1,7 @@
 import React from "react";
+import TeamGrid from "../components/TeamGrid";
 
 const About: React.FC = () => {
-	const team = [
-		{
-			name: "Marvellous Abiola",
-			role: "Founder & Lead Developer",
-			image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
-			bio: "Passionate about building high-performance digital solutions with 3+ years of experience in web development.",
-		},
-		{
-			name: "Sarah Johnson",
-			role: "UI/UX Designer",
-			image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400",
-			bio: "Creative designer focused on creating intuitive and beautiful user experiences.",
-		},
-		{
-			name: "Michael Chen",
-			role: "Full Stack Developer",
-			image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400",
-			bio: "Expert in building scalable web applications with modern technologies.",
-		},
-		{
-			name: "Emily Davis",
-			role: "Project Manager",
-			image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400",
-			bio: "Ensuring projects are delivered on time and exceed client expectations.",
-		},
-	];
 
 	const values = [
 		{
@@ -171,29 +146,7 @@ const About: React.FC = () => {
 						</p>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-						{team.map((member) => (
-							<div key={member.name} className="group">
-								<div className="relative mb-6 overflow-hidden">
-									<img
-										src={member.image}
-										alt={member.name}
-										className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300"
-									/>
-									<div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								</div>
-								<h3 className="text-xl font-bold text-slate-950 mb-1">
-									{member.name}
-								</h3>
-								<p className="text-blue-700 font-medium mb-2">
-									{member.role}
-								</p>
-								<p className="text-slate-600 text-sm">
-									{member.bio}
-								</p>
-							</div>
-						))}
-					</div>
+					<TeamGrid />
 				</div>
 			</section>
 
