@@ -94,27 +94,27 @@ const BlogPostDetail: React.FC<Props> = ({ slug }) => {
   if (!activePost) return <div className="pt-40 text-center">Post not found.</div>;
 
   return (
-    <div className="pt-32 pb-24 bg-white">
+    <div className="pt-40 pb-24 bg-white">
       <article className="max-w-4xl mx-auto px-6">
         <div className="mb-12">
-          <div className="flex items-center gap-4 text-xs font-bold text-blue-600 uppercase tracking-[0.2em] mb-6">
+          <div className="flex items-center gap-4 text-xs font-bold text-blue-700 uppercase tracking-[0.2em] mb-6">
             <span>{activePost.category}</span>
             <span className="w-1 h-1 bg-slate-300 rounded-full"></span>
             <span>{activePost.readTime}</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">{activePost.title}</h1>
-          <div className="flex items-center gap-4 border-b border-slate-100 pb-12">
+          <h1 className="text-4xl md:text-6xl font-medium tracking-[-0.04em] text-slate-950 mb-8 leading-tight">{activePost.title}</h1>
+          <div className="flex items-center gap-4 border-b border-slate-200 pb-12">
             <div className="w-12 h-12 bg-blue-100 rounded-full overflow-hidden">
                 <img src="https://i.pravatar.cc/150?u=bestricky" alt={activePost.author} />
             </div>
             <div>
-                <p className="font-bold text-slate-900">{activePost.author}</p>
+                <p className="font-bold text-slate-950">{activePost.author}</p>
                 <p className="text-sm text-slate-500">{activePost.date}</p>
             </div>
           </div>
         </div>
 
-        <div className="aspect-[21/9] rounded-[2.5rem] overflow-hidden mb-16 shadow-2xl">
+        <div className="aspect-[21/9] overflow-hidden mb-16">
           <img src={activePost.image} alt={activePost.title} className="w-full h-full object-cover" width={activePost.imgWidth} height={activePost.imgHeight} loading="eager" decoding="async" />
         </div>
 
@@ -124,14 +124,14 @@ const BlogPostDetail: React.FC<Props> = ({ slug }) => {
 
         {/* Inline Service CTA */}
         {relatedService && (
-          <div className="bg-slate-50 rounded-[2.5rem] p-10 md:p-16 border border-slate-100 mb-20">
-            <h3 className="text-3xl font-black text-slate-900 mb-6">Looking for {relatedService.title}?</h3>
+          <div className="bg-[#fbfaf7] p-10 md:p-16 border border-slate-200 mb-20">
+            <h3 className="text-3xl font-medium tracking-[-0.04em] text-slate-950 mb-6">Looking for {relatedService.title}?</h3>
             <p className="text-xl text-slate-600 mb-10">{relatedService.description}</p>
             <div className="flex flex-wrap gap-4">
-              <a href="/services" className="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors">
+              <a href="/services" className="px-8 py-4 bg-slate-950 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
                 View Service Details
               </a>
-              <a href="/booking" className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-colors">
+              <a href="/booking" className="px-8 py-4 bg-white text-slate-950 border border-slate-200 rounded-full font-bold hover:bg-[#fbfaf7] transition-colors">
                 Schedule a Call
               </a>
             </div>
@@ -139,19 +139,19 @@ const BlogPostDetail: React.FC<Props> = ({ slug }) => {
         )}
 
         {/* Share Section */}
-        <div className="flex justify-between items-center py-12 border-t border-slate-100">
+        <div className="flex justify-between items-center py-12 border-t border-slate-200">
           <div className="flex items-center gap-4">
-            <span className="font-bold text-slate-900">Share:</span>
+            <span className="font-bold text-slate-950">Share:</span>
             <button
-              className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"
+              className="w-10 h-10 bg-[#fbfaf7] rounded-full flex items-center justify-center hover:bg-slate-950 hover:text-white transition-all"
               onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(activePost.title)}&url=${encodeURIComponent(window.location.href)}`, '_blank')}
             >𝕏</button>
             <button
-              className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"
+              className="w-10 h-10 bg-[#fbfaf7] rounded-full flex items-center justify-center hover:bg-slate-950 hover:text-white transition-all"
               onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank')}
             >in</button>
           </div>
-          <a href="/blog" className="text-blue-600 font-bold">← Back to Blog</a>
+          <a href="/blog" className="text-blue-700 font-bold">← Back to Blog</a>
         </div>
       </article>
     </div>

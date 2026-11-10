@@ -21,7 +21,7 @@ const WebsitePreview: React.FC<{
 
   return (
     <div
-      className="relative rounded-[2.5rem] overflow-hidden bg-slate-100 shadow-lg group cursor-pointer"
+      className="relative overflow-hidden bg-slate-100 group cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -31,7 +31,7 @@ const WebsitePreview: React.FC<{
         target="_blank"
         rel="noopener noreferrer"
         onClick={(e) => e.stopPropagation()}
-        className="absolute top-4 right-4 z-30 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-md hover:bg-slate-950 hover:text-white hover:border-slate-950 transition-colors duration-300"
+        className="absolute top-4 right-4 z-30 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full hover:bg-slate-950 hover:text-white hover:border-slate-950 transition-colors duration-300"
       >
         <span className="w-1.5 h-1.5 bg-emerald-600 rounded-full"></span>
         Live Site ↗
@@ -40,7 +40,7 @@ const WebsitePreview: React.FC<{
       {/* Mobile/Desktop View Toggle */}
       <button
         onClick={(e) => { e.stopPropagation(); setShowMobile(!showMobile); }}
-        className={`absolute top-4 left-4 z-30 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-md hover:bg-slate-950 hover:text-white hover:border-slate-950 transition-colors duration-300 ${showMobile ? 'bg-slate-950 text-white border-slate-950' : ''}`}
+        className={`absolute top-4 left-4 z-30 flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full hover:bg-slate-950 hover:text-white hover:border-slate-950 transition-colors duration-300 ${showMobile ? 'bg-slate-950 text-white border-slate-950' : ''}`}
       >
         {showMobile ? 'Desktop' : 'Mobile'}
       </button>
@@ -49,7 +49,7 @@ const WebsitePreview: React.FC<{
       <div className={`relative ${showMobile ? 'flex justify-center py-8' : ''}`}>
         {showMobile ? (
           // Mobile Phone Frame
-          <div className="relative w-[280px] h-[550px] rounded-[2rem] overflow-hidden border-4 border-slate-800 shadow-2xl bg-white">
+          <div className="relative w-[280px] h-[550px] rounded-[2rem] overflow-hidden border-4 border-slate-800 bg-white">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-5 bg-slate-800 rounded-b-lg z-10"></div>
             {!iframeError ? (
               <iframe
@@ -81,7 +81,7 @@ const WebsitePreview: React.FC<{
           </div>
         ) : (
           // Desktop Full View
-          <div className="aspect-[4/3] relative overflow-hidden rounded-[2.5rem]">
+          <div className="aspect-[4/3] relative overflow-hidden">
             {/* Static Image - Always visible */}
             <img
               src={image}
@@ -131,7 +131,7 @@ const WebsitePreview: React.FC<{
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group/link inline-flex items-center gap-2 border border-white/80 bg-white px-6 py-3 text-slate-950 font-semibold text-sm shadow-lg transition-colors duration-300 hover:bg-slate-950 hover:text-white"
+          className="group/link inline-flex items-center gap-2 border border-white/80 bg-white px-6 py-3 text-slate-950 font-semibold text-sm transition-colors duration-300 hover:bg-slate-950 hover:text-white"
           onClick={(e) => e.stopPropagation()}
         >
           View live site <span aria-hidden="true" className="transition-transform group-hover/link:translate-x-1">↗</span>
@@ -197,8 +197,8 @@ const Portfolio: React.FC = () => {
   }, [reduceMotion]);
 
   return (
-    <div className="min-h-screen bg-[#fbfaf7] pt-32 pb-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="min-h-screen pt-40 pb-24">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
@@ -217,9 +217,9 @@ const Portfolio: React.FC = () => {
             initial={reduceMotion ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: 0.16 }}
-            className="relative z-10 text-5xl md:text-7xl font-black text-slate-950 mb-8 tracking-tight"
+            className="relative z-10 text-5xl md:text-7xl lg:text-8xl leading-[1.02] font-medium tracking-[-0.04em] text-slate-950 mb-8 tracking-tight"
           >
-            Built around <span className="text-blue-600">business outcomes.</span>
+            Built around <span className="text-blue-700">business outcomes.</span>
           </motion.h1>
           <motion.p
             initial={reduceMotion ? false : { opacity: 0, y: 10 }}
@@ -247,7 +247,7 @@ const Portfolio: React.FC = () => {
               <p className="text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-5">
                 Featured focus this season
               </p>
-              <h2 id="executive-focus-heading" className="text-3xl md:text-5xl font-black leading-tight mb-6">
+              <h2 id="executive-focus-heading" className="text-3xl md:text-5xl font-medium tracking-[-0.04em] leading-tight mb-6">
                 Executive websites for leaders with something worth being known for.
               </h2>
               <p className="text-lg text-slate-300 leading-relaxed mb-6">
@@ -271,13 +271,13 @@ const Portfolio: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="/booking"
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-6 py-4 font-bold text-white transition-colors duration-300 hover:bg-blue-600"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-blue-500 px-6 py-4 font-bold text-white transition-colors duration-300 hover:bg-slate-950"
                 >
                   Build my executive website <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">↗</span>
                 </a>
                 <a
                   href="#djcuppy"
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl border border-slate-600 px-6 py-4 font-bold text-white transition-colors duration-300 hover:border-white"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-slate-600 px-6 py-4 font-bold text-white transition-colors duration-300 hover:border-white"
                 >
                   See a personal-brand project <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
                 </a>
@@ -298,7 +298,7 @@ const Portfolio: React.FC = () => {
                 <p className="text-sm font-bold uppercase tracking-widest text-blue-200 mb-2">
                   Personal brand work
                 </p>
-                <p className="text-2xl font-black text-white">DJ Cuppy</p>
+                <p className="text-2xl font-medium tracking-[-0.04em] text-white">DJ Cuppy</p>
                 <p className="text-slate-200">Portfolio, media, and booking in one destination</p>
               </div>
             </div>
@@ -314,7 +314,7 @@ const Portfolio: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: idx === 0 ? 0 : 0.08 }}
-                className="flex flex-col md:flex-row gap-12 items-start border-b border-slate-100 pb-24 last:border-0"
+                className="flex flex-col md:flex-row gap-12 items-start border-b border-slate-200 pb-24 last:border-0"
               >
                 
                 <div className="w-full md:w-1/2">
@@ -331,12 +331,12 @@ const Portfolio: React.FC = () => {
                 {/* Right: Content */}
                 <div className="w-full md:w-1/2 flex flex-col pt-4">
                   <span
-                    className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4"
+                    className="text-blue-700 font-bold text-sm tracking-widest uppercase mb-4"
                   >
                     {project.category}
                   </span>
                   <h2
-                    className="text-4xl md:text-5xl font-black text-slate-900 mb-6"
+                    className="text-4xl md:text-5xl font-medium tracking-[-0.04em] text-slate-950 mb-6"
                   >
                     {project.title}
                   </h2>
@@ -351,13 +351,13 @@ const Portfolio: React.FC = () => {
 
                   <div className="space-y-8 mb-8">
                     <div>
-                      <h4 className="font-bold text-slate-900 text-lg mb-2 flex items-center gap-2">
+                      <h4 className="font-bold text-slate-950 text-lg mb-2 flex items-center gap-2">
                         <span className="w-1.5 h-6 bg-red-400 rounded-full"></span> The Business Problem
                       </h4>
                       <p className="text-slate-600 leading-relaxed">{project.problem}</p>
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-900 text-lg mb-2 flex items-center gap-2">
+                      <h4 className="font-bold text-slate-950 text-lg mb-2 flex items-center gap-2">
                         <span className="w-1.5 h-6 bg-blue-400 rounded-full"></span> What We Built
                       </h4>
                       <p className="text-slate-600 leading-relaxed">{project.solution}</p>
@@ -365,17 +365,17 @@ const Portfolio: React.FC = () => {
                   </div>
 
                   <section className="mb-8" aria-label={`Key design decisions for ${project.title}`}>
-                    <h4 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+                    <h4 className="font-bold text-slate-950 text-lg mb-4 flex items-center gap-2">
                       <span className="w-1.5 h-6 bg-violet-400 rounded-full"></span> Key Design Decisions
                     </h4>
                     <ol className="space-y-4">
                       {project.designDecisions.map((item, decisionIndex) => (
                         <li key={item.decision} className="flex gap-4">
-                          <span className="shrink-0 text-sm font-bold text-blue-600 pt-0.5">
+                          <span className="shrink-0 text-sm font-bold text-blue-700 pt-0.5">
                             {String(decisionIndex + 1).padStart(2, "0")}
                           </span>
                           <div>
-                            <p className="font-semibold text-slate-900">{item.decision}</p>
+                            <p className="font-semibold text-slate-950">{item.decision}</p>
                             <p className="text-slate-600 leading-relaxed mt-1">{item.rationale}</p>
                           </div>
                         </li>
@@ -383,17 +383,17 @@ const Portfolio: React.FC = () => {
                     </ol>
                   </section>
 
-                  <section className="mb-8 rounded-2xl border border-slate-200 bg-slate-50 p-6 md:p-8" aria-label={`Hero and call to action rationale for ${project.title}`}>
-                    <h4 className="font-bold text-slate-900 text-lg mb-5">
+                  <section className="mb-8 border border-slate-200 bg-[#fbfaf7] p-6 md:p-8" aria-label={`Hero and call to action rationale for ${project.title}`}>
+                    <h4 className="font-bold text-slate-950 text-lg mb-5">
                       How the page earns the next click
                     </h4>
                     <div className="space-y-5">
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-2">Hero section</p>
+                        <p className="text-xs font-bold uppercase tracking-widest text-blue-700 mb-2">Hero section</p>
                         <p className="text-slate-700 leading-relaxed">{project.heroRationale}</p>
                       </div>
                       <div className="border-t border-slate-200 pt-5">
-                        <p className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-2">Call to action placement</p>
+                        <p className="text-xs font-bold uppercase tracking-widest text-blue-700 mb-2">Call to action placement</p>
                         <p className="text-slate-700 leading-relaxed">{project.ctaRationale}</p>
                       </div>
                     </div>
@@ -403,7 +403,7 @@ const Portfolio: React.FC = () => {
                     {project.tech.map((t, i) => (
                       <span
                         key={t}
-                        className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 transition-colors duration-300 hover:border-slate-400"
+                        className="rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 transition-colors duration-300 hover:border-slate-400"
                       >
                         {t}
                       </span>
@@ -415,7 +415,7 @@ const Portfolio: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: 0.08 }}
-                    className="relative mt-8 overflow-hidden rounded-3xl bg-slate-950 p-8 text-white shadow-xl shadow-slate-900/10"
+                    className="relative mt-8 overflow-hidden bg-slate-950 p-8 text-white shadow-slate-900/10"
                   >
                     <h4 className="font-bold text-blue-400 text-sm mb-3 uppercase tracking-wider">Reported Result</h4>
                     <p className="text-xl font-medium leading-relaxed">{project.impact}</p>
@@ -432,7 +432,7 @@ const Portfolio: React.FC = () => {
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-blue-700">
               More selected work
             </p>
-            <h2 id="additional-work-heading" className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            <h2 id="additional-work-heading" className="text-3xl md:text-4xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
               More live products and digital experiences.
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
@@ -470,13 +470,13 @@ const Portfolio: React.FC = () => {
                   <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-700 mb-2">
                     {project.category}
                   </p>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-950 mb-2 group-hover:text-blue-700 transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-sm text-slate-600 leading-relaxed mb-4">
                     {project.subtitle}
                   </p>
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900">
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-slate-950">
                     Visit live project <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
                   </span>
                 </div>
@@ -487,10 +487,10 @@ const Portfolio: React.FC = () => {
 
         <section className="mt-8 border-y border-slate-200 py-20" aria-labelledby="collaboration-heading">
           <div className="max-w-4xl mb-12">
-            <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">
+            <p className="text-sm font-bold text-blue-700 uppercase tracking-[0.2em] mb-4">
               A considered process
             </p>
-            <h2 id="collaboration-heading" className="text-3xl md:text-5xl font-black text-slate-900 mb-5">
+            <h2 id="collaboration-heading" className="text-3xl md:text-5xl font-medium tracking-[-0.04em] text-slate-950 mb-5">
               You see the reasoning before we spend the budget.
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
@@ -525,10 +525,10 @@ const Portfolio: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.35 }}
                 transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: index * 0.08 }}
-                className="group rounded-2xl border border-slate-200 bg-white p-7 transition-colors duration-300 hover:border-slate-400"
+                className="group border border-slate-200 bg-white p-7 transition-colors duration-300 hover:border-slate-400"
               >
-                <span className="text-sm font-black text-blue-600">{item.step}</span>
-                <h3 className="mt-4 mb-3 text-xl font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1">{item.title}</h3>
+                <span className="text-sm font-medium tracking-[-0.04em] text-blue-700">{item.step}</span>
+                <h3 className="mt-4 mb-3 text-xl font-bold text-slate-950 transition-transform duration-300 group-hover:translate-x-1">{item.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{item.detail}</p>
               </motion.li>
             ))}
@@ -537,10 +537,10 @@ const Portfolio: React.FC = () => {
 
         <section className="py-20" aria-labelledby="support-heading">
           <div className="max-w-3xl mb-10">
-            <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">
+            <p className="text-sm font-bold text-blue-700 uppercase tracking-[0.2em] mb-4">
               Beyond the build
             </p>
-            <h2 id="support-heading" className="text-3xl md:text-5xl font-black text-slate-900 mb-5">
+            <h2 id="support-heading" className="text-3xl md:text-5xl font-medium tracking-[-0.04em] text-slate-950 mb-5">
               The launch is a starting point, not the finish line.
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
@@ -557,9 +557,9 @@ const Portfolio: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={reduceMotion ? { duration: 0 } : { ...revealTransition, delay: index * 0.07 }}
-                className="group rounded-2xl border border-slate-200 bg-white/60 p-7 transition-colors duration-300 hover:border-slate-400 hover:bg-white"
+                className="group border border-slate-200 bg-white/60 p-7 transition-colors duration-300 hover:border-slate-400 hover:bg-white"
               >
-                <h3 className="mb-3 text-xl font-bold text-slate-900 transition-transform duration-300 group-hover:translate-x-1">{offer.title}</h3>
+                <h3 className="mb-3 text-xl font-bold text-slate-950 transition-transform duration-300 group-hover:translate-x-1">{offer.title}</h3>
                 <p className="text-slate-600 leading-relaxed mb-4">{offer.description}</p>
                 <p className="text-sm font-semibold text-slate-800">{offer.value}</p>
               </motion.article>
@@ -578,7 +578,7 @@ const Portfolio: React.FC = () => {
           <p className="text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-4">
             The right moment to talk
           </p>
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-medium tracking-[-0.04em] text-white mb-4">
             Have a business problem worth solving?
           </h2>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-4">
@@ -591,7 +591,7 @@ const Portfolio: React.FC = () => {
           </p>
           <a
             href="/booking"
-            className="group inline-flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-7 py-4 font-bold text-white shadow-lg shadow-blue-500/20 transition-colors duration-300 hover:bg-blue-600"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-blue-500 px-7 py-4 font-bold text-white transition-colors duration-300 hover:bg-slate-950"
           >
             Talk through your project <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
           </a>

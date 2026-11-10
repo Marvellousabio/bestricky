@@ -2,10 +2,10 @@ import React from "react";
 
 const PrivacyPolicy: React.FC = () => {
 	return (
-		<div className="min-h-screen bg-slate-50 py-24">
+		<div className="min-h-screen pt-40 pb-24">
 			<div className="max-w-4xl mx-auto px-6">
-				<div className="bg-white rounded-3xl shadow-sm border border-slate-100 p-8 md:p-12">
-					<h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+				<div className="bg-white shadow-sm border border-slate-200 p-8 md:p-12">
+					<h1 className="text-4xl md:text-5xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 						Privacy Policy
 					</h1>
 					<p className="text-slate-500 mb-8">
@@ -14,7 +14,7 @@ const PrivacyPolicy: React.FC = () => {
 
 					<div className="prose prose-lg max-w-none text-slate-600">
 						<section className="mb-8">
-							<h2 className="text-2xl font-bold text-slate-900 mb-4">
+							<h2 className="text-2xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 								1. Introduction
 							</h2>
 							<p>
@@ -29,7 +29,7 @@ const PrivacyPolicy: React.FC = () => {
 						</section>
 
 						<section className="mb-8">
-							<h2 className="text-2xl font-bold text-slate-900 mb-4">
+							<h2 className="text-2xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 								2. Information We Collect
 							</h2>
 							<p className="mb-4">
@@ -58,7 +58,7 @@ const PrivacyPolicy: React.FC = () => {
 						</section>
 
 						<section className="mb-8">
-							<h2 className="text-2xl font-bold text-slate-900 mb-4">
+							<h2 className="text-2xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 								3. How We Use Your Information
 							</h2>
 							<p className="mb-4">
@@ -85,7 +85,7 @@ const PrivacyPolicy: React.FC = () => {
 						</section>
 
 						<section className="mb-8">
-							<h2 className="text-2xl font-bold text-slate-900 mb-4">
+							<h2 className="text-2xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 								4. Information Sharing
 							</h2>
 							<p>
@@ -110,7 +110,7 @@ const PrivacyPolicy: React.FC = () => {
 						</section>
 
 						<section className="mb-8">
-							<h2 className="text-2xl font-bold text-slate-900 mb-4">
+							<h2 className="text-2xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 								5. Data Security
 							</h2>
 							<p>
@@ -124,7 +124,7 @@ const PrivacyPolicy: React.FC = () => {
 						</section>
 
 						<section className="mb-8">
-							<h2 className="text-2xl font-bold text-slate-900 mb-4">
+							<h2 className="text-2xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 								6. Your Rights
 							</h2>
 							<p>You have the right to:</p>
@@ -140,7 +140,7 @@ const PrivacyPolicy: React.FC = () => {
 						</section>
 
 						<section className="mb-8">
-							<h2 className="text-2xl font-bold text-slate-900 mb-4">
+							<h2 className="text-2xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 								7. Third-Party Links
 							</h2>
 							<p>
@@ -153,7 +153,7 @@ const PrivacyPolicy: React.FC = () => {
 						</section>
 
 						<section className="mb-8">
-							<h2 className="text-2xl font-bold text-slate-900 mb-4">
+							<h2 className="text-2xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 								8. Children's Privacy
 							</h2>
 							<p>
@@ -166,7 +166,7 @@ const PrivacyPolicy: React.FC = () => {
 						</section>
 
 						<section className="mb-8">
-							<h2 className="text-2xl font-bold text-slate-900 mb-4">
+							<h2 className="text-2xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 								9. Changes to This Policy
 							</h2>
 							<p>
@@ -180,7 +180,7 @@ const PrivacyPolicy: React.FC = () => {
 						</section>
 
 						<section>
-							<h2 className="text-2xl font-bold text-slate-900 mb-4">
+							<h2 className="text-2xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 								10. Contact Us
 							</h2>
 							<p>
@@ -193,7 +193,7 @@ const PrivacyPolicy: React.FC = () => {
 									Through our{" "}
 									<a
 										href="/contact"
-										className="text-blue-600 hover:underline"
+										className="text-blue-700 hover:underline"
 									>
 										contact page
 									</a>
@@ -202,10 +202,10 @@ const PrivacyPolicy: React.FC = () => {
 						</section>
 					</div>
 
-					<div className="mt-12 pt-8 border-t border-slate-100">
+					<div className="mt-12 pt-8 border-t border-slate-200">
 						<a
 							href="/"
-							className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+							className="inline-flex items-center gap-2 text-blue-700 hover:text-blue-700 font-medium"
 						>
 							← Back to Home
 						</a>

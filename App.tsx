@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
 import WebDesignLagos from "./pages/WebDesignLagos";
+import { Sculpture } from "./components/Hero";
 
 // Custom Link component to handle navigation
 export const Link: React.FC<{
@@ -185,7 +186,14 @@ const App: React.FC = () => {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<main id="main-content" className="flex-grow">{renderContent()}</main>
+			<main id="main-content" className="relative flex-grow overflow-hidden bg-[#f6f3ed]">
+				{currentPath !== "/" && (
+					<div className="pointer-events-none absolute -right-[30%] top-16 w-[80vw] max-w-[640px] opacity-40 md:-right-[10%] md:w-[46vw] md:opacity-70">
+						<Sculpture />
+					</div>
+				)}
+				<div className="relative z-10">{renderContent()}</div>
+			</main>
 			<Footer />
 		</div>
 	);

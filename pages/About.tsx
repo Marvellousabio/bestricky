@@ -56,19 +56,19 @@ const About: React.FC = () => {
 	];
 
 	return (
-		<div className="min-h-screen bg-slate-50">
+		<div className="min-h-screen">
 			{/* Hero Section */}
-			<section className="relative pt-32 pb-20 overflow-hidden">
+			<section className="relative pt-40 pb-20 overflow-hidden">
 				<div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-blue-100 rounded-full blur-3xl opacity-50 z-0"></div>
 
-				<div className="max-w-7xl mx-auto px-6 relative z-10">
+				<div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
 					<div className="text-center max-w-3xl mx-auto">
-						<span className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4 block">
+						<span className="text-sm font-bold text-blue-700 uppercase tracking-[0.2em] mb-4 block">
 							About Us
 						</span>
-						<h1 className="text-5xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
+						<h1 className="text-5xl md:text-6xl font-medium tracking-[-0.04em] text-slate-950 mb-6 leading-tight">
 							Why 50+ Businesses Chose <br />
-							<span className="text-blue-600">Bestricky Over Others</span>
+							<span className="text-blue-700">Bestricky Over Others</span>
 						</h1>
 						<p className="text-xl text-slate-600 leading-relaxed">
 							We don't just build websites—we build revenue-generating machines that work 24/7 while you focus on your business.
@@ -79,10 +79,10 @@ const About: React.FC = () => {
 
 			{/* Story Section */}
 			<section className="py-20 bg-white">
-				<div className="max-w-7xl mx-auto px-6">
+				<div className="max-w-[1400px] mx-auto px-6 md:px-10">
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 						<div>
-							<h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">
+							<h2 className="text-3xl md:text-4xl font-medium tracking-[-0.04em] text-slate-950 mb-6">
 								Our Story
 							</h2>
 							<div className="space-y-4 text-slate-600 leading-relaxed">
@@ -113,24 +113,24 @@ const About: React.FC = () => {
 							</div>
 						</div>
 						<div className="relative">
-							<div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
+							<div className="relative z-10 overflow-hidden">
 								<img
 									src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
 									alt="Our team collaborating"
 									className="w-full h-auto object-cover"
 								/>
 							</div>
-							<div className="absolute -top-6 -right-6 w-full h-full border-2 border-slate-200 rounded-3xl -z-10"></div>
+							<div className="absolute -top-6 -right-6 w-full h-full border-2 border-slate-200 -z-10"></div>
 						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* Values Section */}
-			<section className="py-20 bg-slate-50">
-				<div className="max-w-7xl mx-auto px-6">
+			<section className="py-20 bg-[#fbfaf7]">
+				<div className="max-w-[1400px] mx-auto px-6 md:px-10">
 					<div className="text-center mb-16">
-						<h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+						<h2 className="text-3xl md:text-4xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 							Our Values
 						</h2>
 						<p className="text-lg text-slate-600 max-w-2xl mx-auto">
@@ -142,12 +142,12 @@ const About: React.FC = () => {
 						{values.map((value) => (
 							<div
 								key={value.title}
-								className="glass-card p-8 rounded-3xl text-center hover:shadow-xl transition-all duration-300"
+								className="glass-card p-8 text-center transition-all duration-300"
 							>
 								<div className="text-4xl mb-4">
 									{value.icon}
 								</div>
-								<h3 className="text-xl font-bold text-slate-900 mb-3">
+								<h3 className="text-xl font-bold text-slate-950 mb-3">
 									{value.title}
 								</h3>
 								<p className="text-slate-600">
@@ -161,9 +161,9 @@ const About: React.FC = () => {
 
 			{/* Team Section */}
 			<section className="py-20 bg-white">
-				<div className="max-w-7xl mx-auto px-6">
+				<div className="max-w-[1400px] mx-auto px-6 md:px-10">
 					<div className="text-center mb-16">
-						<h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+						<h2 className="text-3xl md:text-4xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 							Meet Our Team
 						</h2>
 						<p className="text-lg text-slate-600 max-w-2xl mx-auto">
@@ -174,7 +174,7 @@ const About: React.FC = () => {
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 						{team.map((member) => (
 							<div key={member.name} className="group">
-								<div className="relative mb-6 overflow-hidden rounded-3xl">
+								<div className="relative mb-6 overflow-hidden">
 									<img
 										src={member.image}
 										alt={member.name}
@@ -182,10 +182,10 @@ const About: React.FC = () => {
 									/>
 									<div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 								</div>
-								<h3 className="text-xl font-bold text-slate-900 mb-1">
+								<h3 className="text-xl font-bold text-slate-950 mb-1">
 									{member.name}
 								</h3>
-								<p className="text-blue-600 font-medium mb-2">
+								<p className="text-blue-700 font-medium mb-2">
 									{member.role}
 								</p>
 								<p className="text-slate-600 text-sm">
@@ -198,11 +198,11 @@ const About: React.FC = () => {
 			</section>
 
 			{/* Stats Section */}
-			<section className="py-20 bg-blue-600">
-				<div className="max-w-7xl mx-auto px-6">
+			<section className="py-20 bg-slate-950">
+				<div className="max-w-[1400px] mx-auto px-6 md:px-10">
 					<div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
 						<div>
-							<div className="text-4xl md:text-5xl font-black text-white mb-2">
+							<div className="text-4xl md:text-5xl font-medium tracking-[-0.04em] text-white mb-2">
 								50+
 							</div>
 							<div className="text-blue-200 font-medium">
@@ -210,7 +210,7 @@ const About: React.FC = () => {
 							</div>
 						</div>
 						<div>
-							<div className="text-4xl md:text-5xl font-black text-white mb-2">
+							<div className="text-4xl md:text-5xl font-medium tracking-[-0.04em] text-white mb-2">
 								100%
 							</div>
 							<div className="text-blue-200 font-medium">
@@ -218,7 +218,7 @@ const About: React.FC = () => {
 							</div>
 						</div>
 						<div>
-							<div className="text-4xl md:text-5xl font-black text-white mb-2">
+							<div className="text-4xl md:text-5xl font-medium tracking-[-0.04em] text-white mb-2">
 								3+
 							</div>
 							<div className="text-blue-200 font-medium">
@@ -226,7 +226,7 @@ const About: React.FC = () => {
 							</div>
 						</div>
 						<div>
-							<div className="text-4xl md:text-5xl font-black text-white mb-2">
+							<div className="text-4xl md:text-5xl font-medium tracking-[-0.04em] text-white mb-2">
 								15+
 							</div>
 							<div className="text-blue-200 font-medium">
@@ -238,9 +238,9 @@ const About: React.FC = () => {
 			</section>
 
 			{/* CTA Section */}
-			<section className="py-20 bg-slate-50">
+			<section className="py-20 bg-[#fbfaf7]">
 				<div className="max-w-4xl mx-auto px-6 text-center">
-					<h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">
+					<h2 className="text-3xl md:text-4xl font-medium tracking-[-0.04em] text-slate-950 mb-6">
 						Ready to Work Together?
 					</h2>
 					<p className="text-lg text-slate-600 mb-10">
@@ -250,13 +250,13 @@ const About: React.FC = () => {
 					<div className="flex flex-col sm:flex-row gap-4 justify-center">
 						<a
 							href="/contact"
-							className="bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg font-bold shadow-lg shadow-blue-500/20 hover:bg-blue-700 hover:shadow-xl transition-all"
+							className="bg-slate-950 text-white px-8 py-4 text-lg font-bold hover:bg-blue-700 transition-all"
 						>
 							Get in Touch
 						</a>
 						<a
 							href="/portfolio"
-							className="bg-white text-slate-700 px-8 py-4 rounded-2xl text-lg font-bold border border-slate-200 hover:bg-slate-50 transition-all"
+							className="bg-white text-slate-700 px-8 py-4 text-lg font-bold border border-slate-200 hover:bg-[#fbfaf7] transition-all"
 						>
 							View Our Work
 						</a>

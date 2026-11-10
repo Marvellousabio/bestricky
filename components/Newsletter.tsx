@@ -50,12 +50,12 @@ const Newsletter: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100">
+    <div className="bg-white p-8 md:p-12 shadow-sm border border-slate-200">
       <div className="flex flex-col md:flex-row gap-8 items-center">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-4">
             <span className="text-3xl">📰</span>
-            <h3 className="text-2xl font-bold text-slate-900">Stay Updated</h3>
+            <h3 className="text-2xl font-bold text-slate-950">Stay Updated</h3>
           </div>
           <p className="text-slate-600 leading-relaxed">
             Subscribe to our newsletter for the latest insights on web development, digital marketing, and tech trends. No spam, just valuable content.
@@ -71,13 +71,13 @@ const Newsletter: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 disabled={status === 'loading' || status === 'success'}
-                className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-900 placeholder:text-slate-400 disabled:bg-slate-50"
+                className="w-full px-5 py-4 border border-slate-200 focus:border-slate-950 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-950 placeholder:text-slate-400 disabled:bg-[#fbfaf7]"
               />
             </div>
             <button
               type="submit"
               disabled={status === 'loading' || status === 'success'}
-              className={`${status === 'success' ? 'bg-green-600' : 'bg-blue-600'} text-white px-8 py-4 rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 min-w-[140px]`}
+              className={`${status === 'success' ? 'bg-green-600' : 'bg-slate-950'} text-white px-8 py-4 font-bold transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 min-w-[140px]`}
             >
               {status === 'loading' ? (
                 <>
@@ -116,7 +116,7 @@ const Newsletter: React.FC = () => {
           )}
           
           <p className="mt-3 text-xs text-slate-500">
-            By subscribing, you agree to our <a href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</a>. Unsubscribe anytime.
+            By subscribing, you agree to our <a href="/privacy" className="text-blue-700 hover:underline">Privacy Policy</a>. Unsubscribe anytime.
           </p>
         </form>
       </div>

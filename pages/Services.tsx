@@ -41,20 +41,20 @@ const imageVariants = {
 
 const Services: React.FC = () => {
   return (
-    <div className="pt-32 pb-24 min-h-screen">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="pt-40 pb-24 min-h-screen">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <motion.div 
           initial="hidden"
           animate="visible"
           variants={serviceVariants}
-          className="mb-20 text-center max-w-4xl mx-auto"
+          className="mb-24 max-w-5xl"
         >
           <motion.h1 
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tight"
+            className="text-5xl md:text-7xl lg:text-8xl leading-[1.02] font-medium tracking-[-0.04em] text-slate-950 mb-8 tracking-tight"
           >
             We Fix Websites That <br />
-            <span className="text-blue-600">Don't Generate Revenue</span>
+            <span className="text-blue-700">Don't Generate Revenue</span>
           </motion.h1>
           <motion.p 
             variants={itemVariants}
@@ -78,7 +78,7 @@ const Services: React.FC = () => {
                 variants={imageVariants}
                 className="flex-1 w-full"
               >
-                <div className="bg-slate-100 rounded-3xl md:rounded-[2.5rem] aspect-[4/3] md:aspect-square overflow-hidden relative group">
+                <div className="bg-slate-100 aspect-[4/3] md:aspect-square overflow-hidden relative group">
                   <motion.img
                     src={service.image || `https://picsum.photos/seed/${service.id}/800/800`}
                     alt={service.title}
@@ -109,7 +109,7 @@ const Services: React.FC = () => {
                   
                   {/* Animated overlay on hover */}
                   <motion.div 
-                    className="absolute inset-0 bg-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
                   />
@@ -118,7 +118,7 @@ const Services: React.FC = () => {
               
               <motion.div variants={itemVariants} className="flex-1">
                 <motion.div 
-                  className="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold text-2xl mb-8"
+                  className="w-16 h-16 bg-slate-950 text-white flex items-center justify-center font-bold text-2xl mb-8"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -126,7 +126,7 @@ const Services: React.FC = () => {
                 </motion.div>
                 <motion.h2 
                   variants={itemVariants}
-                  className="text-4xl font-black text-slate-900 mb-6"
+                  className="text-4xl font-medium tracking-[-0.04em] text-slate-950 mb-6"
                 >
                   {service.title}
                 </motion.h2>
@@ -140,15 +140,15 @@ const Services: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   <motion.div 
                     variants={itemVariants}
-                    className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
+                    className="bg-white p-6 border border-slate-200 shadow-sm transition-shadow"
                     whileHover={{ y: -5 }}
                   >
-                    <h4 className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-3">Problem We Solve</h4>
+                    <h4 className="text-sm font-bold text-blue-700 uppercase tracking-widest mb-3">Problem We Solve</h4>
                     <p className="text-slate-700 font-medium text-sm leading-relaxed">{service.problem}</p>
                   </motion.div>
                   <motion.div 
                     variants={itemVariants}
-                    className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
+                    className="bg-white p-6 border border-slate-200 shadow-sm transition-shadow"
                     whileHover={{ y: -5 }}
                   >
                     <h4 className="text-sm font-bold text-green-600 uppercase tracking-widest mb-3">Business Value</h4>
@@ -158,7 +158,7 @@ const Services: React.FC = () => {
 
                 <motion.div 
                   variants={itemVariants}
-                  className="mt-8 p-6 bg-blue-50 rounded-2xl border border-blue-100"
+                  className="mt-8 p-6 bg-blue-50 border border-blue-100"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >

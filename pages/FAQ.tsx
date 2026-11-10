@@ -56,14 +56,14 @@ const FAQ: React.FC = () => {
 	};
 
 	return (
-		<div className="min-h-screen bg-slate-50 py-24">
+		<div className="min-h-screen pt-40 pb-24">
 			<div className="max-w-4xl mx-auto px-6">
 				<div className="text-center mb-16">
-					<span className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4 block">
+					<span className="text-sm font-bold text-blue-700 uppercase tracking-[0.2em] mb-4 block">
 						FAQ
 					</span>
-					<h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
-						Your Website Questions, <span className="text-blue-600">Answered</span>
+					<h1 className="text-4xl md:text-5xl font-medium tracking-[-0.04em] text-slate-950 mb-6">
+						Your Website Questions, <span className="text-blue-700">Answered</span>
 					</h1>
 					<p className="text-lg text-slate-600 max-w-2xl mx-auto">
 						Get clarity on pricing, timelines, and how we turn slow sites into sales machines.
@@ -74,17 +74,17 @@ const FAQ: React.FC = () => {
 					{faqs.map((faq, index) => (
 						<div
 							key={index}
-							className="bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-lg transition-shadow duration-300"
+							className="bg-white border border-slate-200 overflow-hidden transition-shadow duration-300"
 						>
 							<button
 								onClick={() => toggleFAQ(index)}
 								className="w-full px-8 py-6 text-left flex items-center justify-between gap-4"
 							>
-								<span className="text-lg font-bold text-slate-900 pr-4">
+								<span className="text-lg font-bold text-slate-950 pr-4">
 									{faq.question}
 								</span>
 								<span
-									className={`flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition-transform duration-300 ${openIndex === index ? "rotate-180 bg-blue-600 text-white" : "text-slate-500"}`}
+									className={`flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition-transform duration-300 ${openIndex === index ? "rotate-180 bg-slate-950 text-white" : "text-slate-500"}`}
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@ const FAQ: React.FC = () => {
 							<div
 								className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-96" : "max-h-0"}`}
 							>
-								<div className="px-8 pb-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2">
+								<div className="px-8 pb-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-200 mt-2">
 									{faq.answer}
 								</div>
 							</div>
@@ -113,8 +113,8 @@ const FAQ: React.FC = () => {
 					))}
 				</div>
 
-				<div className="mt-16 text-center bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100">
-					<h2 className="text-2xl font-bold text-slate-900 mb-4">
+				<div className="mt-16 text-center bg-white p-8 md:p-12 shadow-sm border border-slate-200">
+					<h2 className="text-2xl font-medium tracking-[-0.04em] text-slate-950 mb-4">
 						Still have questions?
 					</h2>
 					<p className="text-slate-600 mb-8">
@@ -123,7 +123,7 @@ const FAQ: React.FC = () => {
 					</p>
 					<a
 						href="/contact"
-						className="inline-block bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg font-bold shadow-lg shadow-blue-500/20 hover:bg-blue-700 hover:shadow-xl transition-all"
+						className="inline-block bg-slate-950 text-white px-8 py-4 text-lg font-bold hover:bg-blue-700 transition-all"
 					>
 						Contact Us
 					</a>

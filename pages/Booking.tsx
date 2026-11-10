@@ -200,8 +200,8 @@ const Booking: React.FC = () => {
   };
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <div className="pt-40 pb-24 min-h-screen">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-16">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -209,10 +209,10 @@ const Booking: React.FC = () => {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-6xl font-black text-slate-900 mb-8 leading-tight"
+            className="text-5xl md:text-6xl font-medium tracking-[-0.04em] text-slate-950 mb-8 leading-tight"
           >
             Start Your <br />
-            <span className="text-blue-600">Project With Clarity</span>
+            <span className="text-blue-700">Project With Clarity</span>
           </motion.h1>
           <motion.p
             variants={itemVariants}
@@ -231,7 +231,7 @@ const Booking: React.FC = () => {
             variants={itemVariants}
             className="space-y-8 mb-12"
           >
-            <h3 className="text-xl font-bold text-slate-900 uppercase tracking-wider">What Happens After You Submit:</h3>
+            <h3 className="text-xl font-bold text-slate-950 uppercase tracking-wider">What Happens After You Submit:</h3>
             <div className="space-y-4">
               {benefits.map((item, i) => (
                 <motion.div
@@ -241,13 +241,13 @@ const Booking: React.FC = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <motion.div
-                    className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold flex-shrink-0"
+                    className="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold flex-shrink-0"
                     whileHover={{ scale: 1.1 }}
                   >
                     ✓
                   </motion.div>
                   <div>
-                    <h4 className="font-bold text-slate-900">{item.title}</h4>
+                    <h4 className="font-bold text-slate-950">{item.title}</h4>
                     <p className="text-slate-500">{item.desc}</p>
                   </div>
                 </motion.div>
@@ -257,10 +257,10 @@ const Booking: React.FC = () => {
 
           <motion.div
             variants={itemVariants}
-            className="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm"
+            className="p-8 bg-white border border-slate-200 shadow-sm"
             whileHover={{ y: -5 }}
           >
-            <h4 className="text-lg font-bold text-slate-900 mb-4 italic">"The best investment we made for our business. Our new website doubled our leads in just 3 months!"</h4>
+            <h4 className="text-lg font-bold text-slate-950 mb-4 italic">"The best investment we made for our business. Our new website doubled our leads in just 3 months!"</h4>
             <motion.div
               className="flex items-center gap-4"
               initial={{ opacity: 0, x: -20 }}
@@ -274,7 +274,7 @@ const Booking: React.FC = () => {
                 <img src="https://i.pravatar.cc/150?u=emily" alt="Client" />
               </motion.div>
               <div>
-                <p className="font-bold text-slate-900">Emily Chen</p>
+                <p className="font-bold text-slate-950">Emily Chen</p>
                 <p className="text-sm text-slate-500">Founder, Sparkly AI</p>
               </div>
             </motion.div>
@@ -282,7 +282,7 @@ const Booking: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="bg-white p-6 md:p-8 rounded-[2.5rem] shadow-2xl border border-slate-100 h-fit sticky top-32"
+          className="bg-white p-6 md:p-8 border border-slate-200 h-fit sticky top-32"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -305,24 +305,24 @@ const Booking: React.FC = () => {
                 >
                   ✓
                 </motion.div>
-                <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">We Have Received Your Message</h3>
+                <h3 className="text-3xl md:text-4xl font-medium tracking-[-0.04em] text-slate-950 mb-4">We Have Received Your Message</h3>
                 <p className="text-slate-600 text-lg mb-8 leading-relaxed">
                   Your project details have been sent successfully. Here is a summary of what you submitted:
                 </p>
 
-                <div className="text-left bg-slate-50 rounded-3xl p-6 md:p-8 border border-slate-200 mb-8">
+                <div className="text-left bg-[#fbfaf7] p-6 md:p-8 border border-slate-200 mb-8">
                   <dl className="space-y-5">
                     {summaryLabels.map((item) => (
                       <div key={item.value} className="border-b border-slate-200 last:border-0 pb-5 last:pb-0">
-                        <dt className="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">{item.label}</dt>
+                        <dt className="text-xs font-medium tracking-[-0.04em] text-slate-400 uppercase tracking-widest mb-2">{item.label}</dt>
                         <dd className="text-slate-800 font-medium whitespace-pre-wrap wrap-break-word">{submittedData[item.value] || 'Not provided'}</dd>
                       </div>
                     ))}
                   </dl>
                 </div>
 
-                <div className="bg-blue-50 rounded-3xl p-6 md:p-8 border border-blue-100 mb-8">
-                  <h4 className="text-2xl font-black text-slate-900 mb-3">Book a Calendly Meeting</h4>
+                <div className="bg-blue-50 p-6 md:p-8 border border-blue-100 mb-8">
+                  <h4 className="text-2xl font-medium tracking-[-0.04em] text-slate-950 mb-3">Book a Calendly Meeting</h4>
                   <p className="text-slate-600 mb-6 leading-relaxed">
                     The next step is to schedule a focused meeting so we can discuss your project, timeline, and the best way to build your MVP.
                   </p>
@@ -330,21 +330,21 @@ const Booking: React.FC = () => {
                     href={CALENDLY_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-full bg-blue-600 text-white py-5 rounded-2xl text-lg font-black shadow-xl shadow-blue-500/20 hover:bg-blue-700 transition-all"
+                    className="inline-flex items-center justify-center w-full bg-slate-950 text-white py-5 text-lg font-medium tracking-[-0.04em] hover:bg-blue-700 transition-all"
                   >
                     Open Calendly to Book a Meeting
                   </a>
                 </div>
 
                 <motion.div
-                  className="calendly-inline-widget w-full min-w-[320px] h-[620px] relative overflow-hidden rounded-2xl bg-white border border-slate-100"
+                  className="calendly-inline-widget w-full min-w-[320px] h-[620px] relative overflow-hidden bg-white border border-slate-200"
                   data-url={CALENDLY_URL}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                 >
                   {isLoading && (
                     <div className="absolute inset-0 bg-slate-100 flex flex-col items-center justify-center p-8">
-                      <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-6"></div>
+                      <div className="w-16 h-16 border-4 border-slate-950 border-t-transparent rounded-full animate-spin mb-6"></div>
                       <div className="text-center">
                         <p className="text-lg font-bold text-slate-700 mb-2">Loading Calendar...</p>
                         <p className="text-sm text-slate-500">Please wait while we connect you with the booking system.</p>
@@ -358,7 +358,7 @@ const Booking: React.FC = () => {
                     setSubmittedData(null);
                     setSubmitError('');
                   }}
-                  className="mt-8 text-blue-600 font-bold hover:text-blue-700 transition-colors"
+                  className="mt-8 text-blue-700 font-bold hover:text-blue-700 transition-colors"
                   whileHover={{ scale: 1.05 }}
                 >
                   Send another project brief
@@ -379,13 +379,13 @@ const Booking: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <h3 className="text-2xl md:text-3xl font-black text-slate-900">Start Your Project</h3>
+                  <h3 className="text-2xl md:text-3xl font-medium tracking-[-0.04em] text-slate-950">Start Your Project</h3>
                   <p className="text-slate-500 mt-2">Answer the questions below so we can understand exactly what you want to build.</p>
                 </motion.div>
 
                 {submitError && (
                   <motion.div
-                    className="p-4 rounded-2xl bg-red-50 border border-red-100 text-red-700 text-sm font-bold"
+                    className="p-4 bg-red-50 border border-red-100 text-red-700 text-sm font-bold"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
@@ -396,11 +396,11 @@ const Booking: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <motion.div className="space-y-2">
                     <label className="text-sm font-bold text-slate-700 uppercase tracking-widest">Your Name</label>
-                    <input required type="text" name="name" placeholder="John Doe" className="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                    <input required type="text" name="name" placeholder="John Doe" className="w-full px-5 py-4 rounded-full bg-[#fbfaf7] border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
                   </motion.div>
                   <motion.div className="space-y-2">
                     <label className="text-sm font-bold text-slate-700 uppercase tracking-widest">Email Address</label>
-                    <input required type="email" name="email" placeholder="john@example.com" className="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                    <input required type="email" name="email" placeholder="john@example.com" className="w-full px-5 py-4 rounded-full bg-[#fbfaf7] border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
                   </motion.div>
                 </div>
 
@@ -422,7 +422,7 @@ const Booking: React.FC = () => {
                         name={question.name}
                         rows={5}
                         placeholder={question.placeholder}
-                        className="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none"
+                        className="w-full px-5 py-4 rounded-full bg-[#fbfaf7] border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none"
                       />
                     </motion.div>
                   ))}
@@ -431,7 +431,7 @@ const Booking: React.FC = () => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white py-6 rounded-2xl text-xl font-black shadow-xl shadow-blue-500/20 hover:bg-blue-700 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full bg-slate-950 text-white py-6 text-xl font-medium tracking-[-0.04em] hover:bg-blue-700 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
                   whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                   initial={{ opacity: 0, y: 20 }}

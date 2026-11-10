@@ -94,20 +94,20 @@ const Blog: React.FC = () => {
 
   const filteredPosts = getFilteredPosts();
   return (
-    <div className="pt-32 pb-24 min-h-screen">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="pt-40 pb-24 min-h-screen">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <motion.div 
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="mb-20 text-center max-w-4xl mx-auto"
+          className="mb-24 max-w-5xl"
         >
           <motion.h1 
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tight"
+            className="text-5xl md:text-7xl lg:text-8xl leading-[1.02] font-medium tracking-[-0.04em] text-slate-950 mb-8 tracking-tight"
           >
             Expert <br />
-            <span className="text-blue-600">Digital Strategy</span>
+            <span className="text-blue-700">Digital Strategy</span>
           </motion.h1>
           <motion.p 
             variants={itemVariants}
@@ -130,8 +130,8 @@ const Blog: React.FC = () => {
               onClick={() => setActiveCategory(cat)}
               className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all ${
                 activeCategory === cat
-                  ? "bg-blue-600 text-white shadow-lg shadow-blue-500/25"
-                  : "bg-white text-slate-600 border border-slate-200 hover:border-blue-600 hover:text-blue-600"
+                  ? "bg-slate-950 text-white"
+                  : "bg-white text-slate-600 border border-slate-200 hover:border-slate-950 hover:text-blue-700"
               }`}
             >
               {cat}
@@ -150,7 +150,7 @@ const Blog: React.FC = () => {
               key={post.id}
               href={`/blog/${post.slug}`}
               variants={itemVariants}
-              className="group block glass-card rounded-[2.5rem] overflow-hidden hover:shadow-2xl transition-all duration-300"
+              className="group block glass-card overflow-hidden transition-all duration-300"
               whileHover={{ y: -10 }}
             >
               <motion.div
@@ -170,7 +170,7 @@ const Blog: React.FC = () => {
                   decoding="async"
                 />
                 <motion.div
-                  className="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-xs font-bold text-blue-600 uppercase tracking-widest shadow-sm"
+                  className="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-xs font-bold text-blue-700 uppercase tracking-widest shadow-sm"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 }}
@@ -200,7 +200,7 @@ const Blog: React.FC = () => {
                   <span>{post.readTime}</span>
                 </motion.div>
                 <motion.h3
-                  className="text-3xl font-black text-slate-900 mb-6 group-hover:text-blue-600 transition-colors leading-tight"
+                  className="text-3xl font-medium tracking-[-0.04em] text-slate-950 mb-6 group-hover:text-blue-700 transition-colors leading-tight"
                 >
                   {post.title}
                 </motion.h3>
@@ -210,7 +210,7 @@ const Blog: React.FC = () => {
                   {post.excerpt}
                 </motion.p>
                 <motion.div
-                  className="inline-flex items-center gap-2 text-blue-600 font-bold"
+                  className="inline-flex items-center gap-2 text-blue-700 font-bold"
                   whileHover={{ x: 10 }}
                 >
                   Read Article <span>→</span>
@@ -222,14 +222,14 @@ const Blog: React.FC = () => {
 
         {/* SEO Newsletter Section */}
         <motion.div 
-          className="mt-32 bg-slate-900 rounded-[3rem] p-12 md:p-20 text-center"
+          className="mt-32 bg-slate-900 p-12 md:p-20 text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
           <motion.h3 
-            className="text-3xl md:text-5xl font-black text-white mb-6"
+            className="text-3xl md:text-5xl font-medium tracking-[-0.04em] text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -262,7 +262,7 @@ const Blog: React.FC = () => {
                 >
                   ✓
                 </motion.div>
-                <h4 className="text-xl font-black text-white mb-2">Thanks for subscribing!</h4>
+                <h4 className="text-xl font-medium tracking-[-0.04em] text-white mb-2">Thanks for subscribing!</h4>
                 <p className="text-slate-400">You'll receive our latest insights soon.</p>
               </motion.div>
             ) : (
@@ -280,13 +280,13 @@ const Blog: React.FC = () => {
                 <motion.input
                   type="email"
                   placeholder="Enter your business email"
-                  className="flex-1 px-8 py-5 rounded-2xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="flex-1 px-8 py-5 bg-slate-800 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                   whileFocus={{ scale: 1.02 }}
                   required
                 />
                 <motion.button
                   type="submit"
-                  className="bg-blue-600 text-white px-8 py-5 rounded-2xl font-bold hover:bg-blue-700 transition-colors"
+                  className="bg-slate-950 text-white px-8 py-5 font-bold hover:bg-blue-700 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

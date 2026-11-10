@@ -51,8 +51,8 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <div className="pt-32 pb-24 min-h-screen">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="pt-40 pb-24 min-h-screen">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <motion.div
             initial="hidden"
@@ -69,9 +69,9 @@ const Contact: React.FC = () => {
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
             }}>
-              <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tight">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl leading-[1.02] font-medium tracking-[-0.04em] text-slate-950 mb-8 tracking-tight">
                 Let's Stop Your <br />
-                <span className="text-blue-600">Leads From Leaking</span>
+                <span className="text-blue-700">Leads From Leaking</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-10">
                 Every day your slow website runs, you're losing customers to faster competitors. Get a high-converting site that closes deals 24/7.
@@ -88,13 +88,13 @@ const Contact: React.FC = () => {
                   whileHover={{ x: 10 }}
                 >
                   <motion.div 
-                    className="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold flex-shrink-0 text-xl"
+                    className="w-14 h-14 bg-blue-50 text-blue-700 flex items-center justify-center font-bold flex-shrink-0 text-xl"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                   >
                     {item.icon}
                   </motion.div>
                   <div>
-                    <h4 className="text-lg font-bold text-slate-900 mb-1">{item.title}</h4>
+                    <h4 className="text-lg font-bold text-slate-950 mb-1">{item.title}</h4>
                     <p className="text-slate-600 text-lg">{item.value}</p>
                   </div>
                 </motion.div>
@@ -102,19 +102,19 @@ const Contact: React.FC = () => {
             </div>
 
             <motion.div 
-              className="mt-16 p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100"
+              className="mt-16 p-8 bg-[#fbfaf7] border border-slate-200"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
               whileHover={{ scale: 1.02 }}
             >
-               <h4 className="font-black text-slate-900 text-2xl mb-4">Fast Response Promise</h4>
+               <h4 className="font-medium tracking-[-0.04em] text-slate-950 text-2xl mb-4">Fast Response Promise</h4>
                <p className="text-slate-600">Your time is valuable. We treat every inquiry with priority and ensure a strategic response within 24 hours.</p>
             </motion.div>
           </motion.div>
 
           <motion.div 
-            className="bg-white p-10 md:p-16 rounded-[3rem] shadow-2xl shadow-blue-500/5 border border-slate-100 relative"
+            className="bg-white p-10 md:p-16 border border-slate-200 relative"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -137,11 +137,11 @@ const Contact: React.FC = () => {
                   >
                     ✓
                   </motion.div>
-                  <h3 className="text-3xl font-black text-slate-900 mb-4">Message Received!</h3>
+                  <h3 className="text-3xl font-medium tracking-[-0.04em] text-slate-950 mb-4">Message Received!</h3>
                   <p className="text-slate-600 text-lg">Thank you for reaching out. A strategy expert from Bestricky will contact you shortly.</p>
                   <motion.button 
                     onClick={() => setSubmitted(false)} 
-                    className="mt-10 text-blue-600 font-bold"
+                    className="mt-10 text-blue-700 font-bold"
                     whileHover={{ scale: 1.05 }}
                   >
                     Send another message
@@ -157,7 +157,7 @@ const Contact: React.FC = () => {
                   exit={{ opacity: 0 }}
                 >
                   <motion.h3 
-                    className="text-3xl font-black text-slate-900 mb-8"
+                    className="text-3xl font-medium tracking-[-0.04em] text-slate-950 mb-8"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
@@ -176,14 +176,14 @@ const Contact: React.FC = () => {
                         whileFocus={{ scale: 1.02 }}
                       >
                         <label className="text-sm font-bold text-slate-700 uppercase tracking-widest">Your Name</label>
-                        <input required type="text" name="name" placeholder="John Doe" className="w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                        <input required type="text" name="name" placeholder="John Doe" className="w-full px-6 py-4 rounded-full bg-[#fbfaf7] border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
                       </motion.div>
                       <motion.div 
                         className="space-y-2"
                         whileFocus={{ scale: 1.02 }}
                       >
                         <label className="text-sm font-bold text-slate-700 uppercase tracking-widest">Email Address</label>
-                        <input required type="email" name="email" placeholder="john@example.com" className="w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                        <input required type="email" name="email" placeholder="john@example.com" className="w-full px-6 py-4 rounded-full bg-[#fbfaf7] border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
                       </motion.div>
                     </motion.div>
                     <motion.div 
@@ -194,7 +194,7 @@ const Contact: React.FC = () => {
                       whileFocus={{ scale: 1.01 }}
                     >
                       <label className="text-sm font-bold text-slate-700 uppercase tracking-widest">Service Needed</label>
-                      <select name="service" className="w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none cursor-pointer">
+                      <select name="service" className="w-full px-6 py-4 rounded-full bg-[#fbfaf7] border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none cursor-pointer">
                         <option>Custom Web Development</option>
                         <option>UI/UX Design</option>
                         <option>Full-Stack Solutions</option>
@@ -209,12 +209,12 @@ const Contact: React.FC = () => {
                       whileFocus={{ scale: 1.01 }}
                     >
                       <label className="text-sm font-bold text-slate-700 uppercase tracking-widest">Project Details</label>
-                      <textarea required rows={5} name="details" placeholder="Tell us about your project goals and timeline..." className="w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none"></textarea>
+                      <textarea required rows={5} name="details" placeholder="Tell us about your project goals and timeline..." className="w-full px-6 py-4 rounded-full bg-[#fbfaf7] border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none"></textarea>
                     </motion.div>
                   </div>
                   <motion.button 
                     type="submit" 
-                    className="w-full bg-blue-600 text-white py-6 rounded-2xl text-xl font-black shadow-xl shadow-blue-500/20 hover:bg-blue-700 transition-all"
+                    className="w-full bg-slate-950 text-white py-6 text-xl font-medium tracking-[-0.04em] hover:bg-blue-700 transition-all"
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     initial={{ opacity: 0, y: 20 }}
