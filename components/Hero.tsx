@@ -1,119 +1,99 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
+/** Sculpted 3D object: a tilted half-sphere with two glossy orbs in brand colors. */
+export const Sculpture: React.FC<{ dark?: boolean; className?: string }> = ({ dark = false, className = "" }) => {
+	const reduceMotion = useReducedMotion();
+	const float = (y: number, duration: number) =>
+		reduceMotion
+			? {}
+			: { animate: { y: [0, y, 0] }, transition: { duration, repeat: Infinity, ease: "easeInOut" as const } };
+
+	return (
+		<div className={`pointer-events-none relative aspect-square ${className}`} aria-hidden="true">
+			<motion.div
+				{...float(-14, 9)}
+				className="absolute inset-[6%] rotate-[-28deg] rounded-full"
+				style={{
+					clipPath: "polygon(0 0, 62% 0, 62% 100%, 0 100%)",
+					background: dark
+						? "radial-gradient(circle at 30% 30%, #4b5563 0%, #1f2937 45%, #0b0f19 100%)"
+						: "radial-gradient(circle at 28% 28%, #ffffff 0%, #f3f1ee 40%, #d9dde6 100%)",
+					boxShadow: dark
+						? "inset -30px -40px 80px rgba(0,0,0,.6), 0 40px 80px rgba(0,0,0,.45)"
+						: "inset -30px -40px 90px rgba(148,163,184,.35), 0 50px 90px rgba(15,23,42,.12)",
+				}}
+			/>
+			<motion.span
+				{...float(-22, 6)}
+				className="absolute left-[54%] top-[4%] h-[11%] w-[11%] rounded-full"
+				style={{
+					background: "radial-gradient(circle at 32% 30%, #bfdbfe 0%, #2563eb 45%, #1e3a8a 100%)",
+					boxShadow: "0 18px 30px rgba(29,78,216,.35)",
+				}}
+			/>
+			<motion.span
+				{...float(16, 7.5)}
+				className="absolute left-[30%] top-[66%] h-[7.5%] w-[7.5%] rounded-full"
+				style={{
+					background: "radial-gradient(circle at 32% 30%, #fed7aa 0%, #f97316 50%, #9a3412 100%)",
+					boxShadow: "0 14px 24px rgba(249,115,22,.35)",
+				}}
+			/>
+		</div>
+	);
+};
+
 const Hero: React.FC = () => {
 	const reduceMotion = useReducedMotion();
 	const reveal = (delay: number) => ({
-		initial: reduceMotion ? false : { opacity: 0, y: 18 },
+		initial: reduceMotion ? false : { opacity: 0, y: 24 },
 		animate: { opacity: 1, y: 0 },
-		transition: {
-			duration: reduceMotion ? 0 : 0.65,
-			delay: reduceMotion ? 0 : delay,
-			ease: "easeOut" as const,
-		},
+		transition: { duration: reduceMotion ? 0 : 0.8, delay: reduceMotion ? 0 : delay, ease: [0.22, 1, 0.36, 1] as const },
 	});
 
 	return (
-		<section className="editorial-light-field relative overflow-hidden bg-[#f6f3ed]">
-			<div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-16 pt-32 md:gap-16 md:pb-24 md:pt-40 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
-				<div className="max-w-2xl">
-					<motion.p
-						{...reveal(0.08)}
-						className="mb-7 text-xs font-semibold uppercase tracking-[0.24em] text-slate-600"
-					>
-						Executive digital presence
-					</motion.p>
-
-					<h1 className="mb-7 font-serif text-5xl font-medium leading-[1.04] tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
-						{[
-							"Your reputation",
-							"deserves a digital",
-							"presence that matches it.",
-						].map((line, index) => (
-							<span key={line} className="block overflow-hidden pb-1">
-								<motion.span
-									{...reveal(0.18 + index * 0.1)}
-									className="block"
-								>
+		<section className="relative overflow-hidden bg-[#f6f3ed]">
+			<div className="relative mx-auto flex min-h-[88vh] max-w-[1400px] items-center px-6 pb-20 pt-36 md:px-10 md:pt-40">
+				<div className="relative z-10 max-w-4xl">
+					<h1 className="text-[2.75rem] font-medium leading-[1.02] tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-7xl xl:text-[6.25rem]">
+						{["Bestricky is a global", "web design & product", "studio"].map((line, i) => (
+							<span key={line} className="block overflow-hidden pb-2">
+								<motion.span {...reveal(0.1 + i * 0.1)} className="block">
 									{line}
 								</motion.span>
 							</span>
 						))}
 					</h1>
-
-					<motion.p
-						{...reveal(0.55)}
-						className="mb-8 max-w-xl text-lg leading-relaxed text-slate-600 md:text-xl"
-					>
-						Premium personal websites for CEOs, founders, executives,
-						and thought leaders—alongside considered digital products
-						for businesses, SaaS teams, and ambitious startups.
+					<motion.p {...reveal(0.5)} className="mt-8 max-w-xl text-lg leading-relaxed text-slate-600 md:text-xl">
+						We design and build personal brands, websites and digital products for
+						executives, founders and ambitious teams — from Lagos to the world.
 					</motion.p>
-
-					<motion.div
-						{...reveal(0.66)}
-						className="mb-8 flex flex-col gap-3 sm:flex-row"
-					>
+					<motion.div {...reveal(0.62)} className="mt-10 flex flex-col gap-3 sm:flex-row">
 						<a
 							href="/booking"
-							className="group inline-flex min-h-14 items-center justify-center gap-3 bg-slate-950 px-7 py-4 text-sm font-semibold text-white transition-colors duration-300 hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
+							className="group inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-slate-950 px-8 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
 						>
-							Build my digital presence
-							<span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">↗</span>
+							Start a project
+							<span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
 						</a>
 						<a
 							href="/portfolio"
-							className="group inline-flex min-h-14 items-center justify-center gap-2 border border-slate-300 px-7 py-4 text-sm font-semibold text-slate-900 transition-colors duration-300 hover:border-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
+							className="inline-flex min-h-14 items-center justify-center rounded-full border border-slate-300 px-8 text-sm font-semibold text-slate-900 transition-colors hover:border-slate-950"
 						>
-							Explore selected work
-							<span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
+							See our work
 						</a>
 					</motion.div>
-
-					<motion.p
-						{...reveal(0.74)}
-						className="text-sm leading-relaxed text-slate-500"
-					>
-						Featured focus this season: executive and founder websites.
-						Our work also spans business websites, SaaS, and idea-to-MVP builds.
-					</motion.p>
 				</div>
 
-				<motion.figure
-					initial={reduceMotion ? false : { opacity: 0, scale: 1.03 }}
+				<motion.div
+					initial={reduceMotion ? false : { opacity: 0, scale: 0.92 }}
 					animate={{ opacity: 1, scale: 1 }}
-					transition={{
-						duration: reduceMotion ? 0 : 1.1,
-						delay: reduceMotion ? 0 : 0.3,
-						ease: "easeOut",
-					}}
-					className="relative min-h-[420px] sm:min-h-[540px] lg:min-h-[660px]"
+					transition={{ duration: reduceMotion ? 0 : 1.4, delay: reduceMotion ? 0 : 0.2, ease: [0.22, 1, 0.36, 1] }}
+					className="absolute -right-[18%] top-24 w-[85vw] max-w-[720px] opacity-60 sm:opacity-80 md:-right-[6%] md:top-16 md:w-[52vw] lg:opacity-100"
 				>
-					<img
-						src="/assets/djcuppy.webp"
-						alt="DJ Cuppy personal-brand website project"
-						className="absolute inset-0 h-full w-full object-cover object-top"
-						width="1200"
-						height="800"
-						fetchPriority="high"
-						decoding="async"
-					/>
-					<div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
-					<figcaption className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-6 p-6 text-white md:p-9">
-						<div>
-							<p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/75">
-								Personal brand website
-							</p>
-							<p className="font-serif text-3xl md:text-4xl">DJ Cuppy</p>
-						</div>
-						<a
-							href="/portfolio#djcuppy"
-							className="shrink-0 border-b border-white/70 pb-1 text-xs font-semibold transition-colors hover:border-white"
-						>
-							View case study <span aria-hidden="true">↗</span>
-						</a>
-					</figcaption>
-				</motion.figure>
+					<Sculpture />
+				</motion.div>
 			</div>
 		</section>
 	);
